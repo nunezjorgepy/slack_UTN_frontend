@@ -31,6 +31,8 @@ function RegisterScreen() {
   const { sendRequest, response, error, loading } = useRequest()
 
   const onRegister = (formState) => {
+    // Podría agregar todas las validaciones acá. Más adelante, me conviene hacer un sistema de manejo de errores.
+    // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
     try {
       sendRequest({
         requestCb: () => {

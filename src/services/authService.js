@@ -24,22 +24,9 @@ const authService = {
             },
             body: JSON.stringify({
                 name: data.name,
-                lastName: data.lastName,
-                phone: data.phone,
-                birthDate: data.birthDate,
                 email: data.email,
                 password: data.password,
-                confirmPassword: data.confirmPassword,
-                address: {
-                    street: data.street,
-                    number: data.number,
-                    floor: data.floor,
-                    department: data.department,
-                    city: data.city,
-                    zipCode: data.zipCode,
-                    province: data.province,
-                    country: data.country
-                }
+                confirmPassword: data.confirmPassword
             }),
         });
         return response.json();
