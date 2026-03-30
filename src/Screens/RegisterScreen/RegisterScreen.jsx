@@ -36,6 +36,8 @@ function RegisterScreen() {
     // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
 
     // Validar que formState tenga todos los campos requeridos
+    setErrorMessage('')
+
     const requiredFields = [
       'name',
       'email',
@@ -96,6 +98,7 @@ function RegisterScreen() {
   useEffect(
     () => {
       if (response?.status === 201) {
+        // TODO: modificar para que aparezca un cartel en vez de un alert
         alert('Usuario registrado exitosamente')
         navigate('/login')
       }
