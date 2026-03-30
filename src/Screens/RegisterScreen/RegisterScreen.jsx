@@ -10,12 +10,13 @@ import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent
 import { Link, useNavigate } from 'react-router'
 import useRequest from '../../hooks/useRequest'
 import authService from '../../services/authService'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../context/authContext'
 
 function RegisterScreen() {
   document.title = 'Slack UTN - Registrate'
 
+  const [errorMessage, setErrorMessage] = useState('')
   const { isLogged } = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -45,31 +46,29 @@ function RegisterScreen() {
     const missingFields = requiredFields.filter(field => !formState[field])
 
     if (missingFields.length > 0) {
-      alert('Faltan campos requeridos')
-      return 'Faltan campos requeridos'
+      setErrorMessage('Faltan campos obligatorios')
+      return
     }
 
     // Validar que email sea un email válido
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(formState.email)) {
-      alert('El email no es válido')
-      return 'El email no es válido'
+      setErrorMessage('El email no es válido')
+      return
     }
 
     // Validar que password tenga al menos 8 caracteres
-    if (formState.password.length < 8) {
-      alert('La contraseña debe tener al menos 8 caracteres')
-      return 'La contraseña debe tener al menos 8 caracteres'
+    if (formState.password.trim().length < 8) {
+      setErrorMessage('La contraseña debe tener al menos 8 caracteres')
+      return
     }
 
     // Validar que password y confirmPassword sean iguales
     if (formState.password !== formState.confirmPassword) {
-      alert('Las contraseñas no coinciden')
-      return 'Las contraseñas no coinciden'
+      setErrorMessage('Las contraseñas no coinciden')
+      return
     }
 
-
-    
     try {
       sendRequest({
         requestCb: () => {
@@ -117,6 +116,7 @@ function RegisterScreen() {
             footer={footer}
             initialFormState={initialFormState}
             onSubmitFunction={onRegister}
+            errorMessage={errorMessage}
           />
         </section>
       </main>
