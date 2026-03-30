@@ -1,0 +1,38 @@
+/* Botón principal */
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 0.7rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.primary-btn:hover {
+    background-color: var(--primary-color-90);
+}
+.primary-btn:disabled {
+    background-color: var(--primary-color-50);
+    cursor: not-allowed;
+}
+
+/* Botón secundario */
+.secondary-btn {
+    background-color: var(--primary-color-20);
+    color: var(--primary-color);
+}
+.secondary-btn:hover {
+    background-color: var(--primary-color-30);
+}
+.secondary-btn:disabled {
+    background-color: var(--primary-color-50);
+    cursor: not-allowed;
+}
+
+/* Botón chico */
+.small-btn {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
