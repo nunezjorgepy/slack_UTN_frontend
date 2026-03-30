@@ -31,8 +31,45 @@ function RegisterScreen() {
   const { sendRequest, response, error, loading } = useRequest()
 
   const onRegister = (formState) => {
-    // Podría agregar todas las validaciones acá. Más adelante, me conviene hacer un sistema de manejo de errores.
+    // TODO: Debería crear un sistema de manejo de erorres, pero por ahora lo dejo acá.
     // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
+
+    // Validar que formState tenga todos los campos requeridos
+    const requiredFields = [
+      'name',
+      'email',
+      'password',
+      'confirmPassword'
+    ]
+
+    const missingFields = requiredFields.filter(field => !formState[field])
+
+    if (missingFields.length > 0) {
+      alert('Faltan campos requeridos')
+      return 'Faltan campos requeridos'
+    }
+
+    // Validar que email sea un email válido
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!emailRegex.test(formState.email)) {
+      alert('El email no es válido')
+      return 'El email no es válido'
+    }
+
+    // Validar que password tenga al menos 8 caracteres
+    if (formState.password.length < 8) {
+      alert('La contraseña debe tener al menos 8 caracteres')
+      return 'La contraseña debe tener al menos 8 caracteres'
+    }
+
+    // Validar que password y confirmPassword sean iguales
+    if (formState.password !== formState.confirmPassword) {
+      alert('Las contraseñas no coinciden')
+      return 'Las contraseñas no coinciden'
+    }
+
+
+    
     try {
       sendRequest({
         requestCb: () => {
