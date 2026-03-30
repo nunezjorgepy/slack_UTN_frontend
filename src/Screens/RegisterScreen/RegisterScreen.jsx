@@ -120,6 +120,7 @@ function RegisterScreen() {
             initialFormState={initialFormState}
             onSubmitFunction={onRegister}
             errorMessage={errorMessage}
+            error={error}
           />
         </section>
       </main>

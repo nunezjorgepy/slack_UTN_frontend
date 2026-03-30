@@ -11,7 +11,14 @@ const authService = {
             },
             body: JSON.stringify({ email, password }),
         });
-        return response.json();
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
     },
 
     register: async (data) => {
@@ -29,7 +36,14 @@ const authService = {
                 confirmPassword: data.confirmPassword
             }),
         });
-        return response.json();
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
     },
 
     logout: async () => {
@@ -49,7 +63,14 @@ const authService = {
                 'Content-Type': 'application/json',
             },
         });
-        return response.json();
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
     },
 }
 
