@@ -19,7 +19,8 @@ function InformationFormComponent(props) {
         footer, 
         initialFormState, 
         onSubmitFunction,
-        errorMessage
+        errorMessage,
+        error
     } = props
 
     const { 
@@ -76,6 +77,7 @@ function InformationFormComponent(props) {
             {/* Footer del formulario */}
             <div className='form-footer'>
                 {<span className='error-message'>{errorMessage ? errorMessage : '\u00A0'}</span>}
+                {error && <span className='error-message'>{error.message}</span>}
                 {button.text && <ButtonComponent
                     text={button.text}
                     type={button.type}
