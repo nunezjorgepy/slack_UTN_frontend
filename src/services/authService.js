@@ -56,6 +56,23 @@ const authService = {
         return response.json();
     },
 
+    verifyEmail: async ({verify_email_token}) => {
+        const response = await fetch(`${API_URL}/api/auth/verify-email?verify_email_token=${verify_email_token}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    },
+
     refreshToken: async () => {
         const response = await fetch(`${API_URL}/api/auth/refresh-token`, {
             method: 'POST',

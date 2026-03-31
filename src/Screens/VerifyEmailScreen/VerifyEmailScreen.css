@@ -1,0 +1,19 @@
+.verify-email-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.verify-email-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+}
+
+.verify-email-section p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--black-900);
+}
