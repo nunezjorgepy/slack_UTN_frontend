@@ -23,19 +23,6 @@ function ResetPasswordScreen() {
             </>
         )
     }
-    
-    // TODO: borrar esto cuando se implemente el reset de contraseña
-    /* const tokenRegex = /^[a-zA-Z0-9]{32}$/
-    if (!tokenRegex.test(reset_password_token)) {
-        return(
-            <>
-                <HeaderComponent />
-                <main>
-                    <p>Token no válido</p>
-                </main>
-            </>
-        )
-    } */
 
     const onResetPassword = (formState) => {
         // Seteo el mensaje de error en null
