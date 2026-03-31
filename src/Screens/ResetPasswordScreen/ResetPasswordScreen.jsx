@@ -38,7 +38,6 @@ function ResetPasswordScreen() {
     } */
 
     const onResetPassword = (formState) => {
-        console.log(formState)
         // Seteo el mensaje de error en null
         setErrorMessage('')
         // Verificar que no falten campos
@@ -58,7 +57,7 @@ function ResetPasswordScreen() {
             return
         }
 
-        /* try {
+        try {
             sendRequest({
                 requestCb: () => {
                     return authService.resetPassword(formState)
@@ -66,7 +65,7 @@ function ResetPasswordScreen() {
             })
         } catch (error) {
             console.log(error)
-        } */
+        }
     }
 
     return (

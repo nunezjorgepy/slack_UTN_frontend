@@ -89,6 +89,24 @@ const authService = {
 
         return responseData;
     },
+
+    resetPassword: async ({reset_password_token, password, confirmPassword}) => {
+        const response = await fetch(`${API_URL}/api/auth/reset-password/${reset_password_token}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ password, confirmPassword }),
+        });
+
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            throw new Error(responseData.message);
+        }
+
+        return responseData;
+    },
 }
 
 export default authService;
