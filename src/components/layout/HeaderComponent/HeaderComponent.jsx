@@ -32,6 +32,9 @@ function HeaderComponent() {
                     <li className='header-link'>
                         <Link to="/register">Register</Link>
                     </li>
+                    <li className='header-link'>
+                        <Link to="/reset-password-request">Cambiar Contraseña</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
