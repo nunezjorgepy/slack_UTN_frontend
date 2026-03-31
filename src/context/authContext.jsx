@@ -33,7 +33,7 @@ const AuthContextProvider = ({children}) => {
         // Actualizo el estado
         setIsLogged(false)
         // Navego a la pantalla principal
-        navigate('/')
+        navigate('/login')
     }
 
     const providerValues = {
