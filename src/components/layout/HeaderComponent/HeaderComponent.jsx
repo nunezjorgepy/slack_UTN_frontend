@@ -3,6 +3,7 @@ import './HeaderComponent.css'
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/authContext'
 import ButtonComponent from '../../ui/ButtonComponent/ButtonComponent'
+import { LINKS_TO_OWN_SCREENS } from '../../../constants/general.constants'
 
 function HeaderComponent() {
     const { isLogged, manageLogout } = useContext(AuthContext)
@@ -27,13 +28,13 @@ function HeaderComponent() {
                         <Link to="/">Home</Link>
                     </li>
                     <li className='header-link'>
-                        <Link to="/login">Log In</Link>
+                        <Link to={LINKS_TO_OWN_SCREENS.login}>Log In</Link>
                     </li>
                     <li className='header-link'>
-                        <Link to="/register">Register</Link>
+                        <Link to={LINKS_TO_OWN_SCREENS.register}>Register</Link>
                     </li>
                     <li className='header-link'>
-                        <Link to="/reset-password-request">Cambiar Contraseña</Link>
+                        <Link to={LINKS_TO_OWN_SCREENS.reset_password_request}>Cambiar Contraseña</Link>
                     </li>
                 </ul>
             </nav>

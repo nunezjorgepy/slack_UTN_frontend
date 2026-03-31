@@ -1,4 +1,4 @@
-/* Constantes para el reseteo de contraseña */
+import { LINKS_TO_OWN_SCREENS } from "./general.constants";
 
 export const RESET_PASSWORD_FORM_CONSTANTS = {
     form_title: "Restablecer contraseña",
@@ -26,7 +26,7 @@ export const RESET_PASSWORD_FORM_CONSTANTS = {
     footer: [
         {
             text: "¿Ya tenés una cuenta?",
-            link: "/login",
+            link: LINKS_TO_OWN_SCREENS.login,
             link_text: "Iniciá sesión"
         }
     ]

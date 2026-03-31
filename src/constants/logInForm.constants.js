@@ -1,6 +1,4 @@
-/* 
-    Constantes para el form de login
-*/
+import { LINKS_TO_OWN_SCREENS } from "./general.constants";
 
 export const LOG_IN_FORM_CONSTANTS = {
     form_title: "Inicia sesión",
@@ -38,12 +36,12 @@ export const LOG_IN_FORM_CONSTANTS = {
     footer: [
         {
             text: "¿No tenés una cuenta?",
-            link: "/register",
+            link: LINKS_TO_OWN_SCREENS.register,
             link_text: "Registrate"
         },
         {
             text: "¿Olvidaste tu contraseña?",
-            link: "/reset-password-request",
+            link: LINKS_TO_OWN_SCREENS.reset_password_request,
             link_text: "Restablecé tu contraseña"
         }
     ]

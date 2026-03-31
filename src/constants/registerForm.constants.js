@@ -1,5 +1,5 @@
-// Constants for the register form
-// TODO: Faltan los mensjaes de error
+import { LINKS_TO_OWN_SCREENS } from "./general.constants";
+
 export const REGISTER_FORM_CONSTANTS = {
     form_title: "Crea una cuenta",
     form_subtitle: "Ingresa tus datos para crear una cuenta y realizar pedidos",
@@ -58,7 +58,7 @@ export const REGISTER_FORM_CONSTANTS = {
     footer: [
         {
             text: "¿Ya tenés una cuenta?",
-            link: "/login",
+            link: LINKS_TO_OWN_SCREENS.login,
             link_text: "Iniciá sesión"
         }
     ]
