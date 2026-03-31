@@ -6,6 +6,7 @@ import useRequest from '../../hooks/useRequest'
 import { useState } from 'react'
 import { useParams } from 'react-router'
 import authService from '../../services/authService'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
 function ResetPasswordScreen() {
     const { reset_password_token } = useParams()
@@ -76,6 +77,11 @@ function ResetPasswordScreen() {
                         error={error}
                     />
                 </section>
+                {response &&
+                    <section className='show-succes-section'>
+                        {<ShowSuccesComponent />}
+                    </section>
+                }
             </main>
         </>
     )

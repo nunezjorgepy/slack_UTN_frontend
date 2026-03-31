@@ -1,6 +1,6 @@
 .show-succes-container{
     width: min(100%, 600px);
-    background-color: var(--primary-color-10);
+    background-color: var(--secondary-color);
     border-radius: .5rem;
     box-shadow: var(--box-shadow-1);
     overflow: hidden;
