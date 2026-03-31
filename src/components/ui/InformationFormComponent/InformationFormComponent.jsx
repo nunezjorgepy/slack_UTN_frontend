@@ -61,6 +61,18 @@ function InformationFormComponent(props) {
         ))
     }
 
+    const renderFooterLinks = () => {
+        return footer.map((link, index) => (
+            <div key={index} className='form-footer-links'>
+                <span>{link.text}</span> {' '}
+                <Link to={link.link} className='form-footer-link'>
+                    {link.link_text}
+                </Link>
+                <br />
+            </div>
+        ))
+    }
+
     return (
         <form className='form-container' onSubmit={onSubmit}>
             {/* Header del formulario (si existe) */}
@@ -87,14 +99,7 @@ function InformationFormComponent(props) {
                 />}
                 {
                     footer &&
-                    <p>
-                        {footer.text} {' '}
-                        {footer.link && footer.link_text && 
-                            <Link to={footer.link} className='form-footer-link'>
-                                {footer.link_text}
-                            </Link>
-                        }
-                    </p>
+                    renderFooterLinks()
                 }
             </div>
         </form>

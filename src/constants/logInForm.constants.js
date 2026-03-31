@@ -35,11 +35,18 @@ export const LOG_IN_FORM_CONSTANTS = {
         text: "Iniciar sesión",
         type: "submit"
     },
-    footer: {
-        text: "¿No tenés una cuenta?",
-        link: "/register",
-        link_text: "Registrate"
-    }
+    footer: [
+        {
+            text: "¿No tenés una cuenta?",
+            link: "/register",
+            link_text: "Registrate"
+        },
+        {
+            text: "¿Olvidaste tu contraseña?",
+            link: "/reset-password",
+            link_text: "Restablecé tu contraseña"
+        }
+    ]
 }
 
 // initialFormState

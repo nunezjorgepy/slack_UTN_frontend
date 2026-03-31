@@ -55,11 +55,13 @@ export const REGISTER_FORM_CONSTANTS = {
         text: "Registrarse",
         type: "submit"
     },
-    footer: {
-        text: "¿Ya tenés una cuenta?",
-        link: "/login",
-        link_text: "Iniciá sesión"
-    }
+    footer: [
+        {
+            text: "¿Ya tenés una cuenta?",
+            link: "/login",
+            link_text: "Iniciá sesión"
+        }
+    ]
 }
 
 export const initialFormState = {
