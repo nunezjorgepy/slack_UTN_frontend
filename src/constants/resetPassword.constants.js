@@ -48,3 +48,13 @@ export const initialFormState = {
     [RESET_PASSWORD_CONSTANTS.sections[0].inputs[0].name]: "",
     [RESET_PASSWORD_CONSTANTS.sections[0].inputs[1].name]: ""
 }
+
+export const SUCCES_INFO = {
+    title: "Contraseña cambiada con éxito",
+    body: "Ya puedes iniciar sesión con tu nueva contraseña",
+    footer: {
+        text: "Si la página no te redirige automáticamente, haz clic en el enlace de abajo",
+        link: LINKS_TO_OWN_SCREENS.login,
+        link_text: "Iniciá sesión"
+    }
+}

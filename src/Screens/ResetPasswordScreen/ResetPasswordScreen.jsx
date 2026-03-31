@@ -1,7 +1,7 @@
 import './ResetPasswordScreen.css'
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
-import { RESET_PASSWORD_CONSTANTS, initialFormState } from '../../constants/resetPassword.constants'
+import { RESET_PASSWORD_CONSTANTS, SUCCES_INFO, initialFormState } from '../../constants/resetPassword.constants'
 import useRequest from '../../hooks/useRequest'
 import { useState } from 'react'
 import { useParams } from 'react-router'
@@ -79,7 +79,7 @@ function ResetPasswordScreen() {
                 </section>
                 {response &&
                     <section className='show-succes-section'>
-                        {<ShowSuccesComponent />}
+                        {<ShowSuccesComponent data={SUCCES_INFO} />}
                     </section>
                 }
             </main>

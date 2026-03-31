@@ -1,5 +1,5 @@
 .show-succes-container{
-    width: min(100%, 600px);
+    width: min(95%, 600px);
     background-color: var(--secondary-color);
     border-radius: .5rem;
     box-shadow: var(--box-shadow-1);
@@ -46,4 +46,16 @@
 }
 .show-succes-footer a:hover{
     color: var(--primary-color);
+}
+
+@media screen and (max-width: 440px) {
+    .show-succes-header h2 {
+        font-size: 1.3em;
+    }
+    .show-succes-body p {
+        font-size: 1rem;
+    }
+    .show-succes-footer p {
+        font-size: .8rem;
+    }
 }
