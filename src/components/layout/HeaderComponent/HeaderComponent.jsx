@@ -34,7 +34,13 @@ function HeaderComponent() {
                         <Link to={LINKS_TO_OWN_SCREENS.register}>Register</Link>
                     </li>
                     <li className='header-link'>
-                        <Link to={LINKS_TO_OWN_SCREENS.reset_password_request}>Cambiar Contraseña</Link>
+                        <Link to={LINKS_TO_OWN_SCREENS.reset_password_request}>Solicitar Cambio de Contraseña</Link>
+                    </li>
+                    <li className='header-link'>
+                        {/* 
+                        TODO: borrar esto cuando se implemente el reset de contraseña
+                        */}
+                        <Link to={LINKS_TO_OWN_SCREENS.reset_password + "/123"}>Cambiar Contraseña</Link>
                     </li>
                 </ul>
             </nav>

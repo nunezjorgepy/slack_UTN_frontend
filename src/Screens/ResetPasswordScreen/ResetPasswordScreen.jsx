@@ -1,0 +1,94 @@
+import './ResetPasswordScreen.css'
+import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
+import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+import { RESET_PASSWORD_CONSTANTS, initialFormState } from '../../constants/resetPassword.constants'
+import useRequest from '../../hooks/useRequest'
+import { useState } from 'react'
+import { useParams } from 'react-router'
+import authService from '../../services/authService'
+
+function ResetPasswordScreen() {
+    const { reset_password_token } = useParams()
+    const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_CONSTANTS
+    const { sendRequest, response, error, loading } = useRequest()
+    const [errorMessage, setErrorMessage] = useState('')
+
+    if (!reset_password_token) {
+        return (
+            <>
+                <HeaderComponent />
+                <main>
+                    <p>Token no proporcionado</p>
+                </main>
+            </>
+        )
+    }
+    
+    // TODO: borrar esto cuando se implemente el reset de contraseña
+    /* const tokenRegex = /^[a-zA-Z0-9]{32}$/
+    if (!tokenRegex.test(reset_password_token)) {
+        return(
+            <>
+                <HeaderComponent />
+                <main>
+                    <p>Token no válido</p>
+                </main>
+            </>
+        )
+    } */
+
+    const onResetPassword = (formState) => {
+        console.log(formState)
+        // Seteo el mensaje de error en null
+        setErrorMessage('')
+        // Verificar que no falten campos
+        const requiredFields = [
+            'password',
+            'confirmPassword'
+        ]
+        const missingFields = requiredFields.filter(field => !formState[field])
+        if (missingFields.length > 0) {
+            setErrorMessage('Faltan campos obligatorios')
+            return
+        }
+
+        // Verificar que las contraseñas sean iguales
+        if (formState.password !== formState.confirmPassword) {
+            setErrorMessage('Las contraseñas no coinciden')
+            return
+        }
+
+        /* try {
+            sendRequest({
+                requestCb: () => {
+                    return authService.resetPassword(formState)
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        } */
+    }
+
+    return (
+        <>
+            <HeaderComponent />
+            <main>
+                <section className='reset-password-section'>
+                    <InformationFormComponent
+                        form_title={form_title}
+                        form_subtitle={form_subtitle}
+                        sections={sections}
+                        button={button}
+                        footer={footer}
+                        initialFormState={initialFormState}
+                        onSubmitFunction={onResetPassword}
+                        errorMessage={errorMessage}
+                        error={error}
+                    />
+                </section>
+            </main>
+        </>
+    )
+}
+
+export default ResetPasswordScreen

@@ -1,5 +1,7 @@
 // Hubiera sido mejor llamarla resetPasswordForm y a dicho archivo resetPasswordRequestForm, pero bue...
 
+import { LINKS_TO_OWN_SCREENS } from "./general.constants"
+
 export const RESET_PASSWORD_CONSTANTS = {
     form_title: "Restablecer contraseña",
     form_subtitle: "Ingresa tu nueva contraseña",
