@@ -60,7 +60,11 @@ function ResetPasswordScreen() {
         try {
             sendRequest({
                 requestCb: () => {
-                    return authService.resetPassword(formState)
+                    return authService.resetPassword({
+                        reset_password_token,
+                        password: formState.password,
+                        confirmPassword: formState.confirmPassword
+                    })
                 }
             })
         } catch (error) {
