@@ -41,7 +41,7 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     /* Warning, error and success colors */
     --warning-color: rgb(216, 5, 5);
     --error-color: rgb(216, 5, 5);
-    --success-color: rgb(5, 216, 5);
+    --success-color: rgb(13, 196, 13);
 
     /* Measures */
     --max-width: 1200px;
