@@ -4,7 +4,7 @@ import InformationFormComponent from '../../components/ui/InformationFormCompone
 import { LOG_IN_FORM_CONSTANTS, initialFormState } from '../../constants/logInForm.constants'
 import authService from '../../services/authService'
 import useRequest from '../../hooks/useRequest'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../../context/authContext'
 
@@ -16,9 +16,37 @@ function LogInScreen() {
     // Según el profe, todo esto debería ir en un hook separado (algo así como useLogIn) y este componente solo se encargaría de la UI
     const { sendRequest, response, error, loading } = useRequest()
     const { manageLogin, isLogged } = useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
 
     const onLogIn = (formState) => {
+        // TODO: Debería crear un sistema de manejo de erorres, pero por ahora lo dejo acá.
+        // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
+
+        // Validar que formState tenga todos los campos requeridos
+        setErrorMessage('')
+
+        const requiredFields = [
+            'email',
+            'password'
+        ]
+
+        const missingFields = requiredFields.filter(field => !formState[field])
+
+        if (missingFields.length > 0) {
+            setErrorMessage('Faltan campos obligatorios')
+            return
+        }
+
+        // Validar que email sea un email válido
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(formState.email)) {
+            setErrorMessage('El email no es válido')
+            return
+        }
+
+        // NOTA: no valido la cantidad de caracteres de la contraseña para que no se pueda saber el mínimo de caracteres
+
         try {
             sendRequest({
                 requestCb: () => {
@@ -65,6 +93,8 @@ function LogInScreen() {
                         footer={footer}
                         initialFormState={initialFormState}
                         onSubmitFunction={onLogIn}
+                        errorMessage={errorMessage}
+                        error={error}
                     />
                 </section>
             </main>

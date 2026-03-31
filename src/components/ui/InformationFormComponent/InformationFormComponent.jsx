@@ -76,8 +76,11 @@ function InformationFormComponent(props) {
 
             {/* Footer del formulario */}
             <div className='form-footer'>
-                {<span className='error-message'>{errorMessage ? errorMessage : '\u00A0'}</span>}
-                {error && <span className='error-message'>{error.message}</span>}
+                <span className='error-message'>
+                    {/* Si el error es del parte del usuario, muestra errorMessage, si no, muestra error.message. De no haber error, muestra un espacio para mantener el tamaño del footer */}
+                    {errorMessage ? errorMessage 
+                    : error ? error.message : '\u00A0'}
+                </span>
                 {button.text && <ButtonComponent
                     text={button.text}
                     type={button.type}

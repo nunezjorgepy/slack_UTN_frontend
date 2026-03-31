@@ -23,7 +23,6 @@ const authService = {
 
     register: async (data) => {
         // data es un objeto con toda la información del formulario
-        console.log(data)
         const response = await fetch(`${API_URL}/api/auth/register`, {
             method: 'POST',
             headers: {
