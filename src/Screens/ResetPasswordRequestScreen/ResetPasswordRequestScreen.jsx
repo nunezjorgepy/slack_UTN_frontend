@@ -5,6 +5,7 @@ import InformationFormComponent from '../../components/ui/InformationFormCompone
 import { RESET_PASSWORD_FORM_CONSTANTS, initialFormState } from '../../constants/resetPasswordForm.constants'
 import useRequest from '../../hooks/useRequest'
 import { useState } from 'react'
+import authService from '../../services/authService'
 
 function ResetPasswordRequestScreen() {
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_FORM_CONSTANTS
@@ -12,7 +13,6 @@ function ResetPasswordRequestScreen() {
     const [errorMessage, setErrorMessage] = useState('')
 
     const onResetPasswordRequest = (formState) => {
-        console.log(formState)
         // Seteo el mensaje de error en null
         setErrorMessage('')
         // Verificar que no falten campos
@@ -32,8 +32,7 @@ function ResetPasswordRequestScreen() {
             return
         }
 
-        // TODO: lo comento porque todavía no tengo el fetch
-        /* try {
+        try {
             sendRequest({
                 requestCb: () => {
                     return authService.resetPasswordRequest(formState)
@@ -41,7 +40,7 @@ function ResetPasswordRequestScreen() {
             })
         } catch (error) {
             console.log(error)
-        } */
+        }
     }
 
     return (

@@ -72,12 +72,13 @@ const authService = {
         return responseData;
     },
 
-    refreshToken: async () => {
-        const response = await fetch(`${API_URL}/api/auth/refresh-token`, {
+    resetPasswordRequest: async ({email}) => {
+        const response = await fetch(`${API_URL}/api/auth/reset-password-request`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify({ email }),
         });
 
         const responseData = await response.json();
