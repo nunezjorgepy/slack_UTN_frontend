@@ -36,6 +36,9 @@ function HeaderComponent() {
                     <li className='header-link'>
                         <Link to={LINKS_TO_OWN_SCREENS.reset_password_request}>Solicitar Cambio de Contraseña</Link>
                     </li>
+                    <li className='header-link'>
+                        <Link to={LINKS_TO_OWN_SCREENS.development}>Development</Link>
+                    </li>
                 </ul>
             </nav>
         </header>
