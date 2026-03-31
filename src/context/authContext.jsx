@@ -9,8 +9,8 @@ export const AuthContext = createContext(
     }
 )
 
-export const LOCALSTORAGE_AUTH_TOKEN_KEY = 'auth_token_lenabakery'
-export const LOCALSTORAGE_REFRESH_TOKEN_KEY = 'refresh_token_lenabakery'
+export const LOCALSTORAGE_AUTH_TOKEN_KEY = 'auth_token'
+export const LOCALSTORAGE_REFRESH_TOKEN_KEY = 'refresh_token'
 
 const AuthContextProvider = ({children}) => {
     const [isLogged, setIsLogged] = useState(

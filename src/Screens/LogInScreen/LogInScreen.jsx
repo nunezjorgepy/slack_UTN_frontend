@@ -74,7 +74,7 @@ function LogInScreen() {
     useEffect(
         () => {
             if (response && response.status === 200) {
-                manageLogin(response.data.login_token)
+                manageLogin(response.data.auth_token)
             }
         }, 
         [response]
