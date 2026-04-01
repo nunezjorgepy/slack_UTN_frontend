@@ -1,16 +1,23 @@
-import React from 'react'
+import { useEffect } from 'react'
 import './ResetPasswordRequestScreen.css'
+
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
-import { RESET_PASSWORD_FORM_CONSTANTS, initialFormState } from '../../constants/resetPasswordForm.constants'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
+
+import { RESET_PASSWORD_FORM_CONSTANTS, SUCCES_RESET_PASSWORD_INFO, initialFormState } from '../../constants/resetPasswordForm.constants'
+
 import useRequest from '../../hooks/useRequest'
 import { useState } from 'react'
+import { useNavigate } from 'react-router'
+
 import authService from '../../services/authService'
 
 function ResetPasswordRequestScreen() {
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_FORM_CONSTANTS
     const { sendRequest, response, error, loading } = useRequest()
     const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
 
     const onResetPasswordRequest = (formState) => {
         // Seteo el mensaje de error en null
@@ -43,6 +50,14 @@ function ResetPasswordRequestScreen() {
         }
     }
 
+    useEffect(() => {
+        if (response) {
+            setTimeout(() => {
+                navigate('/')
+            }, 3000)
+        }
+    }, [response])
+
     return (
         <>
             <HeaderComponent />
@@ -60,6 +75,13 @@ function ResetPasswordRequestScreen() {
                         error={error}
                     />
                 </section>
+
+                {
+                    response &&
+                    <section className='show-succes-section'>
+                        <ShowSuccesComponent data={SUCCES_RESET_PASSWORD_INFO} />
+                    </section>
+                }
             </main>
         </>
     )

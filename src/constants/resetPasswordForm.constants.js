@@ -35,3 +35,13 @@ export const RESET_PASSWORD_FORM_CONSTANTS = {
 export const initialFormState = {
     [RESET_PASSWORD_FORM_CONSTANTS.sections[0].inputs[0].name]: ""
 }
+
+export const SUCCES_RESET_PASSWORD_INFO = {
+    title: "Se ha enviado un correo electrónico a tu dirección",
+    body: "Serás redirigido a la página principal en un momento...",
+    footer: {
+        text: "Ir a la página principal",
+        link: LINKS_TO_OWN_SCREENS.home,
+        link_text: "Home"
+    }
+}
