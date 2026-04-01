@@ -130,6 +130,7 @@ function RegisterScreen() {
             onSubmitFunction={onRegister}
             errorMessage={errorMessage}
             error={error}
+            loading={loading}
           />
         </section>
 

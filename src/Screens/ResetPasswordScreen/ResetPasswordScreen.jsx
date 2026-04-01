@@ -86,6 +86,7 @@ function ResetPasswordScreen() {
                         onSubmitFunction={onResetPassword}
                         errorMessage={errorMessage}
                         error={error}
+                        loading={loading}
                     />
                 </section>
                 {response &&
