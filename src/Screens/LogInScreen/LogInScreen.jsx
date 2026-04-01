@@ -83,6 +83,13 @@ function LogInScreen() {
         [response]
     )
 
+    useEffect(
+        () => {
+            console.log(loading)
+        },
+        [loading]
+    )
+
     return (
         <>
             <HeaderComponent />
@@ -98,6 +105,7 @@ function LogInScreen() {
                         onSubmitFunction={onLogIn}
                         errorMessage={errorMessage}
                         error={error}
+                        loading={loading}
                     />
                 </section>
 

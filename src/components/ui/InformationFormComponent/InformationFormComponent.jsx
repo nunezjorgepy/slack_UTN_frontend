@@ -2,6 +2,8 @@ import { Link } from 'react-router'
 import './InformationFormComponent.css'
 import ButtonComponent from '../ButtonComponent/ButtonComponent'
 import useForm from '../../../hooks/useForm'
+import { useEffect } from 'react'
+import useRequest from '../../../hooks/useRequest'
 
 /* 
     El formulario tendrá un título, un subtítulo y los campos para ingresar la información.
@@ -20,7 +22,8 @@ function InformationFormComponent(props) {
         initialFormState, 
         onSubmitFunction,
         errorMessage,
-        error
+        error,
+        loading
     } = props
 
     const { 
@@ -29,6 +32,7 @@ function InformationFormComponent(props) {
         formState, 
         resetForm 
     } = useForm({ initialFormState, submitFn: onSubmitFunction })
+
 
     // Renderizar las secciones
     const renderSections = () => {
@@ -96,6 +100,7 @@ function InformationFormComponent(props) {
                 {button.text && <ButtonComponent
                     text={button.text}
                     type={button.type}
+                    disabled={loading}
                 />}
                 {
                     footer &&
