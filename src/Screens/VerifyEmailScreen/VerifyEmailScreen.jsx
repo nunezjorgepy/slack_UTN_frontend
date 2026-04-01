@@ -5,6 +5,8 @@ import HeaderComponent from '../../components/layout/HeaderComponent/HeaderCompo
 import useRequest from '../../hooks/useRequest'
 import authService from '../../services/authService'
 import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
+import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 
 function VerifyEmailScreen() {
     document.title = 'SLACK UTN - Verificar correo'
@@ -27,6 +29,14 @@ function VerifyEmailScreen() {
         verifyEmail()
     }, [])
 
+    useEffect(() => {
+        if (response) {
+            setTimeout(() => {
+                navigate('/login')
+            }, 3000)
+        }
+    }, [response])
+
     return (
         <div>
             <HeaderComponent />
@@ -41,6 +51,21 @@ function VerifyEmailScreen() {
                         onClick={() => navigate('/login')}
                     />
                 </section>
+
+                {
+                    (response) &&
+                    <section className='show-succes-section'>
+                        <ShowSuccesComponent data={{
+                            title: response.message,
+                            body: "Ahora puedes iniciar sesión",
+                            footer: {
+                                text: "Ingresar",
+                                link: LINKS_TO_OWN_SCREENS.login,
+                                link_text: "Iniciá sesión"
+                            }
+                        }} />
+                    </section>
+                }
             </main>
         </div>
     )
