@@ -7,6 +7,7 @@ import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuc
 
 // Constants
 import { REGISTER_FORM_CONSTANTS, SUCCES_REGISTER_INFO, initialFormState } from '../../constants/registerForm.constants'
+import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 
 // Hooks
 import useRequest from '../../hooks/useRequest'
@@ -107,7 +108,7 @@ function RegisterScreen() {
     () => {
       if (response?.status === 201) {
         setTimeout(() => {
-          navigate('/login')
+          navigate(LINKS_TO_OWN_SCREENS.login)
         }, 3000)
       }
     },

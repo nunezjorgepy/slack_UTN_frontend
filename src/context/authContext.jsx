@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 import { useNavigate } from "react-router";
-
+import { LINKS_TO_OWN_SCREENS } from "../constants/general.constants";
 
 export const AuthContext = createContext(
     {
@@ -38,7 +38,7 @@ const AuthContextProvider = ({children}) => {
     
     const manageResetPassword = () => {
         // Navego a la pantalla principal
-        navigate('/login')
+        navigate(LINKS_TO_OWN_SCREENS.login)
     }
 
     const providerValues = {
