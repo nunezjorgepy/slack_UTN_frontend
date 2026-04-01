@@ -35,11 +35,17 @@ const AuthContextProvider = ({children}) => {
         // Navego a la pantalla principal
         navigate('/login')
     }
+    
+    const manageResetPassword = () => {
+        // Navego a la pantalla principal
+        navigate('/login')
+    }
 
     const providerValues = {
         isLogged,
         manageLogin,
-        manageLogout
+        manageLogout,
+        manageResetPassword
     }
 
     return (

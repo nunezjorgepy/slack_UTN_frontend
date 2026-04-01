@@ -1,17 +1,20 @@
 import './ResetPasswordScreen.css'
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 import { RESET_PASSWORD_CONSTANTS, SUCCES_INFO, initialFormState } from '../../constants/resetPassword.constants'
 import useRequest from '../../hooks/useRequest'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import authService from '../../services/authService'
-import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
 
 function ResetPasswordScreen() {
     const { reset_password_token } = useParams()
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_CONSTANTS
     const { sendRequest, response, error, loading } = useRequest()
+    const { manageResetPassword } = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState('')
 
     if (!reset_password_token) {
@@ -59,6 +62,14 @@ function ResetPasswordScreen() {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+        if (response) {
+            setTimeout(() => {
+                manageResetPassword()
+            }, 3000)
+        }
+    }, [response])
 
     return (
         <>

@@ -1,12 +1,13 @@
 import './LogInScreen.css'
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
-import { LOG_IN_FORM_CONSTANTS, initialFormState } from '../../constants/logInForm.constants'
+import { LOG_IN_FORM_CONSTANTS, SUCCES_LOGIN_INFO, initialFormState } from '../../constants/logInForm.constants'
 import authService from '../../services/authService'
 import useRequest from '../../hooks/useRequest'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { AuthContext } from '../../context/authContext'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
 function LogInScreen() {
     const { form_title, form_subtitle, sections, button, footer } = LOG_IN_FORM_CONSTANTS
@@ -74,7 +75,9 @@ function LogInScreen() {
     useEffect(
         () => {
             if (response && response.status === 200) {
-                manageLogin(response.data.auth_token)
+                setTimeout(() => {
+                    manageLogin(response.data.auth_token)
+                }, 3000)
             }
         }, 
         [response]
@@ -97,6 +100,13 @@ function LogInScreen() {
                         error={error}
                     />
                 </section>
+
+                {
+                    response &&
+                    <section className='show-succes-section'>
+                        <ShowSuccesComponent data={SUCCES_LOGIN_INFO} />
+                    </section>
+                }
             </main>
         </>
     )

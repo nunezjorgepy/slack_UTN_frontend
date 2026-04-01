@@ -3,15 +3,23 @@ import './RegisterScreen.css'
 // Components
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
 // Constants
-import { REGISTER_FORM_CONSTANTS, initialFormState } from '../../constants/registerForm.constants'
-import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
-import { Link, useNavigate } from 'react-router'
+import { REGISTER_FORM_CONSTANTS, SUCCES_REGISTER_INFO, initialFormState } from '../../constants/registerForm.constants'
+
+// Hooks
 import useRequest from '../../hooks/useRequest'
+
+// Services
 import authService from '../../services/authService'
-import { useContext, useEffect, useState } from 'react'
+
+// Context
 import { AuthContext } from '../../context/authContext'
+
+// React
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 
 function RegisterScreen() {
   document.title = 'Slack UTN - Registrate'
@@ -98,9 +106,9 @@ function RegisterScreen() {
   useEffect(
     () => {
       if (response?.status === 201) {
-        // TODO: modificar para que aparezca un cartel en vez de un alert
-        alert('Usuario registrado exitosamente')
-        navigate('/login')
+        setTimeout(() => {
+          navigate('/login')
+        }, 3000)
       }
     },
     [response]
@@ -123,6 +131,13 @@ function RegisterScreen() {
             error={error}
           />
         </section>
+
+        {
+          response &&
+          <section className='show-succes-section'>
+            <ShowSuccesComponent data={SUCCES_REGISTER_INFO} />
+          </section>
+        }
       </main>
     </>
   )

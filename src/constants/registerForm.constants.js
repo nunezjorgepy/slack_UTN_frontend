@@ -70,3 +70,13 @@ export const initialFormState = {
     [REGISTER_FORM_CONSTANTS.sections[0].inputs[2].name]: "",
     [REGISTER_FORM_CONSTANTS.sections[0].inputs[3].name]: ""
 }
+
+export const SUCCES_REGISTER_INFO = {
+    title: "¡Usuario registrado exitosamente!",
+    body: "Serás redirigido a la pantalla de login en unos segundos.",
+    footer: {
+        text: "Si la página no te redirige automáticamente, haz clic en el enlace de abajo",
+        link: LINKS_TO_OWN_SCREENS.login,
+        link_text: "Iniciar sesión"
+    }
+}

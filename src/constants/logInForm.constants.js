@@ -52,3 +52,13 @@ export const initialFormState = {
     [LOG_IN_FORM_CONSTANTS.sections[0].inputs[0].name]: "",
     [LOG_IN_FORM_CONSTANTS.sections[0].inputs[1].name]: ""
 }
+
+export const SUCCES_LOGIN_INFO = {
+    title: "¡Logueado correctamente!",
+    body: "Serás redirigido a la pantalla principal en unos segundos.",
+    footer: {
+        text: "Si la página no te redirige automáticamente, haz clic en el enlace de abajo",
+        link: LINKS_TO_OWN_SCREENS.home,
+        link_text: "Inicio"
+    }
+}
