@@ -42,7 +42,7 @@ export const LOG_IN_FORM_CONSTANTS = {
         {
             text: "¿Olvidaste tu contraseña?",
             link: LINKS_TO_OWN_SCREENS.reset_password_request,
-            link_text: "Restablecé tu contraseña"
+            link_text: "Restablecer"
         }
     ]
 }

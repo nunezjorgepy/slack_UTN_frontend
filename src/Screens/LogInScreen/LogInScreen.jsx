@@ -83,13 +83,6 @@ function LogInScreen() {
         [response]
     )
 
-    useEffect(
-        () => {
-            console.log(loading)
-        },
-        [loading]
-    )
-
     return (
         <>
             <HeaderComponent />

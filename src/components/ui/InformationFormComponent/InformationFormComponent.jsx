@@ -68,11 +68,12 @@ function InformationFormComponent(props) {
     const renderFooterLinks = () => {
         return footer.map((link, index) => (
             <div key={index} className='form-footer-links'>
-                <span>{link.text}</span> {' '}
-                <Link to={link.link} className='form-footer-link'>
-                    {link.link_text}
-                </Link>
-                <br />
+                <div className="form-footer-link">
+                    <span>{link.text}</span> {' '}
+                    <Link to={link.link} className='form-footer-link'>
+                        {link.link_text}
+                    </Link>
+                </div>
             </div>
         ))
     }
