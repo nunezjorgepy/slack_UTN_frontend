@@ -9,13 +9,17 @@ import ResetPasswordScreen from "./Screens/ResetPasswordScreen/ResetPasswordScre
 // General constants
 import { LINKS_TO_OWN_SCREENS } from "./constants/general.constants";
 import DevelopmentScreen from "./Screens/DevelopmentScreen/DevelopmentScreen";
+import AuthMiddleware from "./middlewares/AuthMiddleware";
 
 function App() {
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<HomePageScreen />} />
+        <Route element={<AuthMiddleware />}>
+          <Route path="/" element={<HomePageScreen />} />
+        </Route>
+        
         <Route path={LINKS_TO_OWN_SCREENS.login} element={<LogInScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.register} element={<RegisterScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.verify_email} element={<VerifyEmailScreen />} />
