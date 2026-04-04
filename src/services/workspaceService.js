@@ -1,4 +1,5 @@
 import ENVIRONMENT from "../config/environment.config";
+import { LOCALSTORAGE_AUTH_TOKEN_KEY } from "../context/authContext";
 
 const API_URL = ENVIRONMENT.API_URL
 
@@ -9,7 +10,7 @@ const workspaceService = {
             {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_TOKEN_KEY)
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY)
                 }
             }
         )
