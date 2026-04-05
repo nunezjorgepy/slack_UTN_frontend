@@ -1,18 +1,10 @@
 @import "../../variables.css";
 
-.hp-sign-in-conainer{
-    width: 100%;
-    max-width: 1230px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
 .hp-workspaces{
     /* El margin top lo uso después de agregar la elipse superior */
     /* margin-top: -21.75rem; */
     position: relative;
+    width: var(--max-width);
 }
 
 /* Section Hero Header */
@@ -21,12 +13,6 @@
 }
 
 /* Section Hero Workspaces */
-.hp-sign-in-conainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
 
 .workspaces-container{
     display: flex;
@@ -103,13 +89,146 @@
     transform: translateY(1px);
 }
 
-.workspace-list-item-button-icon{
-    width: 20px;
-    height: 20px;
+/* Body de los espacios de trabajo */
+.workspaces-list-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    padding: 1.5rem;
+    min-height: 217px;
+    max-height: 434px;
+    overflow-y: auto;
 }
 
+.authenticated-workspaces-container{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .5rem;
+    width: 100%;
+}
+.ready-to-launch{
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black-500);
+    margin-left: .5rem;
+}
+/* 
+==============================================
+Desde acá, empieza el componente de workspace preview
+==============================================
+*/
+.workspace-list-item{
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 16px;
+    color: var(--black-800);
+    padding: 8px;
+    border-radius: 12px;
+}
+.workspace-list-item:hover{
+    background-color: #f8f8f8;
+}
+.workspace-list-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+/* 
+==============================================
+Imagen del espacio de trabajo
+==============================================
+*/
+.workspace-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+}
+/* 
+==============================================
+Detalles del espacio de trabajo
+==============================================
+*/
+.workspace-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+.workspaces-name{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -.004em;
+}
+.workspace-members, .workspace-members-avatar{
+    display: flex;
+    align-items: center;
+}
+/* Falta el avatar del usuario y el texto 'Última actividad'. Por ahora no lo hago */
+.workspace-members{
+    gap: 8px;
+}
+.workspace-members-count {
+    color: var(--black-500);
+    font-size: 0.75rem;
+}
 
-/* Footer */
+/* 
+==============================================
+Icono del espacio de trabajo
+==============================================
+*/
+.workspace-list-item-button{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+.workspace-list-item-button-text{
+    font-size: 15px;
+    font-weight: 700;
+    display: none;
+}
+.workspace-list-item-button-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 3.95px 2.75px;
+    transform: rotate(-90deg);
+}
+.workspace-list-item:hover .workspace-list-item-button-text,
+.workspace-list-item:hover .workspace-members-count,
+.workspace-list-item:hover .workspaces-name{
+    display: block;
+    color: #1264a3;
+}
+.workspace-list-item:hover .workspace-list-item-button-icon path{
+    fill: #1264a3;
+}
+
+/* 
+==============================================
+Hasta acá esta el componente 
+==============================================
+*/
+
+/* 
+==============================================
+Footer
+==============================================
+*/
 .workspaces-footer{
     display: flex;
     flex-direction: column;
