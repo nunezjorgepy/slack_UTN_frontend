@@ -1,0 +1,139 @@
+@import "../../variables.css";
+
+.hp-sign-in-conainer{
+    width: 100%;
+    max-width: 1230px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hp-workspaces{
+    /* El margin top lo uso después de agregar la elipse superior */
+    /* margin-top: -21.75rem; */
+    position: relative;
+}
+
+/* Section Hero Header */
+.hp-sign-in-hero{
+    margin-bottom: 3rem;
+}
+
+/* Section Hero Workspaces */
+.hp-sign-in-conainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.workspaces-container{
+    display: flex;
+    align-self: flex-start;
+    align-items: flex-start;
+    gap: 32px;
+}
+.my-workspaces, .workspaces-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.my-workspaces{
+    flex: 1 0 0;
+}
+.workspaces-sidebar{
+    flex: 0 0 370px;
+}
+
+.section-title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0;
+}
+
+/* Lista de espacios de trabajo */
+.workspaces-list, .sidebar-item {
+    background-color: #fff;
+    border: 1px solid var(--black-100);
+    border-radius: 1rem;
+    min-height: 150px;
+    position: relative;
+    box-shadow: 0 4px 20px var(--black-100);
+    align-self: stretch;
+    padding: 1.5rem;
+}
+.workspaces-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    padding: 0;
+}
+
+/* Workspaces tabs */
+.workspaces-tabs{
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    gap: 4px;
+    height: 45px;
+    padding: .5rem 1.5rem 0;
+    border-bottom: 1px solid var(--black-200);
+}
+.workspaces-tabs-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 100%;
+    padding: 0 8px;
+    border-radius: 0;
+    color: var(--black-500);
+    font-weight: 400;
+    font-size: .875rem;
+    line-height: 1.429;
+}
+.workspaces-tabs-button.active{
+    color: var(--black-900);
+    border-bottom: 2px solid var(--primary-color);
+    transform: translateY(1px);
+}
+
+.workspace-list-item-button-icon{
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Footer */
+.workspaces-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: .5rem;
+    background-color: #fff;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--black-200);
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    box-shadow: 0 0 6px var(--black-100);
+}
+.workspaces-footer-tab {
+    font-size: 15px;
+    line-height: 22px;
+}
+.workspaces-footer a{
+    color: #1264a3;
+    font-size: 15px;
+    line-height: 22px;
+    cursor: pointer;
+}
+.workspaces-footer a:hover{
+    color: #0b4c8c;
+    text-decoration: underline;
+}

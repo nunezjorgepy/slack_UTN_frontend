@@ -24,7 +24,14 @@ main {
     width: 100%;
     padding: 3rem 1rem;
 }
-
+button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none
+}
+button:disabled{
+    cursor: not-allowed;
+}
 
 
 
