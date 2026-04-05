@@ -3,11 +3,7 @@ import { LOCALSTORAGE_AUTH_TOKEN_KEY } from "../context/authContext";
 
 const API_URL = ENVIRONMENT.API_URL
 
-/* 
-TODO: usar para encontrar la lista de miembros de cada espacio.
-*/
-
-const workspaceService = {
+const memberWorkspaceService = {
     getActiveWorkspaces: async () => {
         const response_http = await fetch(
             API_URL + '/api/membersWorkspace/active',
@@ -25,4 +21,4 @@ const workspaceService = {
 }
 
 
-export default workspaceService
+export default memberWorkspaceService

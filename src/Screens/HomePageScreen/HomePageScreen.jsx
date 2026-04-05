@@ -3,7 +3,7 @@ import './HomePageScreen.css'
 // Import Components
 import HeaderComponent from "../../components/layout/HeaderComponent/HeaderComponent"
 import FooterComponent from "../../components/layout/FooterComponent/FooterComponent"
-import useWorkspaces from '../../hooks/useWorkspaces'
+import useMemberWorkspaces from '../../hooks/useMemberWorkspaces'
 import { Link } from 'react-router'
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
 
@@ -11,7 +11,8 @@ function HomePageScreen() {
     // Cambia el título de la página
     document.title = 'Slack UTN - Home'
 
-    const { workspaces, response, loading, error } = useWorkspaces()
+    const { workspaces, response, loading, error } = useMemberWorkspaces()
+    console.log(workspaces)
 
     const renderWorkspaces = () => {
         if (loading) {
