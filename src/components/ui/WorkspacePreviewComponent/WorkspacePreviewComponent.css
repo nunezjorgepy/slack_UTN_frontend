@@ -1,0 +1,98 @@
+.workspace-list-item{
+    display: flex;
+    flex: 1 0 0;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: stretch;
+    gap: 16px;
+    color: var(--black-800);
+    padding: 8px;
+    border-radius: 12px;
+}
+.workspace-list-item:hover{
+    background-color: #f8f8f8;
+}
+.workspace-list-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+/* 
+==============================================
+Imagen del espacio de trabajo
+==============================================
+*/
+.workspace-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+}
+/* 
+==============================================
+Detalles del espacio de trabajo
+==============================================
+*/
+.workspace-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+.workspaces-name{
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: -.004em;
+}
+.workspace-members, .workspace-members-avatar{
+    display: flex;
+    align-items: center;
+}
+/* Falta el avatar del usuario y el texto 'Última actividad'. Por ahora no lo hago */
+.workspace-members{
+    gap: 8px;
+}
+.workspace-members-count {
+    color: var(--black-500);
+    font-size: 0.75rem;
+}
+
+/* 
+==============================================
+Icono del espacio de trabajo
+==============================================
+*/
+.workspace-list-item-button{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+.workspace-list-item-button-text{
+    font-size: 15px;
+    font-weight: 700;
+    display: none;
+}
+.workspace-list-item-button-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    padding: 3.95px 2.75px;
+    transform: rotate(-90deg);
+}
+.workspace-list-item:hover .workspace-list-item-button-text,
+.workspace-list-item:hover .workspace-members-count,
+.workspace-list-item:hover .workspaces-name{
+    display: block;
+    color: #1264a3;
+}
+.workspace-list-item:hover .workspace-list-item-button-icon path{
+    fill: #1264a3;
+}
