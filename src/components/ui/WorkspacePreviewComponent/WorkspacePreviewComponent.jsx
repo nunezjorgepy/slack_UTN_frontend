@@ -1,18 +1,20 @@
 import { Link } from 'react-router'
 import './WorkspacePreviewComponent.css'
 
-function WorkspacePreviewComponent() {
+function WorkspacePreviewComponent(props) {
+    const { workspace } = props
     return (
         <Link to={`/`} className='workspace-list-item'>
             <div className="workspace-list-content">
                 <img className='workspace-icon' src={"https://a.slack-edge.com/80588/img/avatars-teams/ava_0026-88.png"} alt="Imagen del espacio de trabajo" />
                 <div className="workspace-details">
                     <div className="workspaces-name">
-                        Trabajo Final UTN
+                        {workspace.workspace_title}
                     </div>
                     <div className="workspace-members">
                         <span className="workspace-members-count">
-                            10 miembros
+                            {/* TODO: cuando tenga la ruta, mostrar la cantidad de miembros */}
+                            0 miembros
                         </span>
                     </div>
                 </div>

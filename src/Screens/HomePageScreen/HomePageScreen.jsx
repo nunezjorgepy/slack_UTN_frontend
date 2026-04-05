@@ -11,7 +11,25 @@ function HomePageScreen() {
     // Cambia el título de la página
     document.title = 'Slack UTN - Home'
 
-    const { workspaces } = useWorkspaces()
+    const { workspaces, response, loading, error } = useWorkspaces()
+
+    const renderWorkspaces = () => {
+        if (loading) {
+            return <div>Cargando...</div>
+        }
+        if (error) {
+            return <div>Error al cargar los espacios de trabajo</div>
+        }
+        if (!workspaces) {
+            return <div>No se encontraron espacios de trabajo</div>
+        }
+        return workspaces.map((workspace) => (
+            <WorkspacePreviewComponent 
+                key={workspace.member_workspace_id}
+                workspace={workspace} 
+            />
+        ))
+    }
 
     return (
         <>
@@ -56,16 +74,7 @@ function HomePageScreen() {
                                                 </span>
                                                 {/* Desde acá arranca el componente a crear */}
                                                 {/* TODO: Falta crear la página del link */}
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
-                                                <WorkspacePreviewComponent />
+                                                {renderWorkspaces()}
                                                 {/* Acá termina el componente */}
                                             </div>
                                         </div>
