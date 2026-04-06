@@ -6,12 +6,17 @@ import FooterComponent from "../../components/layout/FooterComponent/FooterCompo
 import useMemberWorkspaces from '../../hooks/useMemberWorkspaces'
 import { Link } from 'react-router'
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
+import memberWorkspaceService from '../../services/memberWorkspaceSerivce'
 
 function HomePageScreen() {
     // Cambia el título de la página
     document.title = 'Slack UTN - Home'
 
-    const { workspaces, response, loading, error } = useMemberWorkspaces()
+    const { workspaces, response, loading, error } = useMemberWorkspaces(
+        {
+            callbackFunction: memberWorkspaceService.getActiveWorkspaces
+        }
+    )
 
     const renderWorkspaces = () => {
         if (loading) {

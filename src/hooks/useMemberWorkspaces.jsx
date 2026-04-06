@@ -3,7 +3,9 @@ import useRequest from "./useRequest";
 import memberWorkspaceService from "../services/memberWorkspaceSerivce";
 
 
-function useMemberWorkspaces() {
+function useMemberWorkspaces({
+    callbackFunction
+}) {
 
     const { sendRequest, response, loading, error} = useRequest()
 
@@ -11,7 +13,7 @@ function useMemberWorkspaces() {
         () => {
             sendRequest(
                 {
-                    requestCb: memberWorkspaceService.getActiveWorkspaces
+                    requestCb: callbackFunction
                 }
             )
         },

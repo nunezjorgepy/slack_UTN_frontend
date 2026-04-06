@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router";
 // Import Screens
 import HomePageScreen from "./Screens/HomePageScreen/HomePageScreen";
+import WorkspaceScreen from "./Screens/WorkspaceScreen/WorkspaceScreen";
 import LogInScreen from "./Screens/LogInScreen/LogInScreen";
 import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import VerifyEmailScreen from "./Screens/VerifyEmailScreen/VerifyEmailScreen";
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route element={<AuthMiddleware />}>
           <Route path="/" element={<HomePageScreen />} />
+          <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
         </Route>
         
         <Route path={LINKS_TO_OWN_SCREENS.login} element={<LogInScreen />} />
