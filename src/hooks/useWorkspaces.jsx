@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import useRequest from "./useRequest";
-import workspaceService from "../services/workspaceService";
 
 
-function useWorkspaces() {
+function useWorkspaces({ callbackFunction }) {
 
     const { sendRequest, response, loading, error} = useRequest()
 
@@ -11,7 +10,7 @@ function useWorkspaces() {
         () => {
             sendRequest(
                 {
-                    requestCb: workspaceService.getActiveWorkspaces
+                    requestCb: callbackFunction
                 }
             )
         },
@@ -22,7 +21,7 @@ function useWorkspaces() {
         response,
         loading,
         error,
-        workspaces: response?.data?.activeUserWorkspaces
+        workspace: response?.data?.workspace
     }
 }
 
