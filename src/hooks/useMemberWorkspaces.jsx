@@ -24,7 +24,8 @@ function useMemberWorkspaces({
         response,
         loading,
         error,
-        workspaces: response?.data?.activeUserWorkspaces
+        workspaces: response?.data?.activeUserWorkspaces,
+        members: response?.data?.memberList
     }
 }
 

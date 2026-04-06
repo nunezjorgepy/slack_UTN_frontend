@@ -21,12 +21,12 @@ function useRequest (){
     /* 
     Recibe una funcion que emita un consulta al servidor por parametro (Callback)
     */
-    async function sendRequest( {requestCb} ){
+    async function sendRequest( {requestCb, data} ){
         try{
             setResponse(null) //Si habia una consulta anterior quiero limpiar la respuesta
             setError(null) //Si habia una consulta anterior quiero limpiar el error
             setLoading(true) //Como inicio una consulta al servidor quiero marcar que estamos cargando la respuesta
-            const response = await requestCb()
+            const response = await requestCb(data)
         
             setResponse(response) //Se guarda la respuesta
         }

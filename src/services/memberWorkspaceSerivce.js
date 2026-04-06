@@ -17,6 +17,21 @@ const memberWorkspaceService = {
 
         const response = await response_http.json()
         return response
+    },
+    // Get Member List By workspace_id
+    getMemberListByWorkspaceId: async (workspaceId) => {
+        const response_http = await fetch(
+            API_URL + '/api/membersWorkspace/list/' + workspaceId,
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY)
+                }
+            }
+        )
+
+        const response = await response_http.json()
+        return response
     }
 }
 
