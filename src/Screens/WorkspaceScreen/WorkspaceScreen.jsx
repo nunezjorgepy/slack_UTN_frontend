@@ -10,31 +10,21 @@ function WorkspaceScreen() {
 
     const { 
         workspace, 
-        response: workspaceResponse, 
-        loading: workspaceLoading, 
-        error: workspaceError 
+        members,
+        response, 
+        loading, 
+        error 
     } = useWorkspaces(
         {
             callbackFunction: () => workspaceService.getWorkspace(workspaceId),
         }
     )
 
-    const { 
-        members, 
-        response: membersResponse, 
-        loading: membersLoading, 
-        error: membersError 
-    } = useMemberWorkspaces(
-        {
-            callbackFunction: () => memberWorkspaceService.getMemberListByWorkspaceId(workspaceId),
-        }
-    )
-
     const renderMembers = () => {
-        if (membersLoading) {
+        if (loading) {
             return <div>Cargando...</div>
         }
-        if (membersError) {
+        if (error) {
             return <div>Error al cargar los miembros</div>
         }
         if (!members) {
@@ -48,10 +38,10 @@ function WorkspaceScreen() {
     }
 
     const renderWorkspace = () => {
-        if (workspaceLoading) {
+        if (loading) {
             return <div>Cargando...</div>
         }
-        if (workspaceError) {
+        if (error) {
             return <div>Error al cargar el espacio de trabajo</div>
         }
         if (!workspace) {
@@ -77,6 +67,7 @@ function WorkspaceScreen() {
             <div className='workspace-container'>
                 {renderWorkspace()}
             </div>
+            <br />
             <div className='members-container'>
                 {renderMembers()}
             </div>

@@ -21,7 +21,8 @@ function useWorkspaces({ callbackFunction }) {
         response,
         loading,
         error,
-        workspace: response?.data?.workspace
+        workspace: response?.data?.workspace,
+        members: response?.data?.members
     }
 }
 
