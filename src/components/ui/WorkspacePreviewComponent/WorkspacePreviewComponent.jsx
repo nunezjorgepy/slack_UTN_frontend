@@ -14,7 +14,7 @@ function WorkspacePreviewComponent(props) {
                     <div className="workspace-members">
                         <span className="workspace-members-count">
                             {/* TODO: cuando tenga la ruta, mostrar la cantidad de miembros */}
-                            0 miembros
+                            {workspace.members.length} miembros
                         </span>
                     </div>
                 </div>

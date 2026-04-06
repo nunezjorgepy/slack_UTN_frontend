@@ -12,7 +12,6 @@ function HomePageScreen() {
     document.title = 'Slack UTN - Home'
 
     const { workspaces, response, loading, error } = useMemberWorkspaces()
-    console.log(workspaces)
 
     const renderWorkspaces = () => {
         if (loading) {
