@@ -1,7 +1,5 @@
 import { useParams } from 'react-router'
 import './WorkspaceScreen.css'
-import memberWorkspaceService from '../../services/memberWorkspaceSerivce'
-import useMemberWorkspaces from '../../hooks/useMemberWorkspaces'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
 

@@ -6,7 +6,7 @@ import FooterComponent from "../../components/layout/FooterComponent/FooterCompo
 import useMemberWorkspaces from '../../hooks/useMemberWorkspaces'
 import { Link } from 'react-router'
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
-import memberWorkspaceService from '../../services/memberWorkspaceSerivce'
+import memberWorkspaceService from '../../services/memberWorkspaceService'
 
 function HomePageScreen() {
     // Cambia el título de la página
