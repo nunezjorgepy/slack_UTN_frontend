@@ -36,15 +36,27 @@ function ResetPasswordScreen() {
             'password',
             'confirmPassword'
         ]
-        const missingFields = requiredFields.filter(field => !formState[field])
+        const missingFields = requiredFields.filter(field => !formState[field].trim())
         if (missingFields.length > 0) {
             setErrorMessage('Faltan campos obligatorios')
             return
         }
 
         // Verificar que las contraseñas sean iguales
-        if (formState.password !== formState.confirmPassword) {
+        if (formState.password.trim() !== formState.confirmPassword.trim()) {
             setErrorMessage('Las contraseñas no coinciden')
+            return
+        }
+
+        // Verificar que la contraseña tenga al menos 8 caracteres
+        if (formState.password.trim().length < 8) {
+            setErrorMessage('La contraseña debe tener al menos 8 caracteres')
+            return
+        }
+
+        // Y menos de 16
+        if (formState.password.trim().length > 16) {
+            setErrorMessage('La contraseña debe tener menos de 16 caracteres')
             return
         }
 

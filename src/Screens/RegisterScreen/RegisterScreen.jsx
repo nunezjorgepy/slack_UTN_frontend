@@ -54,7 +54,7 @@ function RegisterScreen() {
       'confirmPassword'
     ]
 
-    const missingFields = requiredFields.filter(field => !formState[field])
+    const missingFields = requiredFields.filter(field => !formState[field].trim())
 
     if (missingFields.length > 0) {
       setErrorMessage('Faltan campos obligatorios')
@@ -63,7 +63,7 @@ function RegisterScreen() {
 
     // Validar que email sea un email válido
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(formState.email)) {
+    if (!emailRegex.test(formState.email.trim())) {
       setErrorMessage('El email no es válido')
       return
     }
@@ -74,8 +74,14 @@ function RegisterScreen() {
       return
     }
 
+    // Y menos de 16
+    if (formState.password.trim().length > 16) {
+      setErrorMessage('La contraseña debe tener menos de 16 caracteres')
+      return
+    }
+
     // Validar que password y confirmPassword sean iguales
-    if (formState.password !== formState.confirmPassword) {
+    if (formState.password.trim() !== formState.confirmPassword.trim()) {
       setErrorMessage('Las contraseñas no coinciden')
       return
     }

@@ -35,7 +35,7 @@ function LogInScreen() {
             'password'
         ]
 
-        const missingFields = requiredFields.filter(field => !formState[field])
+        const missingFields = requiredFields.filter(field => !formState[field].trim())
 
         if (missingFields.length > 0) {
             setErrorMessage('Faltan campos obligatorios')
@@ -44,12 +44,22 @@ function LogInScreen() {
 
         // Validar que email sea un email válido
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(formState.email)) {
+        if (!emailRegex.test(formState.email.trim())) {
             setErrorMessage('El email no es válido')
             return
         }
 
-        // NOTA: no valido la cantidad de caracteres de la contraseña para que no se pueda saber el mínimo de caracteres
+        // Validar que la contraseña tenga al menos 8 caracteres
+        if (formState.password.trim().length < 8) {
+            setErrorMessage('La contraseña debe tener al menos 8 caracteres')
+            return
+        }
+
+        // Y menos de 16
+        if (formState.password.trim().length > 16) {
+            setErrorMessage('La contraseña debe tener menos de 16 caracteres')
+            return
+        }
 
         try {
             sendRequest({

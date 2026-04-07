@@ -29,24 +29,27 @@ function CreateWorkspaceScreen() {
         // Validaciones
         setErrorMessage('')
 
-        if (!formState.title) {
+        const trimmed_title = formState.title.trim()
+        const trimmed_description = formState.description.trim()
+
+        if (!trimmed_title) {
             setErrorMessage('El título del espacio de trabajo es requerido')
             return
         }
-        if (formState.title.length < 10) {
+        if (trimmed_title.length < 10) {
             setErrorMessage('El título del espacio de trabajo debe tener al menos 10 caracteres')
             return
         }
-        if (formState.title.length > 50) {
+        if (trimmed_title.length > 50) {
             setErrorMessage('El título del espacio de trabajo debe tener menos de 50 caracteres')
             return
         }
 
-        if (formState.description && formState.description.length < 10) {
+        if (trimmed_description && trimmed_description.length < 10) {
             setErrorMessage('La descripción del espacio de trabajo debe tener al menos 10 caracteres')
             return
         }
-        if (formState.description && formState.description.length > 100) {
+        if (trimmed_description && trimmed_description.length > 100) {
             setErrorMessage('La descripción del espacio de trabajo debe tener menos de 100 caracteres')
             return
         }
