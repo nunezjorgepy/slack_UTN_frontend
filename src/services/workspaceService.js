@@ -8,6 +8,22 @@ TODO: usar para encontrar la lista de miembros de cada espacio.
 */
 
 const workspaceService = {
+    createWorkspace: async (workspaceData) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/create',
+            {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(workspaceData)
+            }
+        )
+
+        const response = await response_http.json()
+        return response
+    },
     getActiveWorkspaces: async () => {
         const response_http = await fetch(
             API_URL + '/api/membersWorkspace/active',
