@@ -46,7 +46,8 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
 
 export const initialFormState = {
     [CREATE_WORKSPACE_FORM_CONSTANTS.sections[0].inputs[0].name]: "",
-    [CREATE_WORKSPACE_FORM_CONSTANTS.sections[0].inputs[1].name]: ""
+    [CREATE_WORKSPACE_FORM_CONSTANTS.sections[0].inputs[1].name]: "",
+    [CREATE_WORKSPACE_FORM_CONSTANTS.sections[0].inputs[2].name]: ""
 }
 
 export const SUCCES_CREATE_WORKSPACE_INFO = {

@@ -7,6 +7,7 @@ import useMemberWorkspaces from '../../hooks/useMemberWorkspaces'
 import { Link } from 'react-router'
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
 import memberWorkspaceService from '../../services/memberWorkspaceService'
+import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 
 function HomePageScreen() {
     // Cambia el título de la página
@@ -87,7 +88,7 @@ function HomePageScreen() {
                                         {/* Footer de los espacios de trabajo */}
                                         <div className="workspaces-footer">
                                             {/* TODO: crear la página para crear espacios de trabajo */}
-                                            <Link>
+                                            <Link to={LINKS_TO_OWN_SCREENS.create_workspace}>
                                                 Crear un espacio de trabajo
                                             </Link>
                                             <span className="workspaces-footer-tab">

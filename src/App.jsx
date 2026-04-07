@@ -11,6 +11,7 @@ import ResetPasswordScreen from "./Screens/ResetPasswordScreen/ResetPasswordScre
 import { LINKS_TO_OWN_SCREENS } from "./constants/general.constants";
 import DevelopmentScreen from "./Screens/DevelopmentScreen/DevelopmentScreen";
 import AuthMiddleware from "./middlewares/AuthMiddleware";
+import CreateWorkspaceScreen from "./Screens/CreateWorkspaceScreen/CreateWorkspaceScreen";
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
         <Route path={LINKS_TO_OWN_SCREENS.verify_email} element={<VerifyEmailScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password_request} element={<ResetPasswordRequestScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password} element={<ResetPasswordScreen />} />
+        <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
 
         {/* TODO: Eliminar */}
         {/* TODO: sólo accesible mediante AuthMiddleware */}

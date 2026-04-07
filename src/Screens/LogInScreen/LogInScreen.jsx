@@ -1,13 +1,16 @@
 import './LogInScreen.css'
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
+
 import { LOG_IN_FORM_CONSTANTS, SUCCES_LOGIN_INFO, initialFormState } from '../../constants/logInForm.constants'
-import authService from '../../services/authService'
+
 import useRequest from '../../hooks/useRequest'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+
+import authService from '../../services/authService'
 import { AuthContext } from '../../context/authContext'
-import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
 function LogInScreen() {
     const { form_title, form_subtitle, sections, button, footer } = LOG_IN_FORM_CONSTANTS
