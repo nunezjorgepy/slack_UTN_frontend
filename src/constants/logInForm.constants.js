@@ -58,7 +58,7 @@ export const SUCCES_LOGIN_INFO = {
     body: "Serás redirigido a la pantalla principal en unos segundos.",
     footer: {
         text: "Si la página no te redirige automáticamente, haz clic en el enlace de abajo",
-        link: LINKS_TO_OWN_SCREENS.home,
+        link: "/",
         link_text: "Inicio"
     }
 }

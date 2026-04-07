@@ -15,7 +15,7 @@ function ShowSuccesComponent(props) {
             </div>
             <div className="show-succes-footer">
                 {footer && <p>{footer.text}</p>}
-                {footer && <Link to={footer.link}>{footer.link_text}</Link>}
+                {footer && <Link to={footer.link} onClick={footer.onClick}>{footer.link_text}</Link>}
             </div>
         </div>
     )

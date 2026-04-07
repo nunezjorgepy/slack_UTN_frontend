@@ -118,7 +118,13 @@ function LogInScreen() {
                 {
                     response &&
                     <section className='show-succes-section'>
-                        <ShowSuccesComponent data={SUCCES_LOGIN_INFO} />
+                        <ShowSuccesComponent data={{
+                            ...SUCCES_LOGIN_INFO,
+                            footer: {
+                                ...SUCCES_LOGIN_INFO.footer,
+                                onClick: () => manageLogin(response.data.auth_token)
+                            }
+                        }} />
                     </section>
                 }
             </main>

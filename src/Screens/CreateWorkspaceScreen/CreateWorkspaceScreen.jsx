@@ -97,7 +97,13 @@ function CreateWorkspaceScreen() {
                 {
                     response &&
                     <section className='show-succes-section'>
-                        <ShowSuccesComponent data={SUCCES_CREATE_WORKSPACE_INFO} />
+                        <ShowSuccesComponent data={{
+                            ...SUCCES_CREATE_WORKSPACE_INFO,
+                            footer: {
+                                ...SUCCES_CREATE_WORKSPACE_INFO.footer,
+                                link: `/workspace/${response?.data?.workspace?._id}`
+                            }
+                        }} />
                     </section>
                 }
             </main>

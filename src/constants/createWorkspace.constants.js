@@ -55,7 +55,7 @@ export const SUCCES_CREATE_WORKSPACE_INFO = {
     body: "Serás redirigido a la pantalla de espacios de trabajo en unos segundos.",
     footer: {
         text: "Si la página no te redirige automáticamente, haz clic en el enlace de abajo",
-        link: "/",
-        link_text: "Ir al inicio"
+        link: "/workspace",
+        link_text: "Ir a espacios de trabajo"
     }
 }

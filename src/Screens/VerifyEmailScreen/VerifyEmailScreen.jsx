@@ -48,7 +48,7 @@ function VerifyEmailScreen() {
 
                     <ButtonComponent
                         text="Ingresar"
-                        onClick={() => navigate('/login')}
+                        onClick={() => navigate(LINKS_TO_OWN_SCREENS.login)}
                     />
                 </section>
 
@@ -61,7 +61,8 @@ function VerifyEmailScreen() {
                             footer: {
                                 text: "Ingresar",
                                 link: LINKS_TO_OWN_SCREENS.login,
-                                link_text: "Iniciá sesión"
+                                link_text: "Iniciá sesión",
+                                onClick: () => navigate(LINKS_TO_OWN_SCREENS.login)
                             }
                         }} />
                     </section>

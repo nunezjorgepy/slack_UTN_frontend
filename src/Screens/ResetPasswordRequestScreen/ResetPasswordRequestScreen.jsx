@@ -12,6 +12,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import authService from '../../services/authService'
+import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 
 function ResetPasswordRequestScreen() {
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_FORM_CONSTANTS
@@ -80,7 +81,13 @@ function ResetPasswordRequestScreen() {
                 {
                     response &&
                     <section className='show-succes-section'>
-                        <ShowSuccesComponent data={SUCCES_RESET_PASSWORD_INFO} />
+                        <ShowSuccesComponent data={{
+                            ...SUCCES_RESET_PASSWORD_INFO,
+                            footer: {
+                                ...SUCCES_RESET_PASSWORD_INFO.footer,
+                                onClick: () => navigate(LINKS_TO_OWN_SCREENS.login)
+                            }
+                        }} />
                     </section>
                 }
             </main>

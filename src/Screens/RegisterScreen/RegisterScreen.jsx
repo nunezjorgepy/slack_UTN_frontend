@@ -143,7 +143,13 @@ function RegisterScreen() {
         {
           response &&
           <section className='show-succes-section'>
-            <ShowSuccesComponent data={SUCCES_REGISTER_INFO} />
+            <ShowSuccesComponent data={{
+              ...SUCCES_REGISTER_INFO,
+              footer: {
+                ...SUCCES_REGISTER_INFO.footer,
+                onClick: () => navigate(LINKS_TO_OWN_SCREENS.login)
+              }
+            }} />
           </section>
         }
       </main>

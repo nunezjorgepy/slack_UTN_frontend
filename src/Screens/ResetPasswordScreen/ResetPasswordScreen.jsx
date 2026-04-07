@@ -103,7 +103,13 @@ function ResetPasswordScreen() {
                 </section>
                 {response &&
                     <section className='show-succes-section'>
-                        {<ShowSuccesComponent data={SUCCES_INFO} />}
+                        {<ShowSuccesComponent data={{
+                            ...SUCCES_INFO,
+                            footer: {
+                                ...SUCCES_INFO.footer,
+                                onClick: () => manageResetPassword()
+                            }
+                        }} />}
                     </section>
                 }
             </main>

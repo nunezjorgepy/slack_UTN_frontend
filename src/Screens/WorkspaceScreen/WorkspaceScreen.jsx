@@ -2,6 +2,7 @@ import { useParams } from 'react-router'
 import './WorkspaceScreen.css'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
+import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -59,16 +60,19 @@ function WorkspaceScreen() {
 
     return (
         <>
-            <div className='title'>
-                <h3>Miembros del espacio de trabajo</h3>
-            </div>
-            <div className='workspace-container'>
-                {renderWorkspace()}
-            </div>
-            <br />
-            <div className='members-container'>
-                {renderMembers()}
-            </div>
+            <HeaderComponent />
+            <main>
+                <div className='title'>
+                    <h3>Miembros del espacio de trabajo</h3>
+                </div>
+                <div className='workspace-container'>
+                    {renderWorkspace()}
+                </div>
+                <br />
+                <div className='members-container'>
+                    {renderMembers()}
+                </div>
+            </main>
         </>
     )
 }
