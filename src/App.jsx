@@ -21,6 +21,7 @@ function App() {
         <Route element={<AuthMiddleware />}>
           <Route path="/" element={<HomePageScreen />} />
           <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
+          <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
         
         <Route path={LINKS_TO_OWN_SCREENS.login} element={<LogInScreen />} />
@@ -28,7 +29,6 @@ function App() {
         <Route path={LINKS_TO_OWN_SCREENS.verify_email} element={<VerifyEmailScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password_request} element={<ResetPasswordRequestScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password} element={<ResetPasswordScreen />} />
-        <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
 
         {/* TODO: Eliminar */}
         {/* TODO: sólo accesible mediante AuthMiddleware */}

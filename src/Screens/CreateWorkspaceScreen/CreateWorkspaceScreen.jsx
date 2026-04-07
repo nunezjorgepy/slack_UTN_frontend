@@ -7,12 +7,13 @@ import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuc
 import { CREATE_WORKSPACE_FORM_CONSTANTS, SUCCES_CREATE_WORKSPACE_INFO, initialFormState } from '../../constants/createWorkspace.constants'
 
 // Hooks
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import useRequest from '../../hooks/useRequest'
 
 // Context
 import { AuthContext } from '../../context/authContext'
 import workspaceService from '../../services/workspaceService'
+import { useNavigate } from 'react-router'
 
 function CreateWorkspaceScreen() {
     // Cambia el título de la página
@@ -20,8 +21,8 @@ function CreateWorkspaceScreen() {
 
     const { form_title, form_subtitle, sections, button, footer } = CREATE_WORKSPACE_FORM_CONSTANTS
     const { sendRequest, response, error, loading } = useRequest()
-    const { manageLogin, isLogged } = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState('')
+    const navigate = useNavigate()
 
     const onCreateWorkspace = (formState) => {
         
@@ -61,6 +62,16 @@ function CreateWorkspaceScreen() {
         }
     }
 
+    useEffect(
+        () => {
+            if (response && response.status === 201) {
+                setTimeout(() => {
+                    navigate('/workspace/' + response?.data?.workspace?._id)
+                }, 3000)
+            }
+        },
+        [response]
+    )
     return (
         <>
             <HeaderComponent />
@@ -80,12 +91,12 @@ function CreateWorkspaceScreen() {
                     />
                 </section>
 
-                {/* {
+                {
                     response &&
                     <section className='show-succes-section'>
-                        <ShowSuccesComponent data={SUCCES_LOGIN_INFO} />
+                        <ShowSuccesComponent data={SUCCES_CREATE_WORKSPACE_INFO} />
                     </section>
-                } */}
+                }
             </main>
         </>
     )
