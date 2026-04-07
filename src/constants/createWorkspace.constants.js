@@ -8,7 +8,7 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
             inputs: [
                 {
                     id: "workspace_title",
-                    name: "workspace_title",
+                    name: "title",
                     label: "Nombre del espacio de trabajo",
                     placeholder: "Ingresa el nombre de tu espacio de trabajo",
                     required: true,
@@ -18,7 +18,7 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                 },
                 {
                     id: "workspace_description",
-                    name: "workspace_description",
+                    name: "description",
                     label: "Descripción del espacio de trabajo",
                     placeholder: "Ingresa la descripción de tu espacio de trabajo",
                     required: true,
@@ -28,7 +28,7 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                 },
                 {
                     id: "workspace_url_image",
-                    name: "workspace_url_image",
+                    name: "url_image",
                     label: "URL de la imagen del espacio de trabajo",
                     placeholder: "Ingresa la URL de la imagen de tu espacio de trabajo",
                     type: "text",
