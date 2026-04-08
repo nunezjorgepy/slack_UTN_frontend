@@ -15,17 +15,17 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --bg-color: #faf5f5;
 
     /* Opacidad del color primario usando oklch */
-    --primary-color-05: oklch(from var(--primary-color) l c h / 0.05);
-    --primary-color-10: oklch(from var(--primary-color) l c h / 0.1);
-    --primary-color-20: oklch(from var(--primary-color) l c h / 0.2);
-    --primary-color-30: oklch(from var(--primary-color) l c h / 0.3);
-    --primary-color-40: oklch(from var(--primary-color) l c h / 0.4);
-    --primary-color-50: oklch(from var(--primary-color) l c h / 0.5);
-    --primary-color-60: oklch(from var(--primary-color) l c h / 0.6);
-    --primary-color-70: oklch(from var(--primary-color) l c h / 0.7);
-    --primary-color-80: oklch(from var(--primary-color) l c h / 0.8);
-    --primary-color-90: oklch(from var(--primary-color) l c h / 0.9);
-    --primary-color-100: oklch(from var(--primary-color) l c h / 1);
+    --primary-color-05: oklch(from var(--primary-color) calc(l + 0.05) c h);
+    --primary-color-10: oklch(from var(--primary-color) calc(l + 0.1) c h);
+    --primary-color-20: oklch(from var(--primary-color) calc(l + 0.2) c h);
+    --primary-color-30: oklch(from var(--primary-color) calc(l + 0.3) c h);
+    --primary-color-40: oklch(from var(--primary-color) calc(l + 0.4) c h);
+    --primary-color-50: oklch(from var(--primary-color) calc(l + 0.5) c h);
+    --primary-color-60: oklch(from var(--primary-color) calc(l + 0.6) c h);
+    --primary-color-70: oklch(from var(--primary-color) calc(l + 0.7) c h);
+    --primary-color-80: oklch(from var(--primary-color) calc(l + 0.8) c h);
+    --primary-color-90: oklch(from var(--primary-color) calc(l + 0.9) c h);
+    --primary-color-100: oklch(from var(--primary-color) calc(l + 1) c h);
 
     /* Gama de negros usando rgba */
     --black-100: rgba(0, 0, 0, 0.1);

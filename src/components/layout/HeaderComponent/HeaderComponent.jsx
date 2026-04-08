@@ -15,10 +15,7 @@ function HeaderComponent() {
                     <ButtonComponent
                         text="Cerrar Sesión"
                         onClick={manageLogout}
-                        /* 
-                        TODO: no sé por qué no funciona el className
-                        className='secondary-btn' 
-                        */
+                        className='secondary-btn'
                     />
                 )}
             </div>
