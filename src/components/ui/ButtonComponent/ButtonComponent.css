@@ -13,10 +13,10 @@
     transition: all 0.3s ease;
 }
 .primary-btn:hover {
-    background-color: var(--primary-color-90);
+    background-color: var(--primary-color-10);
 }
 .primary-btn:disabled {
-    background-color: var(--primary-color-50);
+    background-color: var(--primary-color-20);
     cursor: not-allowed;
 }
 

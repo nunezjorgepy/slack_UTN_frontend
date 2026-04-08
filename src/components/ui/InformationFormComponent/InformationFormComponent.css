@@ -55,7 +55,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary-color-90);
+    background-color: var(--primary-color-10);
     color: var(--secondary-color);
     width: 1.5rem;
     height: 1.5rem;
@@ -103,7 +103,7 @@
     padding-left: 0.3rem;
 }
 .form-section-group input {
-    background-color: var(--primary-color-05);
+    background-color: var(--secondary-color);
     padding: 0.7rem;
     border: 2px solid var(--black-100);
     border-radius: 0.5rem;

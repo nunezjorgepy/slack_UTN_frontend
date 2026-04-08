@@ -2,8 +2,6 @@ import { Link } from 'react-router'
 import './InformationFormComponent.css'
 import ButtonComponent from '../ButtonComponent/ButtonComponent'
 import useForm from '../../../hooks/useForm'
-import { useEffect } from 'react'
-import useRequest from '../../../hooks/useRequest'
 
 /* 
     El formulario tendrá un título, un subtítulo y los campos para ingresar la información.
