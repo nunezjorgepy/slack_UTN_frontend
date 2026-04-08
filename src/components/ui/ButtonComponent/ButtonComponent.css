@@ -22,11 +22,11 @@
 
 /* Botón secundario */
 .secondary-btn {
-    background-color: var(--primary-color-20);
-    color: var(--primary-color);
+    background-color: var(--primary-color-10);
+    color: var(--secondary-color);
 }
 .secondary-btn:hover {
-    background-color: var(--primary-color-30);
+    background-color: var(--primary-color-20);
 }
 .secondary-btn:disabled {
     background-color: var(--primary-color-50);
