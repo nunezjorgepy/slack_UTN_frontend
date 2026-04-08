@@ -22,7 +22,8 @@ function useWorkspaces({ callbackFunction }) {
         loading,
         error,
         workspace: response?.data?.workspace,
-        members: response?.data?.members
+        members: response?.data?.members,
+        channels: response?.data?.channels
     }
 }
 

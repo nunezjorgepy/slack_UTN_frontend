@@ -10,6 +10,7 @@ function WorkspaceScreen() {
     const { 
         workspace, 
         members,
+        channels,
         response, 
         loading, 
         error 
