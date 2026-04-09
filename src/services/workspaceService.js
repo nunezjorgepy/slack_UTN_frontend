@@ -26,7 +26,7 @@ const workspaceService = {
     },
     getActiveWorkspaces: async () => {
         const response_http = await fetch(
-            API_URL + '/api/membersWorkspace/active',
+            API_URL + '/api/workspace/active',
             {
                 method: 'GET',
                 headers: {
