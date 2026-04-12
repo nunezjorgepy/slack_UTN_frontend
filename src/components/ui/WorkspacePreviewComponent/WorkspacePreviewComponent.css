@@ -102,7 +102,7 @@ Icono del espacio de trabajo
 Media Queries
 ==============================================
 */
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 530px) {
     .workspace-list-item{
         padding: 4px;
         margin-bottom: 12px;
