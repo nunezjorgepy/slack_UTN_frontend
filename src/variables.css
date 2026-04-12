@@ -14,7 +14,7 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --text-color: #2d3748;
     --bg-color: #faf5f5;
 
-    /* Opacidad del color primario usando oklch */
+    /* Luminosidad del color primario usando oklch */
     --primary-color-05: oklch(from var(--primary-color) calc(l + 0.05) c h);
     --primary-color-10: oklch(from var(--primary-color) calc(l + 0.1) c h);
     --primary-color-20: oklch(from var(--primary-color) calc(l + 0.2) c h);
@@ -27,6 +27,19 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --primary-color-90: oklch(from var(--primary-color) calc(l + 0.9) c h);
     --primary-color-100: oklch(from var(--primary-color) calc(l + 1) c h);
 
+    /* Más oscuros */
+    --primary-color-dark-05: oklch(from var(--primary-color) calc(l - 0.05) c h);
+    --primary-color-dark-10: oklch(from var(--primary-color) calc(l - 0.1) c h);
+    --primary-color-dark-20: oklch(from var(--primary-color) calc(l - 0.2) c h);
+    --primary-color-dark-30: oklch(from var(--primary-color) calc(l - 0.3) c h);
+    --primary-color-dark-40: oklch(from var(--primary-color) calc(l - 0.4) c h);
+    --primary-color-dark-50: oklch(from var(--primary-color) calc(l - 0.5) c h);
+    --primary-color-dark-60: oklch(from var(--primary-color) calc(l - 0.6) c h);
+    --primary-color-dark-70: oklch(from var(--primary-color) calc(l - 0.7) c h);
+    --primary-color-dark-80: oklch(from var(--primary-color) calc(l - 0.8) c h);
+    --primary-color-dark-90: oklch(from var(--primary-color) calc(l - 0.9) c h);
+    --primary-color-dark-100: oklch(from var(--primary-color) calc(l - 1) c h);
+
     /* Gama de negros usando rgba */
     --black-100: rgba(0, 0, 0, 0.1);
     --black-200: rgba(0, 0, 0, 0.2);
@@ -37,6 +50,17 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --black-700: rgba(0, 0, 0, 0.7);
     --black-800: rgba(0, 0, 0, 0.8);
     --black-900: rgba(0, 0, 0, 0.9);
+
+    /* Gama de blancos usando rgba */
+    --white-100: rgba(255, 255, 255, 0.1);
+    --white-200: rgba(255, 255, 255, 0.2);
+    --white-300: rgba(255, 255, 255, 0.3);
+    --white-400: rgba(255, 255, 255, 0.4);
+    --white-500: rgba(255, 255, 255, 0.5);
+    --white-600: rgba(255, 255, 255, 0.6);
+    --white-700: rgba(255, 255, 255, 0.7);
+    --white-800: rgba(255, 255, 255, 0.8);
+    --white-900: rgba(255, 255, 255, 0.9);
 
     /* Warning, error and success colors */
     --warning-color: rgb(216, 5, 5);

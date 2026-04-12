@@ -1,0 +1,64 @@
+
+.backgroung-lienar-gradient {
+    background-image: linear-gradient(to right, var(--primary-color), var(--primary-color-dark-10));
+}
+
+/* 
+==================================================
+Workspace Screen
+==================================================
+*/
+
+.workspace-header{
+    height: 40px;
+    background-color: transparent;
+}
+
+.workspace-main, .workspace-section{
+    display: flex;
+    height: calc(100vh - 40px);
+    width: 100%;
+}
+
+/* 
+==================================================
+Tabs Sidebar
+==================================================
+*/
+
+.tabs-sidebar{
+    width: 70px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+/* 
+==================================================
+Workspace Layout
+==================================================
+*/
+
+.workspace-layout{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0 4px 4px;
+}
+
+.workspace-sidebar{
+    flex: 0 0 325px;
+    height: 100%;
+    background-color: var(--primary-color-05);
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.workspace-content{
+    flex: 1;
+    height: 100%;
+    background-color: var(--white-900);
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+}

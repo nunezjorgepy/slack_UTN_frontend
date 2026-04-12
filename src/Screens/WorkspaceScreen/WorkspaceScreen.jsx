@@ -2,7 +2,6 @@ import { useParams } from 'react-router'
 import './WorkspaceScreen.css'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -60,21 +59,26 @@ function WorkspaceScreen() {
     document.title = `Slack UTN - ${workspace?.title || 'Workspace'}`
 
     return (
-        <>
-            <HeaderComponent />
-            <main>
-                <div className='title'>
-                    <h3>Miembros del espacio de trabajo</h3>
-                </div>
-                <div className='workspace-container'>
-                    {renderWorkspace()}
-                </div>
-                <br />
-                <div className='members-container'>
-                    {renderMembers()}
-                </div>
+        <div className='backgroung-lienar-gradient'>
+            <header className='workspace-header'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, earum.
+            </header>
+            <main className='workspace-main'>
+                <section className='workspace-section'>
+                    <div className="tabs-sidebar">
+                        Tabs
+                    </div>
+                    <div className="workspace-layout">
+                        <aside className="workspace-sidebar">
+                            
+                        </aside>
+                        <section className="workspace-content">
+                            
+                        </section>
+                    </div>
+                </section>
             </main>
-        </>
+        </div>
     )
 }
 
