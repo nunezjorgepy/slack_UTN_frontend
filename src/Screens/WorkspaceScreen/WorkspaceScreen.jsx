@@ -22,17 +22,17 @@ function WorkspaceScreen() {
 
     const renderMembers = () => {
         if (loading) {
-            return <div>Cargando...</div>
+            return <div className='siderbar-item-component-content'>Cargando...</div>
         }
         if (error) {
-            return <div>Error al cargar los miembros</div>
+            return <div className='siderbar-item-component-content'>Error al cargar los miembros</div>
         }
-        if (!members) {
-            return <div>No se encontraron miembros</div>
+        if (members?.length === 0) {
+            return <div className='siderbar-item-component-content'>No se encontraron miembros</div>
         }
-        return members.map((member) => (
+        return members?.map((member) => (
             <div key={member.member_id}>
-                {member.user_email}
+                <SiderbarItemComponent input_name='member' channel_name={member.user_email} />
             </div>
         ))
     }
@@ -58,22 +58,21 @@ function WorkspaceScreen() {
 
     const renderChannels = () => {
         if (loading) {
-            return <div>Cargando...</div>
+            return <div className='siderbar-item-component-content'>Cargando...</div>
         }
         if (error) {
-            return <div>Error al cargar los canales</div>
+            return <div className='siderbar-item-component-content'>Error al cargar los canales</div>
         }
-        if (!channels) {
-            return <div>No se encontraron canales</div>
+        if (channels?.length === 0) {
+            return <div className='siderbar-item-component-content'>No se encontraron canales</div>
         }
-        return channels.map((channel) => (
+        return channels?.map((channel) => (
             <div key={channel.channel_id}>
-                {channel.channel_name}
+                <SiderbarItemComponent input_name='channel' channel_name={channel.channel_name} />
             </div>
         ))
     }
 
-    console.log(channels)
 
     // Cambia el título de la página
     document.title = `Slack UTN - ${workspace?.title || 'Workspace'}`
@@ -110,10 +109,7 @@ function WorkspaceScreen() {
                                     <i className="bi bi-chevron-down"></i>
                                 </div>
                                 <div className="workspace-sidebar-list">
-                                    <SiderbarItemComponent input_name='channel' />
-                                    <SiderbarItemComponent input_name='channel' />
-                                    <SiderbarItemComponent input_name='channel' />
-                                    <SiderbarItemComponent input_name='channel' />
+                                    {renderChannels()}
                                 </div>
                             </div>
                             {/* 
@@ -127,10 +123,7 @@ function WorkspaceScreen() {
                                     <i className="bi bi-chevron-down"></i>
                                 </div>
                                 <div className="workspace-sidebar-list">
-                                    <SiderbarItemComponent input_name='member' />
-                                    <SiderbarItemComponent input_name='member' />
-                                    <SiderbarItemComponent input_name='member' />
-                                    <SiderbarItemComponent input_name='member' />
+                                    {renderMembers()}
                                 </div>
                             </div>
                         </aside>
