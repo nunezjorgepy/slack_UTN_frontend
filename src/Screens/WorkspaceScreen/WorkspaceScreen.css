@@ -53,6 +53,62 @@ Workspace Layout
     background-color: var(--primary-color-05);
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
+    padding: 10px;
+    color: var(--white-900);
+}
+
+/* 
+==================================================
+Workspace Sidebar Header
+==================================================
+*/
+.workspace-sidebar-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--white-300);
+}
+.workspace-sidebar-header-title {
+    flex: 1;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.workspace-sidebar-section{
+    margin-bottom: 10px;
+}
+.workspace-sidebar-header-edit {
+    cursor: pointer;
+    font-size: .8rem;
+    border: 1px solid var(--white-900);
+    border-radius: 5px;
+    padding: 3px 4px;
+}
+
+/* 
+==================================================
+Workspace Sidebar Channels Header
+==================================================
+*/
+.workspace-sidebar-channels-header, .workspace-sidebar-members-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding-right: 10px;
+}
+
+.workspace-sidebar-channels-header i, .workspace-sidebar-members-header i{
+    cursor: pointer;
+    font-size: .8rem;
 }
 
 .workspace-content{

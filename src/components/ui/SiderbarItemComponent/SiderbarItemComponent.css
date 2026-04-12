@@ -1,0 +1,28 @@
+
+.siderbar-item-component, .siderbar-item-component-content {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    width: 100%;
+    height: 30px;
+    color: var(--white-800);
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.siderbar-item-component-content {
+    padding: 0 10px;
+}
+
+.siderbar-item-component:hover {
+    background-color: var(--primary-color-10);
+}
+
+.siderbar-item-component-input {
+    display: none;
+}
+.siderbar-item-component-input:checked + .siderbar-item-component-content {
+    background-color: var(--white-900);
+    color: var(--black-900);
+}
