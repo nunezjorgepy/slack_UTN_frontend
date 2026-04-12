@@ -104,10 +104,10 @@ Workspace Sidebar Channels Header
     font-weight: 600;
     margin-bottom: 5px;
     padding-right: 10px;
+    cursor: pointer;
 }
 
 .workspace-sidebar-channels-header i, .workspace-sidebar-members-header i{
-    cursor: pointer;
     font-size: .8rem;
 }
 
