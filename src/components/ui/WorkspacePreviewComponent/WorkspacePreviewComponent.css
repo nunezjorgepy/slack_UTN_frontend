@@ -96,3 +96,28 @@ Icono del espacio de trabajo
 .workspace-list-item:hover .workspace-list-item-button-icon path{
     fill: #1264a3;
 }
+
+/* 
+==============================================
+Media Queries
+==============================================
+*/
+@media screen and (max-width: 470px) {
+    .workspace-list-item{
+        padding: 4px;
+        margin-bottom: 12px;
+    }
+    .workspace-icon{
+        width: 40px;
+        height: 40px;
+    }
+    .workspaces-name{
+        font-size: 0.875rem;
+    }
+    .workspace-members-count{
+        font-size: 0.625rem;
+    }
+    .workspace-list-item-button {
+        display: none;
+    }
+}
