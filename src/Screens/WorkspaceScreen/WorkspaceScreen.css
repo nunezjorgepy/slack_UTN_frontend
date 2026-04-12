@@ -82,6 +82,14 @@ Workspace Sidebar Header
 
 .workspace-sidebar-section{
     margin-bottom: 10px;
+    user-select: none;
+}
+.workspace-sidebar-section input[type="checkbox"]{
+    display: none;
+}
+.workspace-sidebar-section input[type="checkbox"]:checked ~ .workspace-sidebar-list{
+    height: 0;
+    overflow: hidden;
 }
 .workspace-sidebar-header-edit {
     cursor: pointer;

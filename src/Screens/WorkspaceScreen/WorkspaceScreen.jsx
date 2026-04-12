@@ -104,10 +104,13 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-sidebar-section workspace-sidebar-channels">
-                                <div className="workspace-sidebar-channels-header">
-                                    Canales
-                                    <i className="bi bi-chevron-down"></i>
-                                </div>
+                                <input type="checkbox" name="channels-checkbox" id="channels-checkbox" />
+                                <label htmlFor="channels-checkbox">
+                                    <div className="workspace-sidebar-channels-header">
+                                        Canales
+                                        <i className="bi bi-chevron-down"></i>
+                                    </div>
+                                </label>
                                 <div className="workspace-sidebar-list">
                                     {renderChannels()}
                                 </div>
@@ -118,10 +121,13 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-sidebar-section workspace-sidebar-members">
-                                <div className="workspace-sidebar-members-header">
-                                    Miembros
-                                    <i className="bi bi-chevron-down"></i>
-                                </div>
+                                <input type="checkbox" name="members-checkbox" id="members-checkbox" />
+                                <label htmlFor="members-checkbox">
+                                    <div className="workspace-sidebar-members-header">
+                                        Miembros
+                                        <i className="bi bi-chevron-down"></i>
+                                    </div>
+                                </label>
                                 <div className="workspace-sidebar-list">
                                     {renderMembers()}
                                 </div>
