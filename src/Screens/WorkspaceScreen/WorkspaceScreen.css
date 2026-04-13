@@ -325,7 +325,57 @@ Chat Send Message
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 20px;
+    height: 120px;
+}
+
+.workspace-send-message-form-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
     padding: 10px;
-    height: 100px;
-    background-color: var(--black-100);
+    width: 100%;
+    height: 75%;
+    border: 2px solid var(--black-200);
+    border-radius: 5px;
+    transition: all .2s ease-in-out;
+}
+.workspace-send-message-form-container:focus-within{
+    border: 2px solid var(--primary-color);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+.workspace-send-message-form-textarea{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    resize: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--black-800);
+    background-color: transparent;
+}
+.workspace-send-message-form-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white-900);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color-20);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.workspace-send-message-form-button:hover{
+    background-color: var(--primary-color-10);
+}
+.workspace-send-message-form-button i{
+    transform: rotate(45deg) translate(-2px, 1px);
 }

@@ -3,13 +3,14 @@ import './WorkspaceScreen.css'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../context/authContext'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
     const { manageLogout } = useContext(AuthContext)
     const navigate = useNavigate()
+    const [message, setMessage] = useState('')
 
     const { 
         workspace, 
@@ -58,6 +59,10 @@ function WorkspaceScreen() {
         ))
     }
 
+    const onSendMessage = (e) => {
+        e.preventDefault()
+        console.log(message)
+    }
 
     // Cambia el título de la página
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
@@ -199,7 +204,17 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-chat-send-message">
-                                Enviar mensaje
+                                <form className="workspace-send-message-form-container" onSubmit={onSendMessage}>
+                                    <textarea 
+                                        className="workspace-send-message-form-textarea" 
+                                        placeholder="Escribe un mensaje..."
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                    ></textarea>
+                                    <button className="workspace-send-message-form-button" type="submit">
+                                        <i className="bi bi-send"></i>
+                                    </button>
+                                </form>
                             </div>
                         </section>
                     </div>
