@@ -32,28 +32,9 @@ function WorkspaceScreen() {
         }
         return members?.map((member) => (
             <div key={member.member_id}>
-                <SiderbarItemComponent input_name='member' channel_name={member.user_email} />
+                <SiderbarItemComponent input_name='member' component_name={member.user_email} />
             </div>
         ))
-    }
-
-    const renderWorkspace = () => {
-        if (loading) {
-            return <div>Cargando...</div>
-        }
-        if (error) {
-            return <div>Error al cargar el espacio de trabajo</div>
-        }
-        if (!workspace) {
-            return <div>No se encontró el espacio de trabajo</div>
-        }
-        return (
-            <div>
-                {workspace.title}
-                <br />
-                {workspace.description}
-            </div>
-        )
     }
 
     const renderChannels = () => {
@@ -68,14 +49,14 @@ function WorkspaceScreen() {
         }
         return channels?.map((channel) => (
             <div key={channel.channel_id}>
-                <SiderbarItemComponent input_name='channel' channel_name={channel.channel_name} />
+                <SiderbarItemComponent input_name='channel' component_name={channel.channel_name} />
             </div>
         ))
     }
 
 
     // Cambia el título de la página
-    document.title = `Slack UTN - ${workspace?.title || 'Workspace'}`
+    document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
     return (
         <div className='backgroung-lienar-gradient'>
@@ -114,6 +95,10 @@ function WorkspaceScreen() {
                                 <div className="workspace-sidebar-list">
                                     {renderChannels()}
                                 </div>
+                                <button className="workspace-add-item workspace-add-channel">
+                                    <i className="bi bi-plus"></i>
+                                    <span>Agregar canal</span>
+                                </button>
                             </div>
                             {/* 
                             ===========================================================
@@ -131,6 +116,10 @@ function WorkspaceScreen() {
                                 <div className="workspace-sidebar-list">
                                     {renderMembers()}
                                 </div>
+                                <button className="workspace-add-item workspace-add-member">
+                                    <i className="bi bi-plus"></i>
+                                    <span>Invitar miembros</span>
+                                </button>
                             </div>
                         </aside>
                         {/* Contenedor principal donde se muestra el contenido del canal */}
