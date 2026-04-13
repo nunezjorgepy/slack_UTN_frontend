@@ -1,11 +1,15 @@
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import './WorkspaceScreen.css'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
+    const { manageLogout } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const { 
         workspace, 
@@ -32,7 +36,7 @@ function WorkspaceScreen() {
         }
         return members?.map((member) => (
             <div key={member.member_id}>
-                <SiderbarItemComponent input_name='member' component_name={member.user_email} />
+                <SiderbarItemComponent input_name='member' component_name={member.user_name} />
             </div>
         ))
     }
@@ -61,7 +65,19 @@ function WorkspaceScreen() {
     return (
         <div className='backgroung-lienar-gradient'>
             <header className='workspace-header'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, earum.
+                <div className="workspace-header-icons">
+                    {/* Home and Logout icons */}
+                    <div className='tooltip workspace-header-btn-home'>
+                        <i className="bi bi-house" onClick={() => navigate('/')}></i>
+                    </div>
+                    <div className='tooltip workspace-header-btn-logout'>
+                        <i className="bi bi-box-arrow-right" onClick={manageLogout}></i>
+                    </div>
+                </div>
+                <div className="workspace-header-search-holder">
+                    {/* TODO: al hacer click acá, se abre un modal para buscar canales o miembros */}
+                    Buscar canales y miembros
+                </div>
             </header>
             <main className='workspace-main'>
                 <section className='workspace-section'>
@@ -73,9 +89,9 @@ function WorkspaceScreen() {
                         <aside className="workspace-sidebar">
                             <div className="workspace-sidebar-header">
                                 <div className="workspace-sidebar-header-title">
-                                    {workspace?.title}
+                                    {workspace?.title || 'Cargando...'}
                                 </div>
-                                <div className="workspace-sidebar-header-edit">
+                                <div className="workspace-sidebar-header-edit tooltip">
                                     <i className="bi bi-pencil"></i>
                                 </div>
                             </div>

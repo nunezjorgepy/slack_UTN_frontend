@@ -40,6 +40,29 @@ input[type="checkbox"]{
     display: none;
 }
 
+/* Tooltip */
+.tooltip{
+    position: relative;
+}
+.tooltip::before{
+    content: '';
+    position: absolute;
+    top: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color-10);
+    color: var(--white-900);
+    padding: 5px 10px;
+    border: 1px solid var(--white-900);
+    border-radius: 5px;
+    font-size: .8rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+}
+.tooltip:hover::before{
+    opacity: 1;
+}
 
 /* Clases de utilidad */
 .required:after{

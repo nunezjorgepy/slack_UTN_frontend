@@ -27,13 +27,12 @@ function HomePageScreen() {
             return <div>Error al cargar los espacios de trabajo</div>
         }
         if (!workspaces) {
-            return <div>No se encontraron espacios de trabajo</div>
+            return <div>No se encontraron espacios de trabajo. Hace click en "Crear un espacio de trabajo" para crear uno.</div>
         }
         return workspaces.map((workspace) => (
-            <WorkspacePreviewComponent 
-                key={workspace.member_workspace_id}
-                workspace={workspace} 
-            />
+            <div key={workspace.member_workspace_id}>
+                <WorkspacePreviewComponent workspace={workspace} />
+            </div>
         ))
     }
 
