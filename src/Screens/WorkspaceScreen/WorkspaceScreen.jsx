@@ -112,9 +112,9 @@ function WorkspaceScreen() {
                                         <i className="bi bi-chevron-down"></i>
                                     </div>
                                 </label>
-                                <div className="workspace-sidebar-list">
+                                <ul className="workspace-sidebar-list">
                                     {renderChannels()}
-                                </div>
+                                </ul>
                                 <button className="workspace-add-item workspace-add-channel">
                                     <i className="bi bi-plus"></i>
                                     <span>Agregar canal</span>
@@ -133,19 +133,35 @@ function WorkspaceScreen() {
                                         <i className="bi bi-chevron-down"></i>
                                     </div>
                                 </label>
-                                <div className="workspace-sidebar-list">
+                                <ul className="workspace-sidebar-list">
                                     {renderMembers()}
-                                </div>
+                                </ul>
                                 <button className="workspace-add-item workspace-add-member">
                                     <i className="bi bi-plus"></i>
                                     <span>Invitar miembros</span>
                                 </button>
                             </div>
                         </aside>
-                        {/* Contenedor principal donde se muestra el contenido del canal */}
+                        {/* 
+                        ===========================================================
+                                    Contenedor principal del chat
+                        ===========================================================
+                        */}
                         <section className="workspace-content">
                             <div className="workspace-chat-header">
-                                Título y 'Invitar miembros'
+                                <div className="workspace-channel-info">
+                                    <button className="workspace-star-channel">
+                                        <i className="bi bi-star"></i>
+                                    </button>
+                                    <div className="workspace-chat-header-title">
+                                        {/* TODO: reemplazar por el nombre del canal */}
+                                        # channel name
+                                    </div>
+                                </div>
+                                <button className="invite-members">
+                                    <i className="bi bi-person-plus"></i>
+                                    <span>Invitar miembros</span>
+                                </button>
                             </div>
                             <div className="workspace-chat-tabs">
                                 Tabs

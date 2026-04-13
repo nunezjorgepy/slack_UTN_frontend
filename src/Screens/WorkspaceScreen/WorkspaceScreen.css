@@ -97,6 +97,7 @@ Workspace Layout
 .workspace-sidebar{
     flex: 0 0 325px;
     height: 100%;
+    max-width: 325px;
     background-color: var(--primary-color-05);
     border-bottom-left-radius: 6px;
     border-top-left-radius: 6px;
@@ -221,13 +222,56 @@ Workspace Content
     border-top-right-radius: 6px;
 }
 
+/* 
+==================================================
+Chat Header
+==================================================
+*/
 .workspace-chat-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 40px 10px 20px;
+}
+.workspace-channel-info{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.workspace-star-channel{
+    cursor: pointer;
+    border: 1px solid var(--black-200);
+    border-radius: 5px;
+    padding: 3px 4px;
+    font-size: 1rem;
+    transition: background-color .2s ease-in-out;
+}
+.workspace-star-channel:hover{
+    background-color: var(--black-05);
+}
+.workspace-chat-header-title{
+    font-size: 1.2rem;
+    font-weight: 900;
 }
 
+.invite-members{
+    cursor: pointer;
+    border: 1px solid var(--black-200);
+    border-radius: 5px;
+    padding: 3px 4px;
+    font-size: 1rem;
+    transition: all .2s ease-in-out;
+}
+.invite-members:hover{
+    background-color: var(--black-05);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+/* 
+==================================================
+Chat Tabs
+==================================================
+*/
 .workspace-chat-tabs{
     display: flex;
     align-items: center;
@@ -235,6 +279,11 @@ Workspace Content
     padding: 10px;
 }
 
+/* 
+==================================================
+Chat Messages
+==================================================
+*/
 .workspace-chat-messages{
     display: flex;
     flex-direction: column;
@@ -242,6 +291,11 @@ Workspace Content
     height: 100%;
 }
 
+/* 
+==================================================
+Chat Send Message
+==================================================
+*/
 .workspace-chat-send-message{
     display: flex;
     align-items: center;

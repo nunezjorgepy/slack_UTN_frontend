@@ -26,3 +26,9 @@
     background-color: var(--white-900);
     color: var(--black-900);
 }
+
+.siderbar-item-component-text{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

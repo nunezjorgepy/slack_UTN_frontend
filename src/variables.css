@@ -41,6 +41,7 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --primary-color-dark-100: oklch(from var(--primary-color) calc(l - 1) c h);
 
     /* Gama de negros usando rgba */
+    --black-05: rgba(0, 0, 0, 0.05);
     --black-100: rgba(0, 0, 0, 0.1);
     --black-200: rgba(0, 0, 0, 0.2);
     --black-300: rgba(0, 0, 0, 0.3);
