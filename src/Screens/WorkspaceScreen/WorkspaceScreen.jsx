@@ -148,6 +148,12 @@ function WorkspaceScreen() {
                         ===========================================================
                         */}
                         <section className="workspace-content">
+
+                            {/* 
+                            ===========================================================
+                            Chat Header
+                            ===========================================================
+                            */}
                             <div className="workspace-chat-header">
                                 <div className="workspace-channel-info">
                                     <button className="workspace-star-channel">
@@ -163,12 +169,35 @@ function WorkspaceScreen() {
                                     <span>Invitar miembros</span>
                                 </button>
                             </div>
+
+                            {/* 
+                            ===========================================================
+                            Chat Tabs
+                            ===========================================================
+                            */}
                             <div className="workspace-chat-tabs">
-                                Tabs
+                                <div className="workspace-tab-container">
+                                    <div className="workspace-tab">
+                                        <i className="bi bi-chat-dots-fill"></i>
+                                        <span className="workspace-tab-title">Mensajes</span>
+                                    </div>
+                                </div>
                             </div>
+
+                            {/* 
+                            ===========================================================
+                            Chat Messages
+                            ===========================================================
+                            */}
                             <div className="workspace-chat-messages">
                                 Mensajes
                             </div>
+
+                            {/* 
+                            ===========================================================
+                            Chat Send Message
+                            ===========================================================
+                            */}
                             <div className="workspace-chat-send-message">
                                 Enviar mensaje
                             </div>

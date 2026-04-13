@@ -255,11 +255,14 @@ Chat Header
 }
 
 .invite-members{
+    display: flex;
+    gap: 8px;
     cursor: pointer;
     border: 1px solid var(--black-200);
     border-radius: 5px;
     padding: 3px 4px;
-    font-size: 1rem;
+    font-size: .8rem;
+    font-weight: 600;
     transition: all .2s ease-in-out;
 }
 .invite-members:hover{
@@ -276,7 +279,29 @@ Chat Tabs
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 0 20px;
+    border-bottom: 1px solid var(--black-200);
+}
+
+.workspace-tab-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.workspace-tab{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: .9rem;
+    font-weight: 600;
+    padding: 10px 15px 7px;
+    border-bottom: 2px solid var(--primary-color);
+    cursor: pointer;
+    /* Seguramente esto sea algo como button de tipo radio y checked, pero como no hago la página completa, lo dejo así. */
+    transform: translateY(1px);
 }
 
 /* 
