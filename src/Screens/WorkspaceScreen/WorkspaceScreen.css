@@ -123,8 +123,24 @@ Workspace Sidebar Header
     flex: 1;
     max-width: 250px;
     overflow: hidden;
+    font-size: 1.3rem;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.workspace-description{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: .8rem;
+    max-height: 250px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+.workspace-description span{
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .workspace-sidebar-section{
@@ -190,10 +206,47 @@ Workspace Sidebar Channels/Members Header
     border-radius: 5px;
 }
 
+/* 
+==================================================
+Workspace Content
+==================================================
+*/
 .workspace-content{
+    display: flex;
+    flex-direction: column;
     flex: 1;
     height: 100%;
-    background-color: var(--white-900);
+    background-color: var(--secondary-color);
     border-bottom-right-radius: 6px;
     border-top-right-radius: 6px;
+}
+
+.workspace-chat-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.workspace-chat-tabs{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.workspace-chat-messages{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+}
+
+.workspace-chat-send-message{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    height: 100px;
+    background-color: var(--black-100);
 }

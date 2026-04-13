@@ -88,12 +88,16 @@ function WorkspaceScreen() {
                         {/* Barra lateral donde se muestran los canales y miembros */}
                         <aside className="workspace-sidebar">
                             <div className="workspace-sidebar-header">
-                                <div className="workspace-sidebar-header-title">
+                                <h1 className="workspace-sidebar-header-title">
                                     {workspace?.title || 'Cargando...'}
-                                </div>
+                                </h1>
                                 <div className="workspace-sidebar-header-edit tooltip">
                                     <i className="bi bi-pencil"></i>
                                 </div>
+                            </div>
+                            <div className="workspace-description">
+                                <span>Descripción</span>
+                                {workspace?.description || 'Cargando...'}
                             </div>
                             {/* 
                             ===========================================================
@@ -140,7 +144,18 @@ function WorkspaceScreen() {
                         </aside>
                         {/* Contenedor principal donde se muestra el contenido del canal */}
                         <section className="workspace-content">
-                            
+                            <div className="workspace-chat-header">
+                                Título y 'Invitar miembros'
+                            </div>
+                            <div className="workspace-chat-tabs">
+                                Tabs
+                            </div>
+                            <div className="workspace-chat-messages">
+                                Mensajes
+                            </div>
+                            <div className="workspace-chat-send-message">
+                                Enviar mensaje
+                            </div>
                         </section>
                     </div>
                 </section>
