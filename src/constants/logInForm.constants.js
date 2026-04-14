@@ -14,7 +14,6 @@ export const LOG_IN_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-100",
-                    required: true
                 },
                 {
                     id: "password",
@@ -24,7 +23,6 @@ export const LOG_IN_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
-                    required: true
                 }
             ]
         }

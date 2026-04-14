@@ -420,7 +420,6 @@ Add Channel Modal
 ==================================================
 */
 .workspace-add-channel-modal{
-    display: none;
     align-items: center;
     justify-content: center;
     position: fixed;

@@ -75,6 +75,12 @@ Tooltip
 }
 
 /* Clases de utilidad */
+.active {
+    display: flex;
+}
+.not-active {
+    display: none;
+}
 .required:after{
     /* Agrega un * a los campos que sean requeridos */
     content: "*";

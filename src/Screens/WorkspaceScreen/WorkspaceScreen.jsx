@@ -23,6 +23,7 @@ function WorkspaceScreen() {
     const navigate = useNavigate()
     const [message, setMessage] = useState('')
     const [channelId, setChannelId] = useState(null)
+    const [showAddChannelModal, setShowAddChannelModal] = useState(false)
 
     const { 
         workspace, 
@@ -122,6 +123,7 @@ function WorkspaceScreen() {
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
     useEffect(() => {
+        // Por defecto se selecciona el primer canal
         if (channels?.length > 0) {
             setChannelId(channels[0].channel_id)
         }
@@ -180,7 +182,10 @@ function WorkspaceScreen() {
                                 <ul className="workspace-sidebar-list">
                                     {renderChannels()}
                                 </ul>
-                                <button className="workspace-add-item workspace-add-channel">
+                                <button 
+                                    className="workspace-add-item workspace-add-channel"
+                                    onClick={() => setShowAddChannelModal(true)}
+                                >
                                     <i className="bi bi-plus"></i>
                                     <span>Agregar canal</span>
                                 </button>
@@ -285,7 +290,7 @@ function WorkspaceScreen() {
             Add Channel Modal
             ===========================================================
             */}
-            <div className="workspace-add-channel-modal">
+            <div className={`workspace-add-channel-modal ${showAddChannelModal ? 'active' : 'not-active'}`}>
                 <div className="workspace-channel-modal-relative">
                     <InformationFormComponent 
                         form_title={ADD_CHANNEL_FORM_CONSTANTS.form_title}
@@ -296,7 +301,10 @@ function WorkspaceScreen() {
                         successInfo={SUCCES_ADD_CHANNEL_INFO}
                     />
                     
-                    <button className="workspace-add-channel-close-btn">
+                    <button 
+                        className="workspace-add-channel-close-btn"
+                        onClick={() => setShowAddChannelModal(false)}
+                    >
                         <i className="bi bi-x"></i>
                     </button>
                 </div>

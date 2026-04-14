@@ -16,7 +16,6 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-50",
-                    required: true
                 },
                 {
                     id: "email",
@@ -26,7 +25,6 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-50",
-                    required: true
                 },
                 {
                     id: "password",
@@ -36,7 +34,6 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-50",
-                    required: true
                 },
                 {
                     id: "confirmPassword",
@@ -46,7 +43,6 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-50",
-                    required: true
                 }
             ]
         },

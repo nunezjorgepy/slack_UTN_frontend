@@ -14,17 +14,15 @@ export const ADD_CHANNEL_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-100",
-                    required: true
                 },
                 {
                     id: "description",
                     name: "description",
                     label: "Descripción",
                     placeholder: "Ingresa la descripción del canal",
-                    required: true,
+                    required: false,
                     type: "text",
                     flex: "flex-100",
-                    required: true
                 }
             ]
         }

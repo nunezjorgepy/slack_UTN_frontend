@@ -13,8 +13,7 @@ export const RESET_PASSWORD_FORM_CONSTANTS = {
                     placeholder: "Ingresa tu email",
                     required: true,
                     type: "text",
-                    flex: "flex-100",
-                    required: true
+                    flex: "flex-100"
                 }
             ]
         }

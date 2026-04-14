@@ -16,7 +16,6 @@ export const RESET_PASSWORD_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
-                    required: true
                 },
                 {
                     id: "confirmPassword",
@@ -26,7 +25,6 @@ export const RESET_PASSWORD_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
-                    required: true
                 }
             ]
         }
