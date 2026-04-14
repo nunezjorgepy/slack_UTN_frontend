@@ -32,7 +32,7 @@ function useForm({ initialFormState, submitFn}) {
 
     function onSubmit (event) {
         event.preventDefault()
-        submitFn(formState)
+        submitFn(formState, { resetForm })
     }
 
     function resetForm(){

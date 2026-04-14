@@ -15,7 +15,7 @@ import InformationFormComponent from '../../components/ui/InformationFormCompone
 import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
-import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
+import useRequest from '../../hooks/useRequest'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -24,6 +24,9 @@ function WorkspaceScreen() {
     const [message, setMessage] = useState('')
     const [channelId, setChannelId] = useState(null)
     const [showAddChannelModal, setShowAddChannelModal] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
 
     const { 
         workspace, 
@@ -31,7 +34,8 @@ function WorkspaceScreen() {
         channels,
         response, 
         loading, 
-        error 
+        error,
+        refetch 
     } = useWorkspaces(
         {
             callbackFunction: () => workspaceService.getWorkspace(workspaceId),
@@ -114,9 +118,51 @@ function WorkspaceScreen() {
         })
     }
 
-    const onSendMessage = (e) => {
-        e.preventDefault()
-        console.log(message)
+    const onAddChannel = (form_data, { resetForm }) => {
+        // Faltan las valdicaiones
+        if (!form_data.name.trim()) {
+            setErrorMessage('El nombre del canal es requerido')
+            return
+        }
+
+        // Validar que el nombre del canal tenga al menos 3 caracteres
+        if (form_data.name.trim().length < 3) {
+            setErrorMessage('El nombre del canal debe tener al menos 3 caracteres')
+            return
+        }
+
+        // Validar que el nombre del canal tenga menos de 50 caracteres
+        if (form_data.name.trim().length > 50) {
+            setErrorMessage('El nombre del canal debe tener menos de 50 caracteres')
+            return
+        }
+
+        // Si la descripción existe y es menor a 10 caracteres, mostrar error
+        if (form_data.description && form_data.description.trim().length < 10) {
+            setErrorMessage('La descripción debe tener al menos 10 caracteres')
+            return
+        }
+
+        // Si la descripción existe y es mayor a 100 caracteres, mostrar error
+        if (form_data.description && form_data.description.trim().length > 100) {
+            setErrorMessage('La descripción debe tener menos de 100 caracteres')
+            return
+        }
+
+        try {
+            sendRequest({
+                requestCb: async () => {
+                    const response = await channelService.create(workspaceId, form_data)
+                    // Refrescar los canales y cerrar el modal solo si la creación fue exitosa
+                    refetch({ requestCb: () => workspaceService.getWorkspace(workspaceId) })
+                    resetForm()
+                    setShowAddChannelModal(false)
+                    return response
+                }
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     // Cambia el título de la página
@@ -268,7 +314,7 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-chat-send-message">
-                                <form className="workspace-send-message-form-container" onSubmit={onSendMessage}>
+                                <form className="workspace-send-message-form-container" /* onSubmit={onSendMessage} */>
                                     <textarea 
                                         className="workspace-send-message-form-textarea" 
                                         placeholder="Escribe un mensaje..."
@@ -299,6 +345,10 @@ function WorkspaceScreen() {
                         button={ADD_CHANNEL_FORM_CONSTANTS.button}
                         initialFormState={initialFormState}
                         successInfo={SUCCES_ADD_CHANNEL_INFO}
+                        onSubmitFunction={onAddChannel}
+                        errorMessage={errorMessage}
+                        error={error}
+                        loading={loading}
                     />
                     
                     <button 

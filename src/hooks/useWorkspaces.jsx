@@ -24,7 +24,8 @@ function useWorkspaces({ callbackFunction }) {
         workspace: response?.data?.workspace,
         workspaces: response?.data?.workspaces,
         members: response?.data?.members,
-        channels: response?.data?.channels
+        channels: response?.data?.channels,
+        refetch: sendRequest
     }
 }
 
