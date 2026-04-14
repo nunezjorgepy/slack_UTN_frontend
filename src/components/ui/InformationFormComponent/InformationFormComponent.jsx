@@ -48,14 +48,30 @@ function InformationFormComponent(props) {
                             <label htmlFor={input.id} className={input.required ? 'required' : ''}>
                                 {input.label}
                             </label>
-                            <input 
-                                type={input.type} 
-                                id={input.id} 
-                                name={input.name} 
-                                placeholder={input.placeholder}
-                                onChange={handleChangeInput}
-                                value={formState[input.name]}
-                            />
+                            {input.type === 'select' ? (
+                                <select 
+                                    id={input.id} 
+                                    name={input.name} 
+                                    onChange={handleChangeInput}
+                                    value={formState[input.name]}
+                                >
+                                    <option value="" disabled>{input.placeholder}</option>
+                                    {input.options.map((option, index) => (
+                                        <option key={index} value={option.value}>
+                                            {option.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            ) : (
+                                <input 
+                                    type={input.type} 
+                                    id={input.id} 
+                                    name={input.name} 
+                                    placeholder={input.placeholder}
+                                    onChange={handleChangeInput}
+                                    value={formState[input.name]}
+                                />
+                            )}
                         </div>
                     ))}
                 </div>
