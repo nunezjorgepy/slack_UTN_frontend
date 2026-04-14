@@ -334,21 +334,6 @@ Chat Messages
     transition: background-color .2s ease-in-out;
 }
 
-.workspace-chat-message-item:hover {
-    background-color: var(--black-05);
-}
-
-.workspace-chat-message-user {
-    font-weight: 900;
-    font-size: .9rem;
-    color: var(--black-800);
-}
-
-.workspace-chat-message-text {
-    font-size: 1rem;
-    color: var(--black-900);
-}
-
 /* 
 ==================================================
 Chat Send Message

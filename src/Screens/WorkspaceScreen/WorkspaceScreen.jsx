@@ -16,6 +16,7 @@ import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState, SUCCES_ADD_CHANNEL_INFO }
 // Context
 import { AuthContext } from '../../context/authContext'
 import useRequest from '../../hooks/useRequest'
+import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -107,12 +108,7 @@ function WorkspaceScreen() {
         return messages?.map((message) => {
             return (
                 <div key={message.message_id} className='workspace-chat-message-item'>
-                    <div className="workspace-chat-message-user">
-                        {message.message_user_name}
-                    </div>
-                    <div className="workspace-chat-message-text">
-                        {message.message_content}
-                    </div>
+                    <MessageComponent message={message} />
                 </div>
             )
         })
