@@ -21,7 +21,8 @@ const useChannels = ({ callbackFunction, dependencies = [] }) => {
         loading,
         error,
         channel: response?.data?.channel,
-        messages: response?.data?.messages
+        messages: response?.data?.messages,
+        refetch: sendRequest
     }
 }
 

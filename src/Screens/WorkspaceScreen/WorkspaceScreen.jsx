@@ -8,6 +8,7 @@ import useChannels from '../../hooks/useChannels'
 // Services
 import workspaceService from '../../services/workspaceService'
 import channelService from '../../services/channelService'
+import messagesService from '../../services/messagesService'
 // Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
@@ -28,6 +29,7 @@ function WorkspaceScreen() {
     const [errorMessage, setErrorMessage] = useState('')
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
+    const { sendRequest: sendMessageRequest } = useRequest()
 
     const { 
         workspace, 
@@ -48,7 +50,8 @@ function WorkspaceScreen() {
         messages,
         response: channelResponse, 
         loading: channelLoading, 
-        error: channelError 
+        error: channelError,
+        refetch: refetchMessages
     } = useChannels(
         {
             callbackFunction: () => channelService.getById(workspaceId, channelId),
@@ -158,6 +161,24 @@ function WorkspaceScreen() {
             })
         } catch (error) {
             console.log(error)
+        }
+    }
+
+    const onSendMessage = async (e) => {
+        e.preventDefault()
+        if (!message.trim()) return
+
+        try {
+            sendMessageRequest({
+                requestCb: async () => {
+                    const response = await messagesService.sendMessage(workspaceId, channelId, message)
+                    setMessage('')
+                    refetchMessages({ requestCb: () => channelService.getById(workspaceId, channelId) })
+                    return response
+                }
+            })
+        } catch (error) {
+            console.error('Error al enviar el mensaje:', error)
         }
     }
 
@@ -310,7 +331,7 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-chat-send-message">
-                                <form className="workspace-send-message-form-container" /* onSubmit={onSendMessage} */>
+                                <form className="workspace-send-message-form-container" onSubmit={onSendMessage}>
                                     <textarea 
                                         className="workspace-send-message-form-textarea" 
                                         placeholder="Escribe un mensaje..."
