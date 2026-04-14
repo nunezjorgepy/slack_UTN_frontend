@@ -1,13 +1,12 @@
-import ENVIRONMENT from "../config/environment.config";
-import { LOCALSTORAGE_AUTH_TOKEN_KEY } from "../context/authContext";
+import ENVIRONMENT from "../config/environment.config"
+import { LOCALSTORAGE_AUTH_TOKEN_KEY } from "../context/authContext"
 
 const API_URL = ENVIRONMENT.API_URL
 
-const memberWorkspaceService = {
-    // Get Member List By workspace_id
-    getMemberListByWorkspaceId: async (workspaceId) => {
+const channelService = {
+    getById: async (workspaceId, channelId) => {
         const response_http = await fetch(
-            API_URL + '/api/membersWorkspace/list/' + workspaceId,
+            API_URL + '/api/workspace/' + workspaceId + '/channel/' + channelId,
             {
                 method: 'GET',
                 headers: {
@@ -21,5 +20,4 @@ const memberWorkspaceService = {
     }
 }
 
-
-export default memberWorkspaceService
+export default channelService

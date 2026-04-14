@@ -1,9 +1,16 @@
-import { useParams, useNavigate } from 'react-router'
 import './WorkspaceScreen.css'
+// React
+import { useContext, useEffect, useState } from 'react'
+import { useParams, useNavigate } from 'react-router'
+// Hooks
 import useWorkspaces from '../../hooks/useWorkspaces'
+import useChannels from '../../hooks/useChannels'
+// Services
 import workspaceService from '../../services/workspaceService'
+import channelService from '../../services/channelService'
+// Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
-import { useContext, useState } from 'react'
+// Context
 import { AuthContext } from '../../context/authContext'
 
 function WorkspaceScreen() {
@@ -11,6 +18,7 @@ function WorkspaceScreen() {
     const { manageLogout } = useContext(AuthContext)
     const navigate = useNavigate()
     const [message, setMessage] = useState('')
+    const [channelId, setChannelId] = useState(null)
 
     const { 
         workspace, 
@@ -22,6 +30,19 @@ function WorkspaceScreen() {
     } = useWorkspaces(
         {
             callbackFunction: () => workspaceService.getWorkspace(workspaceId),
+        }
+    )
+
+    const { 
+        channel, 
+        messages,
+        response: channelResponse, 
+        loading: channelLoading, 
+        error: channelError 
+    } = useChannels(
+        {
+            // TODO: necesito una forma de conseguir el channelId dinámicamente.
+            callbackFunction: () => channelService.getById(workspaceId, '69d51e0aea9d1c5a5048bf5a'),
         }
     )
 
@@ -66,6 +87,13 @@ function WorkspaceScreen() {
 
     // Cambia el título de la página
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
+
+    useEffect(() => {
+        if (channels?.length > 0) {
+            console.log(channels)
+            setChannelId(channels[0].channel_id)
+        }
+    }, [channels])
 
     return (
         <div className='backgroung-lienar-gradient'>
