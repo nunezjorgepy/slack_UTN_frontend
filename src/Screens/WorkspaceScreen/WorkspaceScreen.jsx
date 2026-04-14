@@ -10,8 +10,12 @@ import workspaceService from '../../services/workspaceService'
 import channelService from '../../services/channelService'
 // Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
+import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+// Constants
+import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
+import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -275,6 +279,28 @@ function WorkspaceScreen() {
                     </div>
                 </section>
             </main>
+
+            {/* 
+            ===========================================================
+            Add Channel Modal
+            ===========================================================
+            */}
+            <div className="workspace-add-channel-modal">
+                <div className="workspace-channel-modal-relative">
+                    <InformationFormComponent 
+                        form_title={ADD_CHANNEL_FORM_CONSTANTS.form_title}
+                        form_subtitle={ADD_CHANNEL_FORM_CONSTANTS.form_subtitle}
+                        sections={ADD_CHANNEL_FORM_CONSTANTS.sections}
+                        button={ADD_CHANNEL_FORM_CONSTANTS.button}
+                        initialFormState={initialFormState}
+                        successInfo={SUCCES_ADD_CHANNEL_INFO}
+                    />
+                    
+                    <button className="workspace-add-channel-close-btn">
+                        <i className="bi bi-x"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
