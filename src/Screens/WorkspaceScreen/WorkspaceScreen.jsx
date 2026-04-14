@@ -41,8 +41,8 @@ function WorkspaceScreen() {
         error: channelError 
     } = useChannels(
         {
-            // TODO: necesito una forma de conseguir el channelId dinámicamente.
-            callbackFunction: () => channelService.getById(workspaceId, '69d51e0aea9d1c5a5048bf5a'),
+            callbackFunction: () => channelService.getById(workspaceId, channelId),
+            dependencies: [channelId, workspaceId]
         }
     )
 
@@ -75,7 +75,11 @@ function WorkspaceScreen() {
         }
         return channels?.map((channel) => (
             <div key={channel.channel_id}>
-                <SiderbarItemComponent input_name='channel' component_name={channel.channel_name} />
+                <SiderbarItemComponent 
+                    input_name='channel' 
+                    component_name={channel.channel_name} 
+                    onClick={() => setChannelId(channel.channel_id)}
+                />
             </div>
         ))
     }
@@ -193,8 +197,7 @@ function WorkspaceScreen() {
                                         <i className="bi bi-star"></i>
                                     </button>
                                     <div className="workspace-chat-header-title">
-                                        {/* TODO: reemplazar por el nombre del canal */}
-                                        # channel name
+                                        # {channel?.channel_name || 'Cargando...'}
                                     </div>
                                 </div>
                                 <button className="invite-members">
@@ -223,7 +226,19 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-chat-messages">
-                                Mensajes
+                                {channelLoading && <div className='siderbar-item-component-content'>Cargando mensajes...</div>}
+                                {channelError && <div className='siderbar-item-component-content'>Error al cargar los mensajes</div>}
+                                {messages?.length === 0 && <div className='siderbar-item-component-content'>No hay mensajes en este canal</div>}
+                                {messages?.map((message) => (
+                                    <div key={message.message_id} className='workspace-chat-message-item'>
+                                        <div className="workspace-chat-message-user">
+                                            {message.user_name}
+                                        </div>
+                                        <div className="workspace-chat-message-text">
+                                            {message.content}
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
 
                             {/* 

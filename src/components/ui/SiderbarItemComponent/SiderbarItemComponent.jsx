@@ -1,10 +1,10 @@
 import './SiderbarItemComponent.css'
 
 function SiderbarItemComponent(props) {
-    const { input_name, component_name } = props
+    const { input_name, component_name, onClick } = props
     return (
         <li>
-            <label className='siderbar-item-component'>
+            <label className='siderbar-item-component' onClick={onClick}>
                 <input type='radio' className='siderbar-item-component-input' name={input_name}/>
                 <div className="siderbar-item-component-content">
                     <div className="siderbar-item-component-icon">

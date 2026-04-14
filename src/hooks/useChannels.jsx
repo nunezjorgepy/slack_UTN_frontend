@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import useRequest from "./useRequest"
 
 
-const useChannels = ({ callbackFunction }) => {
+const useChannels = ({ callbackFunction, dependencies = [] }) => {
     const { sendRequest, response, loading, error } = useRequest()
 
     useEffect(
@@ -13,7 +13,7 @@ const useChannels = ({ callbackFunction }) => {
                 }
             )
         },
-        []
+        dependencies
     )
 
     console.log(response)
