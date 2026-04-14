@@ -16,8 +16,6 @@ const useChannels = ({ callbackFunction, dependencies = [] }) => {
         dependencies
     )
 
-    console.log(response)
-
     return {
         response,
         loading,

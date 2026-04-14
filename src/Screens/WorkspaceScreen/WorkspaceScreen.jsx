@@ -46,15 +46,16 @@ function WorkspaceScreen() {
         }
     )
 
+
     const renderMembers = () => {
         if (loading) {
-            return <div className='siderbar-item-component-content'>Cargando...</div>
+            return <div className='siderbar-item-component-error'>Cargando...</div>
         }
         if (error) {
-            return <div className='siderbar-item-component-content'>Error al cargar los miembros</div>
+            return <div className='siderbar-item-component-error'>Error al cargar los miembros</div>
         }
         if (members?.length === 0) {
-            return <div className='siderbar-item-component-content'>No se encontraron miembros</div>
+            return <div className='siderbar-item-component-error'>No se encontraron miembros</div>
         }
         return members?.map((member) => (
             <div key={member.member_id}>
@@ -65,13 +66,13 @@ function WorkspaceScreen() {
 
     const renderChannels = () => {
         if (loading) {
-            return <div className='siderbar-item-component-content'>Cargando...</div>
+            return <div className='siderbar-item-component-error'>Cargando...</div>
         }
         if (error) {
-            return <div className='siderbar-item-component-content'>Error al cargar los canales</div>
+            return <div className='siderbar-item-component-error'>Error al cargar los canales</div>
         }
         if (channels?.length === 0) {
-            return <div className='siderbar-item-component-content'>No se encontraron canales</div>
+            return <div className='siderbar-item-component-error'>No se encontraron canales</div>
         }
         return channels?.map((channel) => (
             <div key={channel.channel_id}>
@@ -84,6 +85,30 @@ function WorkspaceScreen() {
         ))
     }
 
+    const renderMessages = () => {
+        if (channelLoading) {
+            return <div className='siderbar-item-component-error messages-error'>Cargando mensajes...</div>
+        }
+        if (channelError) {
+            return <div className='siderbar-item-component-error messages-error'>Error al cargar los mensajes</div>
+        }
+        if (messages?.length === 0) {
+            return <div className='siderbar-item-component-error messages-error'>No hay mensajes en este canal</div>
+        }
+        return messages?.map((message) => {
+            return (
+                <div key={message.message_id} className='workspace-chat-message-item'>
+                    <div className="workspace-chat-message-user">
+                        {message.message_user_name}
+                    </div>
+                    <div className="workspace-chat-message-text">
+                        {message.message_content}
+                    </div>
+                </div>
+            )
+        })
+    }
+
     const onSendMessage = (e) => {
         e.preventDefault()
         console.log(message)
@@ -94,7 +119,6 @@ function WorkspaceScreen() {
 
     useEffect(() => {
         if (channels?.length > 0) {
-            console.log(channels)
             setChannelId(channels[0].channel_id)
         }
     }, [channels])
@@ -226,19 +250,7 @@ function WorkspaceScreen() {
                             ===========================================================
                             */}
                             <div className="workspace-chat-messages">
-                                {channelLoading && <div className='siderbar-item-component-content'>Cargando mensajes...</div>}
-                                {channelError && <div className='siderbar-item-component-content'>Error al cargar los mensajes</div>}
-                                {messages?.length === 0 && <div className='siderbar-item-component-content'>No hay mensajes en este canal</div>}
-                                {messages?.map((message) => (
-                                    <div key={message.message_id} className='workspace-chat-message-item'>
-                                        <div className="workspace-chat-message-user">
-                                            {message.user_name}
-                                        </div>
-                                        <div className="workspace-chat-message-text">
-                                            {message.content}
-                                        </div>
-                                    </div>
-                                ))}
+                                {renderMessages()}
                             </div>
 
                             {/* 

@@ -309,6 +309,12 @@ Chat Tabs
 Chat Messages
 ==================================================
 */
+.siderbar-item-component-error {
+    color: var(--white-900);
+}
+.messages-error {
+    color: var(--black-900);
+}
 .workspace-chat-messages{
     display: flex;
     flex-direction: column;
