@@ -61,7 +61,7 @@ function WorkspaceScreen() {
 
 
     const renderMembers = () => {
-        if (loading) {
+        if (loading && !members) {
             return <div className='siderbar-item-component-error'>Cargando...</div>
         }
         if (error) {
@@ -78,7 +78,7 @@ function WorkspaceScreen() {
     }
 
     const renderChannels = () => {
-        if (loading) {
+        if (loading && !channels) {
             return <div className='siderbar-item-component-error'>Cargando...</div>
         }
         if (error) {
@@ -99,7 +99,7 @@ function WorkspaceScreen() {
     }
 
     const renderMessages = () => {
-        if (channelLoading) {
+        if (channelLoading && !messages) {
             return <div className='siderbar-item-component-error messages-error'>Cargando mensajes...</div>
         }
         if (channelError) {
