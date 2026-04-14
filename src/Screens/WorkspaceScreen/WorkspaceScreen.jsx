@@ -347,8 +347,8 @@ function WorkspaceScreen() {
                         successInfo={SUCCES_ADD_CHANNEL_INFO}
                         onSubmitFunction={onAddChannel}
                         errorMessage={errorMessage}
-                        error={error}
-                        loading={loading}
+                        error={addChannelError}
+                        loading={addChannelLoading}
                     />
                     
                     <button 
