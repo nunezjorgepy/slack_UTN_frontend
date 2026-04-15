@@ -39,7 +39,7 @@ export const INVITE_USER_FORM_CONSTANTS = {
 
 export const initialFormState = {
     [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[0].name]: "",
-    [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[1].name]: ""
+    [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[1].name]: "user"
 }
 
 export const SUCCES_INVITE_USER_INFO = {

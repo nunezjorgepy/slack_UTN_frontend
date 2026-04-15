@@ -9,16 +9,17 @@ import useChannels from '../../hooks/useChannels'
 import workspaceService from '../../services/workspaceService'
 import channelService from '../../services/channelService'
 import messagesService from '../../services/messagesService'
+import memberWorkspaceService from '../../services/memberWorkspaceService'
 // Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 // Constants
-import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
+import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState as ADD_CHANNEL_INITIAL_STATE, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
 import useRequest from '../../hooks/useRequest'
 import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
-import { INVITE_USER_FORM_CONSTANTS, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
+import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -182,6 +183,25 @@ function WorkspaceScreen() {
             })
         } catch (error) {
             console.error('Error al enviar el mensaje:', error)
+        }
+    }
+
+    const onInviteUser = (form_data, { resetForm }) => {
+        console.log(form_data)
+        try {
+            inviteUserRequest({
+                requestCb: async () => {
+                    const response = await memberWorkspaceService.inviteUser(
+                        workspaceId, 
+                        form_data.email, 
+                        form_data.role
+                    )
+                    resetForm()
+                    return response
+                }
+            })
+        } catch (error) {
+            console.error('Error al invitar usuario:', error)
         }
     }
 
@@ -380,7 +400,7 @@ function WorkspaceScreen() {
                         form_subtitle={ADD_CHANNEL_FORM_CONSTANTS.form_subtitle}
                         sections={ADD_CHANNEL_FORM_CONSTANTS.sections}
                         button={ADD_CHANNEL_FORM_CONSTANTS.button}
-                        initialFormState={initialFormState}
+                        initialFormState={ADD_CHANNEL_INITIAL_STATE}
                         successInfo={SUCCES_ADD_CHANNEL_INFO}
                         onSubmitFunction={onAddChannel}
                         errorMessage={errorMessage}
@@ -410,9 +430,9 @@ function WorkspaceScreen() {
                         form_subtitle={INVITE_USER_FORM_CONSTANTS.form_subtitle}
                         sections={INVITE_USER_FORM_CONSTANTS.sections}
                         button={INVITE_USER_FORM_CONSTANTS.button}
-                        initialFormState={initialFormState}
+                        initialFormState={INVITE_USER_INITIAL_STATE}
                         successInfo={SUCCES_INVITE_USER_INFO}
-                        /* onSubmitFunction={onInviteUser} */
+                        onSubmitFunction={onInviteUser}
                         errorMessage={errorMessage}
                         error={inviteUserError}
                         loading={inviteUserLoading}
