@@ -4,15 +4,20 @@ import { LOCALSTORAGE_AUTH_TOKEN_KEY } from "../context/authContext";
 const API_URL = ENVIRONMENT.API_URL
 
 const memberWorkspaceService = {
-    // Get Member List By workspace_id
-    getMemberListByWorkspaceId: async (workspaceId) => {
+    // Invite User
+    inviteUser: async (workspaceId, email, role) => {
         const response_http = await fetch(
-            API_URL + '/api/membersWorkspace/list/' + workspaceId,
+            API_URL + '/api/workspace/' + workspaceId + '/member/invite',
             {
-                method: 'GET',
+                method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY)
-                }
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    email: email,
+                    role: role
+                })
             }
         )
 

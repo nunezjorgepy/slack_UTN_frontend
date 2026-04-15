@@ -412,7 +412,7 @@ function WorkspaceScreen() {
                         button={INVITE_USER_FORM_CONSTANTS.button}
                         initialFormState={initialFormState}
                         successInfo={SUCCES_INVITE_USER_INFO}
-                        /* onSubmitFunction={onAddMember} */
+                        /* onSubmitFunction={onInviteUser} */
                         errorMessage={errorMessage}
                         error={inviteUserError}
                         loading={inviteUserLoading}
