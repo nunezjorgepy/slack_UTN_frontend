@@ -25,6 +25,7 @@ function useWorkspaces({ callbackFunction }) {
         workspaces: response?.data?.workspaces,
         members: response?.data?.members,
         channels: response?.data?.channels,
+        member_logged: response?.data?.member_logged,
         refetch: sendRequest
     }
 }

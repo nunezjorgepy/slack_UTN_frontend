@@ -39,6 +39,7 @@ function WorkspaceScreen() {
         workspace, 
         members,
         channels,
+        member_logged,
         response, 
         loading, 
         error,
@@ -62,7 +63,6 @@ function WorkspaceScreen() {
             dependencies: [channelId, workspaceId]
         }
     )
-
 
     const renderMembers = () => {
         if (loading && !members) {
@@ -278,13 +278,16 @@ function WorkspaceScreen() {
                                 <ul className="workspace-sidebar-list">
                                     {renderChannels()}
                                 </ul>
-                                <button 
-                                    className="workspace-add-item workspace-add-channel"
-                                    onClick={() => setShowAddChannelModal(true)}
-                                >
-                                    <i className="bi bi-plus"></i>
-                                    <span>Agregar canal</span>
-                                </button>
+                                {
+                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    <button 
+                                        className="workspace-add-item workspace-add-channel"
+                                        onClick={() => setShowAddChannelModal(true)}
+                                    >
+                                        <i className="bi bi-plus"></i>
+                                        <span>Agregar canal</span>
+                                    </button>
+                                }
                             </div>
                             {/* 
                             ===========================================================
@@ -302,13 +305,16 @@ function WorkspaceScreen() {
                                 <ul className="workspace-sidebar-list">
                                     {renderMembers()}
                                 </ul>
-                                <button 
-                                    className="workspace-add-item workspace-add-member"
-                                    onClick={() => setShowInviteUserModal(true)}
-                                >
-                                    <i className="bi bi-plus"></i>
-                                    <span>Invitar miembros</span>
-                                </button>
+                                {
+                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    <button 
+                                        className="workspace-add-item workspace-add-member"
+                                        onClick={() => setShowInviteUserModal(true)}
+                                    >
+                                        <i className="bi bi-plus"></i>
+                                        <span>Invitar miembros</span>
+                                    </button>
+                                }
                             </div>
                         </aside>
                         {/* 
@@ -332,13 +338,15 @@ function WorkspaceScreen() {
                                         # {channel?.channel_name || 'Cargando...'}
                                     </div>
                                 </div>
-                                <button 
-                                    className="invite-members"
-                                    onClick={() => setShowInviteUserModal(true)}
-                                >
-                                    <i className="bi bi-person-plus"></i>
-                                    <span>Invitar miembros</span>
-                                </button>
+                                {
+                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    <button 
+                                        className="invite-members"
+                                        onClick={() => setShowInviteUserModal(true)}
+                                    >
+                                        <i className="bi bi-person-plus"></i>
+                                        <span>Invitar miembros</span>
+                                </button>}
                             </div>
 
                             {/* 
