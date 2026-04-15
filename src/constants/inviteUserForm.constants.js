@@ -24,8 +24,8 @@ export const INVITE_USER_FORM_CONSTANTS = {
                     type: "select",
                     flex: "flex-100",
                     options: [
-                        { value: "admin", label: "Admin" },
-                        { value: "user", label: "User" }
+                        { value: "user", label: "Usuario" },
+                        { value: "admin", label: "Administrador" }
                     ]
                 }
             ]
@@ -43,6 +43,6 @@ export const initialFormState = {
 }
 
 export const SUCCES_INVITE_USER_INFO = {
-    title: "¡Usuario invitado correctamente!",
-    body: "El usuario ha sido invitado correctamente."
+    title: "¡Usuario invitado!",
+    body: "Se ha enviado un email al usuario con la invitación."
 }

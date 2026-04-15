@@ -18,6 +18,7 @@ import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState, SUCCES_ADD_CHANNEL_INFO }
 import { AuthContext } from '../../context/authContext'
 import useRequest from '../../hooks/useRequest'
 import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
+import { INVITE_USER_FORM_CONSTANTS, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -26,10 +27,12 @@ function WorkspaceScreen() {
     const [message, setMessage] = useState('')
     const [channelId, setChannelId] = useState(null)
     const [showAddChannelModal, setShowAddChannelModal] = useState(false)
+    const [showInviteUserModal, setShowInviteUserModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
-    const { sendRequest: sendMessageRequest } = useRequest()
+    const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
+    const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
 
     const { 
         workspace, 
@@ -269,7 +272,10 @@ function WorkspaceScreen() {
                                 <ul className="workspace-sidebar-list">
                                     {renderMembers()}
                                 </ul>
-                                <button className="workspace-add-item workspace-add-member">
+                                <button 
+                                    className="workspace-add-item workspace-add-member"
+                                    onClick={() => setShowInviteUserModal(true)}
+                                >
                                     <i className="bi bi-plus"></i>
                                     <span>Invitar miembros</span>
                                 </button>
@@ -296,7 +302,10 @@ function WorkspaceScreen() {
                                         # {channel?.channel_name || 'Cargando...'}
                                     </div>
                                 </div>
-                                <button className="invite-members">
+                                <button 
+                                    className="invite-members"
+                                    onClick={() => setShowInviteUserModal(true)}
+                                >
                                     <i className="bi bi-person-plus"></i>
                                     <span>Invitar miembros</span>
                                 </button>
@@ -353,7 +362,8 @@ function WorkspaceScreen() {
             Add Channel Modal
             ===========================================================
             */}
-            <div className={`workspace-add-channel-modal ${showAddChannelModal ? 'active' : 'not-active'}`}>
+            {showAddChannelModal && 
+            <div className={`workspace-add-channel-modal`}>
                 <div className="workspace-channel-modal-relative">
                     <InformationFormComponent 
                         form_title={ADD_CHANNEL_FORM_CONSTANTS.form_title}
@@ -375,7 +385,37 @@ function WorkspaceScreen() {
                         <i className="bi bi-x"></i>
                     </button>
                 </div>
-            </div>
+            </div>}
+
+            {/* 
+            ===========================================================
+            Invite User Modal
+            ===========================================================
+            */}
+            {showInviteUserModal && 
+            <div className={`workspace-invite-user-modal`}>
+                <div className="workspace-invite-user-modal-relative">
+                    <InformationFormComponent 
+                        form_title={INVITE_USER_FORM_CONSTANTS.form_title}
+                        form_subtitle={INVITE_USER_FORM_CONSTANTS.form_subtitle}
+                        sections={INVITE_USER_FORM_CONSTANTS.sections}
+                        button={INVITE_USER_FORM_CONSTANTS.button}
+                        initialFormState={initialFormState}
+                        successInfo={SUCCES_INVITE_USER_INFO}
+                        /* onSubmitFunction={onAddMember} */
+                        errorMessage={errorMessage}
+                        error={inviteUserError}
+                        loading={inviteUserLoading}
+                    />
+                    
+                    <button 
+                        className="workspace-invite-user-close-btn"
+                        onClick={() => setShowInviteUserModal(false)}
+                    >
+                        <i className="bi bi-x"></i>
+                    </button>
+                </div>
+            </div>}
         </div>
     )
 }
