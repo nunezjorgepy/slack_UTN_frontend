@@ -214,9 +214,19 @@ function WorkspaceScreen() {
             </header>
             <main className='workspace-main'>
                 <section className='workspace-section'>
+                    {/* 
+                    ===========================================================
+                    Tabs
+                    ===========================================================
+                    */}
                     <div className="tabs-sidebar">
-                        Tabs
+                        {/* TODO: Renderizar los tabs (opcional) */}
                     </div>
+                    {/* 
+                    ===========================================================
+                    Workspace layout
+                    ===========================================================
+                    */}
                     <div className="workspace-layout">
                         {/* Barra lateral donde se muestran los canales y miembros */}
                         <aside className="workspace-sidebar">
