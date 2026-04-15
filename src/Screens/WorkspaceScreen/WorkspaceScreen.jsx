@@ -254,9 +254,12 @@ function WorkspaceScreen() {
                                 <h1 className="workspace-sidebar-header-title">
                                     {workspace?.title || 'Cargando...'}
                                 </h1>
-                                <div className="workspace-sidebar-header-edit tooltip">
-                                    <i className="bi bi-pencil"></i>
-                                </div>
+                                {
+                                    member_logged?.role === 'owner' &&
+                                    <div className="workspace-sidebar-header-edit tooltip">
+                                        <i className="bi bi-pencil"></i>
+                                    </div>
+                                }
                             </div>
                             <div className="workspace-description">
                                 <span>Descripción</span>
@@ -279,7 +282,7 @@ function WorkspaceScreen() {
                                     {renderChannels()}
                                 </ul>
                                 {
-                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
                                     <button 
                                         className="workspace-add-item workspace-add-channel"
                                         onClick={() => setShowAddChannelModal(true)}
@@ -306,7 +309,7 @@ function WorkspaceScreen() {
                                     {renderMembers()}
                                 </ul>
                                 {
-                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
                                     <button 
                                         className="workspace-add-item workspace-add-member"
                                         onClick={() => setShowInviteUserModal(true)}
@@ -339,7 +342,7 @@ function WorkspaceScreen() {
                                     </div>
                                 </div>
                                 {
-                                    member_logged?.role === 'admin' || member_logged?.role === 'owner' &&
+                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
                                     <button 
                                         className="invite-members"
                                         onClick={() => setShowInviteUserModal(true)}
