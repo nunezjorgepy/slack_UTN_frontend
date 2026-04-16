@@ -254,6 +254,13 @@ function WorkspaceScreen() {
                                 <h1 className="workspace-sidebar-header-title">
                                     {workspace?.title || 'Cargando...'}
                                 </h1>
+                                {/* Agregar boton para eliminar de fondo rojo, sólo visible para owner */}
+                                {
+                                    member_logged?.role === 'owner' &&
+                                    <div className="workspace-sidebar-header-delete tooltip">
+                                        <i className="bi bi-trash"></i>
+                                    </div>
+                                }
                                 {
                                     member_logged?.role === 'owner' &&
                                     <div className="workspace-sidebar-header-edit tooltip">

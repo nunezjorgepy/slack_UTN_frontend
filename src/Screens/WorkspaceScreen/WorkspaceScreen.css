@@ -155,15 +155,22 @@ Workspace Sidebar Header
     height: 0;
     overflow: hidden;
 }
-.workspace-sidebar-header-edit {
+.workspace-sidebar-header-edit, .workspace-sidebar-header-delete {
     cursor: pointer;
     font-size: .8rem;
     border: 1px solid var(--white-900);
     border-radius: 5px;
     padding: 3px 4px;
 }
+.workspace-sidebar-header-delete {
+    background-color: var(--warning-color);
+}
 .workspace-sidebar-header-edit::before{
     content: 'Editar título';
+}
+.workspace-sidebar-header-delete::before{
+    content: 'Eliminar';
+    background-color: var(--warning-color);
 }
 
 /* 
