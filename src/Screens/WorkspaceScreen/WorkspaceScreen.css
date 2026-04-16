@@ -12,6 +12,11 @@ Workspace Screen
 ==================================================
 */
 
+/* 
+==================================================
+Error View
+==================================================
+*/
 .workspace-error-view {
     display: flex;
     flex-direction: column;
@@ -52,12 +57,17 @@ Workspace Screen
     padding-left: 20px;
 }
 
+/* 
+==================================================
+Workspace Header
+==================================================
+*/
 .workspace-header{
 display: flex;
 justify-content: center;
 align-items: center;
 gap: 15px;
-width: 600px;
+width: min(90%, 600px);
 height: 40px;
 background-color: transparent;
 }
@@ -105,18 +115,6 @@ background-color: transparent;
     display: flex;
     height: calc(100vh - 40px);
     width: 100%;
-}
-
-/* 
-==================================================
-Tabs Sidebar
-==================================================
-*/
-
-.tabs-sidebar{
-    width: 70px;
-    height: 100%;
-    background-color: var(--primary-color-dark-05);
 }
 
 /* 
@@ -557,6 +555,11 @@ Delete Workspace Modal
     width: 100%;
 }
 
+/* 
+==================================================
+Media Queries
+==================================================
+*/
 @media screen and (max-width: 600px) {
     .workspace-error-title {
         font-size: 1.5rem;
@@ -577,5 +580,9 @@ Delete Workspace Modal
     }
     .workspace-error-list li {
         font-size: .7rem;
+    }
+
+    .workspace-header-search-holder{
+        text-wrap: nowrap;
     }
 }
