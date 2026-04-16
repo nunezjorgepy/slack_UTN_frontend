@@ -33,6 +33,15 @@
     cursor: not-allowed;
 }
 
+/* Botón de advertencia */
+.warning-btn {
+    background-color: var(--warning-color);
+}
+.warning-btn:hover {
+    background-color: oklch(from var(--warning-color) calc(l - 0.1) c h);
+}
+
+
 /* Botón chico */
 .small-btn {
     padding: 0.5rem;

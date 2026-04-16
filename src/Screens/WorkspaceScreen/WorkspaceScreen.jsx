@@ -13,6 +13,7 @@ import memberWorkspaceService from '../../services/memberWorkspaceService'
 // Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
+import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
 // Constants
 import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState as ADD_CHANNEL_INITIAL_STATE, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 // Context
@@ -31,12 +32,14 @@ function WorkspaceScreen() {
     const [showAddChannelModal, setShowAddChannelModal] = useState(false)
     const [showInviteUserModal, setShowInviteUserModal] = useState(false)
     const [showEditWorkspaceModal, setShowEditWorkspaceModal] = useState(false)
+    const [showDeleteWorkspaceModal, setShowDeleteWorkspaceModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
     const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
     const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
     const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError } = useRequest()
+    const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError } = useRequest()
 
     const { 
         workspace, 
@@ -224,6 +227,22 @@ function WorkspaceScreen() {
         }
     }
 
+    const onDeleteWorkspace = () => {
+        try {
+            deleteWorkspaceRequest({
+                requestCb: async () => {
+                    const response = await workspaceService.softDeleteWorkspace(workspaceId)
+                    setTimeout(() => {
+                        navigate('/')
+                    }, 3000)
+                    return response
+                }
+            })
+        } catch (error) {
+            console.error('Error al eliminar el espacio de trabajo:', error)
+        }
+    }
+
     // Cambia el título de la página
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
@@ -276,7 +295,10 @@ function WorkspaceScreen() {
                                 {/* Agregar boton para eliminar de fondo rojo, sólo visible para owner */}
                                 {
                                     member_logged?.role === 'owner' &&
-                                    <button className="workspace-sidebar-header-delete tooltip">
+                                    <button 
+                                        className="workspace-sidebar-header-delete tooltip"
+                                        onClick={() => setShowDeleteWorkspaceModal(true)}
+                                    >
                                         <i className="bi bi-trash"></i>
                                     </button>
                                 }
@@ -518,6 +540,50 @@ function WorkspaceScreen() {
                     >
                         <i className="bi bi-x"></i>
                     </button>
+                </div>
+            </div>}
+
+            {showDeleteWorkspaceModal && 
+            <div className={`workspace-modal`}>
+                <div className="workspace-modal-relative delete-workspace-modal-container">
+                    <div className="information-form-component-container">
+                        <h2 className="information-form-component-title">Eliminar espacio de trabajo</h2>
+                        <span className="information-form-component-subtitle">
+                            ¿Estás seguro de que deseas eliminar el espacio de trabajo <b>{workspace?.title}</b>?
+                        </span>
+                        
+                        <div className="information-form-component-section-preview">
+                            <p>
+                                Esta acción es irreversible. Se borrará <b>TODA</b> la información del espacio de trabajo: 
+                                el espacio, los canales, los miembros y los mensajes.
+                            </p>
+                        </div>
+
+                        {deleteWorkspaceResponse && (
+                            <div className="information-form-component-success">
+                                {'Espacio de trabajo eliminado con éxito. Redirigiendo...'}
+                            </div>
+                        )}
+
+                        {deleteWorkspaceError && (
+                            <div className="information-form-component-error">
+                                {deleteWorkspaceError.message || 'Ocurrió un error al eliminar el espacio de trabajo.'}
+                            </div>
+                        )}
+
+                        <div className="information-form-component-btns-container">
+                            <ButtonComponent 
+                                text="Cancelar" 
+                                onClick={() => setShowDeleteWorkspaceModal(false)} 
+                            />
+                            <ButtonComponent 
+                                text="Eliminar" 
+                                className="warning-btn"
+                                onClick={onDeleteWorkspace}
+                                disabled={deleteWorkspaceLoading}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>}
         </div>

@@ -454,3 +454,66 @@ Add Channel Modal
 .workspace-modal-close-btn:hover{
     background-color: var(--primary-color-10);
 }
+
+/* 
+==================================================
+Delete Workspace Modal
+==================================================
+*/
+.delete-workspace-modal-container {
+    background-color: var(--secondary-color);
+    padding: 40px;
+}
+
+.delete-workspace-modal-container .information-form-component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.delete-workspace-modal-container .information-form-component-title {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.delete-workspace-modal-container .information-form-component-subtitle {
+    color: var(--black-900);
+    margin-bottom: 35px;
+    font-size: 1.1rem;
+    text-align: center;
+    display: block;
+}
+
+.delete-workspace-modal-container .information-form-component-section-preview p {
+    color: var(--black-900) !important;
+    font-size: .95rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.delete-workspace-modal-container .information-form-component-success {
+    color: var(--success-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.delete-workspace-modal-container .information-form-component-error {
+    color: var(--warning-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.delete-workspace-modal-container .information-form-component-btns-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
