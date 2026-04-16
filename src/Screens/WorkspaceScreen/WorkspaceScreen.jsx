@@ -34,6 +34,7 @@ function WorkspaceScreen() {
     const [showEditWorkspaceModal, setShowEditWorkspaceModal] = useState(false)
     const [showDeleteWorkspaceModal, setShowDeleteWorkspaceModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
+    const [showSidebar, setShowSidebar] = useState(false)
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
     const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
@@ -102,7 +103,10 @@ function WorkspaceScreen() {
                 <SiderbarItemComponent 
                     input_name='channel' 
                     component_name={channel.channel_name} 
-                    onClick={() => setChannelId(channel.channel_id)}
+                    onClick={() => {
+                        setChannelId(channel.channel_id)
+                        setShowSidebar(false)
+                    }}
                 />
             </div>
         ))
@@ -272,6 +276,10 @@ function WorkspaceScreen() {
                 <>
                     <header className='workspace-header'>
                         <div className="workspace-header-icons">
+                            {/* Menu toggle button (mobile only) */}
+                            <div className='workspace-header-btn-menu'>
+                                <i className="bi bi-list" onClick={() => setShowSidebar(!showSidebar)}></i>
+                            </div>
                             {/* Home and Logout icons */}
                             <div className='tooltip workspace-header-btn-home'>
                                 <i className="bi bi-house" onClick={() => navigate('/')}></i>
@@ -294,7 +302,7 @@ function WorkspaceScreen() {
                             */}
                             <div className="workspace-layout">
                                 {/* Barra lateral donde se muestran los canales y miembros */}
-                                <aside className="workspace-sidebar">
+                                <aside className={`workspace-sidebar ${showSidebar ? 'active' : ''}`}>
                                     <div className="workspace-sidebar-header">
                                         <h1 className="workspace-sidebar-header-title">
                                             {workspace?.title || 'Cargando...'}

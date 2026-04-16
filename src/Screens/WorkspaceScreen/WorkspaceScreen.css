@@ -90,6 +90,17 @@ background-color: transparent;
     content: 'Cerrar sesión';
 }
 
+.workspace-header-btn-menu {
+    display: none;
+    align-items: center;
+}
+
+.workspace-header-btn-menu i {
+    color: var(--white-900);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
 .workspace-header-search{
     display: flex;
     justify-content: center;
@@ -141,6 +152,7 @@ Workspace Layout
     border-top-left-radius: 6px;
     padding: 10px;
     color: var(--white-900);
+    transition: left 0.3s ease-in-out;
 }
 
 /* 
@@ -584,5 +596,94 @@ Media Queries
 
     .workspace-header-search-holder{
         text-wrap: nowrap;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .workspace-header {
+        width: 95%;
+        justify-content: space-between;
+    }
+
+    .workspace-header-btn-menu {
+        display: flex;
+    }
+
+    .workspace-sidebar {
+        position: absolute;
+        left: -100%;
+        width: 100%;
+        max-width: 100%;
+        z-index: 100;
+        border-radius: 0;
+    }
+
+    .workspace-sidebar.active {
+        left: 0;
+    }
+
+    .workspace-content {
+        flex: 1 1 100%;
+        border-radius: 0;
+    }
+
+    .workspace-chat-header {
+        padding: 10px 20px;
+    }
+
+    .workspace-chat-header-title {
+        font-size: 1.1rem;
+    }
+
+    .workspace-chat-messages {
+        padding: 15px 10px;
+    }
+
+    .workspace-chat-send-message {
+        height: 100px;
+        padding: 10px;
+    }
+
+    .workspace-send-message-form-container {
+        height: 100%;
+    }
+
+    .workspace-sidebar-header-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .workspace-header-icons {
+        gap: 15px;
+    }
+
+    .workspace-header-search-holder {
+        font-size: 0.8rem;
+    }
+
+    .workspace-chat-header {
+        padding: 5px 10px;
+    }
+
+    .workspace-channel-info {
+        gap: 10px;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .workspace-chat-header-title {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-size: 1rem;
+    }
+
+    .invite-members span {
+        display: none;
+    }
+
+    .invite-members {
+        padding: 5px 8px;
     }
 }
