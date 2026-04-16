@@ -12,14 +12,54 @@ Workspace Screen
 ==================================================
 */
 
-.workspace-header{
+.workspace-error-view {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 15px;
-    width: 600px;
-    height: 40px;
-    background-color: transparent;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    color: var(--black-900);
+    background-color: var(--secondary-color);
+}
+
+.workspace-error-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.workspace-error-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+}
+
+.workspace-error-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.workspace-error-list li {
+    font-size: 1rem;
+    position: relative;
+    padding-left: 20px;
+}
+
+.workspace-header{
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px;
+width: 600px;
+height: 40px;
+background-color: transparent;
 }
 
 .workspace-header-icons{
@@ -516,4 +556,26 @@ Delete Workspace Modal
     gap: 30px;
     width: 100%;
 }
-
+
+@media screen and (max-width: 600px) {
+    .workspace-error-title {
+        font-size: 1.5rem;
+    }
+    .workspace-error-subtitle {
+        font-size: 1rem;
+    }
+    .workspace-error-list li {
+        font-size: .9rem;
+    }
+}
+@media screen and (max-width: 340px) {
+    .workspace-error-title {
+        font-size: 1.2rem;
+    }
+    .workspace-error-subtitle {
+        font-size: .8rem;
+    }
+    .workspace-error-list li {
+        font-size: .7rem;
+    }
+}
