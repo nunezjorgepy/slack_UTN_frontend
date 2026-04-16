@@ -1,6 +1,6 @@
 import './WorkspaceScreen.css'
 // React
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router'
 // Hooks
 import useWorkspaces from '../../hooks/useWorkspaces'
@@ -35,6 +35,7 @@ function WorkspaceScreen() {
     const [showDeleteWorkspaceModal, setShowDeleteWorkspaceModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const [showSidebar, setShowSidebar] = useState(false)
+    const messagesEndRef = useRef(null)
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
     const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
@@ -257,6 +258,16 @@ function WorkspaceScreen() {
         }
     }, [channels])
 
+    const scrollToBottom = () => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    useEffect(() => {
+        if (messages?.length > 0) {
+            scrollToBottom()
+        }
+    }, [messages, channelId])
+
     return (
         <div className='backgroung-lienar-gradient'>
             {(!loading && response && !response.ok) ? (
@@ -439,6 +450,7 @@ function WorkspaceScreen() {
                                     */}
                                     <div className="workspace-chat-messages">
                                         {renderMessages()}
+                                        <div ref={messagesEndRef} />
                                     </div>
 
                                     {/* 
