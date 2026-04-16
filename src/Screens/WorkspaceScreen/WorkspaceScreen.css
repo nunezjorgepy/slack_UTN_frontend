@@ -161,6 +161,7 @@ Workspace Sidebar Header
     border: 1px solid var(--white-900);
     border-radius: 5px;
     padding: 3px 4px;
+    color: var(--white-900);
 }
 .workspace-sidebar-header-delete {
     background-color: var(--warning-color);
@@ -411,7 +412,7 @@ Chat Send Message
 Add Channel Modal
 ==================================================
 */
-.workspace-add-channel-modal, .workspace-invite-user-modal{
+.workspace-modal{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -423,7 +424,7 @@ Add Channel Modal
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
-.workspace-channel-modal-relative, .workspace-invite-user-modal-relative{
+.workspace-modal-relative{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -433,7 +434,7 @@ Add Channel Modal
     width: min(90%, 500px);
     height: min-content;
 }
-.workspace-add-channel-close-btn, .workspace-invite-user-close-btn{
+.workspace-modal-close-btn{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -450,6 +451,6 @@ Add Channel Modal
     cursor: pointer;
     transition: all .2s ease-in-out;
 }
-.workspace-add-channel-close-btn:hover, .workspace-invite-user-close-btn:hover{
+.workspace-modal-close-btn:hover{
     background-color: var(--primary-color-10);
 }

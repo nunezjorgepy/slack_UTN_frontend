@@ -51,6 +51,22 @@ const workspaceService = {
 
         const response = await response_http.json()
         return response
+    },
+    editWorkspace: async (workspaceId, workspaceData) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/' + workspaceId,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(workspaceData)
+            }
+        )
+
+        const response = await response_http.json()
+        return response
     }
 }
 

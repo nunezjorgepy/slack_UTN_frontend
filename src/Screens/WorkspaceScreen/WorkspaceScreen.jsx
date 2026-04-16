@@ -20,6 +20,7 @@ import { AuthContext } from '../../context/authContext'
 import useRequest from '../../hooks/useRequest'
 import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
+import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -29,11 +30,13 @@ function WorkspaceScreen() {
     const [channelId, setChannelId] = useState(null)
     const [showAddChannelModal, setShowAddChannelModal] = useState(false)
     const [showInviteUserModal, setShowInviteUserModal] = useState(false)
+    const [showEditWorkspaceModal, setShowEditWorkspaceModal] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
 
     const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
     const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
     const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
+    const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError } = useRequest()
 
     const { 
         workspace, 
@@ -204,6 +207,22 @@ function WorkspaceScreen() {
             console.error('Error al invitar usuario:', error)
         }
     }
+    const onEditWorkspace = (form_data, { resetForm }) => {
+        try {
+            editWorkspaceRequest({
+                requestCb: async () => {
+                    const response = await workspaceService.editWorkspace(workspaceId, form_data)
+                    // Recargar la página tras 3 segundos para mostrar los cambios
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 3000)
+                    return response
+                }
+            })
+        } catch (error) {
+            console.error('Error al editar el espacio de trabajo:', error)
+        }
+    }
 
     // Cambia el título de la página
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
@@ -257,15 +276,18 @@ function WorkspaceScreen() {
                                 {/* Agregar boton para eliminar de fondo rojo, sólo visible para owner */}
                                 {
                                     member_logged?.role === 'owner' &&
-                                    <div className="workspace-sidebar-header-delete tooltip">
+                                    <button className="workspace-sidebar-header-delete tooltip">
                                         <i className="bi bi-trash"></i>
-                                    </div>
+                                    </button>
                                 }
                                 {
                                     member_logged?.role === 'owner' &&
-                                    <div className="workspace-sidebar-header-edit tooltip">
+                                    <button 
+                                        className="workspace-sidebar-header-edit tooltip"
+                                        onClick={() => setShowEditWorkspaceModal(true)}
+                                    >
                                         <i className="bi bi-pencil"></i>
-                                    </div>
+                                    </button>
                                 }
                             </div>
                             <div className="workspace-description">
@@ -411,8 +433,8 @@ function WorkspaceScreen() {
             ===========================================================
             */}
             {showAddChannelModal && 
-            <div className={`workspace-add-channel-modal`}>
-                <div className="workspace-channel-modal-relative">
+            <div className={`workspace-modal`}>
+                <div className="workspace-modal-relative">
                     <InformationFormComponent 
                         form_title={ADD_CHANNEL_FORM_CONSTANTS.form_title}
                         form_subtitle={ADD_CHANNEL_FORM_CONSTANTS.form_subtitle}
@@ -427,7 +449,7 @@ function WorkspaceScreen() {
                     />
                     
                     <button 
-                        className="workspace-add-channel-close-btn"
+                        className="workspace-modal-close-btn"
                         onClick={() => setShowAddChannelModal(false)}
                     >
                         <i className="bi bi-x"></i>
@@ -441,8 +463,8 @@ function WorkspaceScreen() {
             ===========================================================
             */}
             {showInviteUserModal && 
-            <div className={`workspace-invite-user-modal`}>
-                <div className="workspace-invite-user-modal-relative">
+            <div className={`workspace-modal`}>
+                <div className="workspace-modal-relative">
                     <InformationFormComponent 
                         form_title={INVITE_USER_FORM_CONSTANTS.form_title}
                         form_subtitle={INVITE_USER_FORM_CONSTANTS.form_subtitle}
@@ -457,8 +479,42 @@ function WorkspaceScreen() {
                     />
                     
                     <button 
-                        className="workspace-invite-user-close-btn"
+                        className="workspace-modal-close-btn"
                         onClick={() => setShowInviteUserModal(false)}
+                    >
+                        <i className="bi bi-x"></i>
+                    </button>
+                </div>
+            </div>}
+
+            {/* 
+            ===========================================================
+            Edit Workspace Modal
+            ===========================================================
+            */}
+            {showEditWorkspaceModal && 
+            <div className={`workspace-modal`}>
+                <div className="workspace-modal-relative">
+                    <InformationFormComponent 
+                        form_title={EDIT_WORKSPACE_FORM_CONSTANTS.form_title}
+                        form_subtitle={EDIT_WORKSPACE_FORM_CONSTANTS.form_subtitle}
+                        sections={EDIT_WORKSPACE_FORM_CONSTANTS.sections}
+                        button={EDIT_WORKSPACE_FORM_CONSTANTS.button}
+                        initialFormState={{
+                            title: workspace?.title || '',
+                            description: workspace?.description || '',
+                            url_image: workspace?.url_image || ''
+                        }}
+                        successInfo={SUCCES_EDIT_WORKSPACE_INFO}
+                        onSubmitFunction={onEditWorkspace}
+                        errorMessage={errorMessage}
+                        error={editWorkspaceError}
+                        loading={editWorkspaceLoading}
+                    />
+                    
+                    <button 
+                        className="workspace-modal-close-btn"
+                        onClick={() => setShowEditWorkspaceModal(false)}
                     >
                         <i className="bi bi-x"></i>
                     </button>

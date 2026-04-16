@@ -13,16 +13,15 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                     placeholder: "Ingresa el nombre de tu espacio de trabajo",
                     required: true,
                     type: "text",
-                    flex: "flex-50"
+                    flex: "flex-100"
                 },
                 {
                     id: "workspace_description",
                     name: "description",
                     label: "Descripción del espacio de trabajo",
                     placeholder: "Ingresa la descripción de tu espacio de trabajo",
-                    required: true,
                     type: "text",
-                    flex: "flex-50"
+                    flex: "flex-100"
                 },
                 {
                     id: "workspace_url_image",
@@ -55,4 +54,19 @@ export const SUCCES_CREATE_WORKSPACE_INFO = {
         link: "/workspace",
         link_text: "Ir a espacios de trabajo"
     }
+}
+
+export const EDIT_WORKSPACE_FORM_CONSTANTS = {
+    form_title: "Editar espacio de trabajo",
+    form_subtitle: "Modifica los datos de tu espacio de trabajo",
+    sections: CREATE_WORKSPACE_FORM_CONSTANTS.sections,
+    button: {
+        text: "Guardar cambios",
+        type: "submit"
+    }
+}
+
+export const SUCCES_EDIT_WORKSPACE_INFO = {
+    title: "Espacio de trabajo editado exitosamente",
+    body: "La página se recargará en unos segundos para mostrar los cambios."
 }
