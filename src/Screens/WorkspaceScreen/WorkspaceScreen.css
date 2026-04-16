@@ -74,6 +74,7 @@ background-color: transparent;
 
 .workspace-header-icons{
     display: flex;
+    align-items: center;
     gap: 20px;
 }
 
@@ -97,8 +98,9 @@ background-color: transparent;
 
 .workspace-header-btn-menu i {
     color: var(--white-900);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     cursor: pointer;
+    display: block;
 }
 
 .workspace-header-search{
