@@ -23,6 +23,22 @@ const memberWorkspaceService = {
 
         const response = await response_http.json()
         return response
+    },
+    // Response to Invitation
+    responseToInvitation: async (workspaceId) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/' + workspaceId + '/member/response-to-invitation',
+            {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+
+        const response = await response_http.json()
+        return response
     }
 }
 

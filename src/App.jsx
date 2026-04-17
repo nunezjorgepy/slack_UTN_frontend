@@ -13,6 +13,7 @@ import DevelopmentScreen from "./Screens/DevelopmentScreen/DevelopmentScreen";
 import AuthMiddleware from "./middlewares/AuthMiddleware";
 import VerifyWorkspaceMiddleware from "./middlewares/VerifyWorkspaceMiddleware";
 import CreateWorkspaceScreen from "./Screens/CreateWorkspaceScreen/CreateWorkspaceScreen";
+import ResponseToInvitationScreen from "./Screens/ResponseToInvitationScreen/ResponseToInvitationScreen";
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/" element={<HomePageScreen />} />
           <Route element={<VerifyWorkspaceMiddleware />}>
             <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
+            <Route path="/:workspaceId/response-to-invitation" element={<ResponseToInvitationScreen />} />
           </Route>
           <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
