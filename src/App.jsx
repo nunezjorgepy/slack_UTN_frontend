@@ -11,6 +11,7 @@ import ResetPasswordScreen from "./Screens/ResetPasswordScreen/ResetPasswordScre
 import { LINKS_TO_OWN_SCREENS } from "./constants/general.constants";
 import DevelopmentScreen from "./Screens/DevelopmentScreen/DevelopmentScreen";
 import AuthMiddleware from "./middlewares/AuthMiddleware";
+import VerifyWorkspaceMiddleware from "./middlewares/VerifyWorkspaceMiddleware";
 import CreateWorkspaceScreen from "./Screens/CreateWorkspaceScreen/CreateWorkspaceScreen";
 
 function App() {
@@ -20,7 +21,9 @@ function App() {
       <Routes>
         <Route element={<AuthMiddleware />}>
           <Route path="/" element={<HomePageScreen />} />
-          <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
+          <Route element={<VerifyWorkspaceMiddleware />}>
+            <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
+          </Route>
           <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
         
