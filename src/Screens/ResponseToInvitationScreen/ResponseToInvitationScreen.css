@@ -1,0 +1,66 @@
+.response-invitation-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-color);
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.response-invitation-container {
+    background-color: var(--secondary-color);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px var(--black-100);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.response-invitation-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.response-invitation-message h2 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    line-height: 1.4;
+}
+
+.response-invitation-message.error h2 {
+    color: var(--error-color);
+}
+
+.response-invitation-message.success h2 {
+    color: var(--success-color);
+}
+
+.response-invitation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive adjustments */
+@media screen and (min-width: 600px) {
+    .response-invitation-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .response-invitation-buttons a {
+        flex: 1;
+        max-width: 250px;
+    }
+}

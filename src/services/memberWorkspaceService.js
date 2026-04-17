@@ -25,9 +25,9 @@ const memberWorkspaceService = {
         return response
     },
     // Response to Invitation
-    responseToInvitation: async (workspaceId) => {
+    responseToInvitation: async (workspaceId, response_token) => {
         const response_http = await fetch(
-            API_URL + '/api/workspace/' + workspaceId + '/member/response-to-invitation',
+            API_URL + '/api/workspace/' + workspaceId + '/member/response-to-invitation?response_token=' + response_token,
             {
                 method: 'PATCH',
                 headers: {
