@@ -1,5 +1,4 @@
 import './LogInScreen.css'
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
@@ -98,7 +97,6 @@ function LogInScreen() {
 
     return (
         <>
-            <HeaderComponent />
             <main>
                 <section className='login-section'>
                     <InformationFormComponent

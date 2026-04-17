@@ -1,5 +1,4 @@
 import './ResetPasswordScreen.css'
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 import { RESET_PASSWORD_CONSTANTS, SUCCES_INFO, initialFormState } from '../../constants/resetPassword.constants'
@@ -85,7 +84,6 @@ function ResetPasswordScreen() {
 
     return (
         <>
-            <HeaderComponent />
             <main>
                 <section className='reset-password-section'>
                     <InformationFormComponent

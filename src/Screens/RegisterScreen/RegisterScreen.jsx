@@ -1,23 +1,16 @@
 import './RegisterScreen.css'
-
 // Components
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
-
 // Constants
 import { REGISTER_FORM_CONSTANTS, SUCCES_REGISTER_INFO, initialFormState } from '../../constants/registerForm.constants'
 import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
-
 // Hooks
 import useRequest from '../../hooks/useRequest'
-
 // Services
 import authService from '../../services/authService'
-
 // Context
 import { AuthContext } from '../../context/authContext'
-
 // React
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
@@ -123,7 +116,6 @@ function RegisterScreen() {
 
   return (
     <>
-      <HeaderComponent />
       <main>
         <section className='register-section'>
           <InformationFormComponent 

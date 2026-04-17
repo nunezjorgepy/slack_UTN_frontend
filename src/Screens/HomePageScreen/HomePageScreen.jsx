@@ -1,7 +1,5 @@
 import './HomePageScreen.css'
-
 // Import Components
-import HeaderComponent from "../../components/layout/HeaderComponent/HeaderComponent"
 import FooterComponent from "../../components/layout/FooterComponent/FooterComponent"
 import { Link } from 'react-router'
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
@@ -38,7 +36,6 @@ function HomePageScreen() {
 
     return (
         <>
-            <HeaderComponent />
             <main>
                 <section className='hp-hero o-hero'>
                     <div className="hp-workspaces">

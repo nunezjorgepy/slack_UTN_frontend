@@ -1,7 +1,6 @@
 import './VerifyEmailScreen.css'
 import { useEffect } from 'react'
 import { useNavigate, useSearchParams } from 'react-router'
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import useRequest from '../../hooks/useRequest'
 import authService from '../../services/authService'
 import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
@@ -39,7 +38,6 @@ function VerifyEmailScreen() {
 
     return (
         <div>
-            <HeaderComponent />
             <main>
                 <section className='verify-email-section'>
                     {loading && <p>Verificando...</p>}

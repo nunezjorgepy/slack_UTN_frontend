@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import './ResetPasswordRequestScreen.css'
 
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
@@ -61,7 +60,6 @@ function ResetPasswordRequestScreen() {
 
     return (
         <>
-            <HeaderComponent />
             <main>
                 <section className='reset-password-request-section'>
                     <InformationFormComponent

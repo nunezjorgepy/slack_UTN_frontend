@@ -1,5 +1,4 @@
 // Components
-import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
 
@@ -77,7 +76,6 @@ function CreateWorkspaceScreen() {
     )
     return (
         <>
-            <HeaderComponent />
             <main>
                 <section className='create-workspace-section'>
                     <InformationFormComponent
