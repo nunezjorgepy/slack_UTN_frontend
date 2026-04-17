@@ -24,8 +24,8 @@ function App() {
           <Route path="/" element={<HomePageScreen />} />
           <Route element={<VerifyWorkspaceMiddleware />}>
             <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
-            <Route path="/:workspaceId/response-to-invitation" element={<ResponseToInvitationScreen />} />
           </Route>
+          <Route path="/:workspaceId/response-to-invitation" element={<ResponseToInvitationScreen />} />
           <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
         

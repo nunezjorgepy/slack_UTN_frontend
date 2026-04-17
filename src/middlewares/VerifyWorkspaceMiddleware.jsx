@@ -5,6 +5,10 @@ import workspaceService from '../services/workspaceService';
 import WorkspaceNotFoundScreen from '../Screens/WorkspaceNotFoundScreen/WorkspaceNotFoundScreen';
 
 const VerifyWorkspaceMiddleware = () => {
+    /**
+     * Descripción: Antes de entrar al espacio de trabajo, verifica que el usuario tenga permisos para entrar.
+     * @returns {Screen} - Redirecciona a la página de error si no tiene permisos o a la del espacio si los tiene.
+     */
     const { workspaceId } = useParams();
     const { sendRequest, response, loading } = useRequest();
 
