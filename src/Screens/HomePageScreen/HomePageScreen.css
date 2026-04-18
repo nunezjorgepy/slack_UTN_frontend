@@ -1,4 +1,6 @@
-@import "../../variables.css";
+:root {
+    --workspace-section-title-min-height: 20px;
+}
 
 .hp-hero{
     width: 100%;
@@ -47,6 +49,7 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0;
+    min-height: var(--workspace-section-title-min-height);
 }
 
 /* Lista de espacios de trabajo */
@@ -122,6 +125,14 @@
     margin-left: .5rem;
 }
 
+/* 
+==============================================
+Tarjetas
+==============================================
+*/
+.down-with-the-cards {
+    min-height: var(--workspace-section-title-min-height);
+}
 
 /* 
 ==============================================

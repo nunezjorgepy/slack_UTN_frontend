@@ -6,6 +6,7 @@ import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewCompo
 import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
+import CardComponent from '../../components/ui/CardComponent/CardComponent'
 
 function HomePageScreen() {
     // Cambia el título de la página
@@ -97,8 +98,29 @@ function HomePageScreen() {
                                     </div>
                                 </div>
 
+                                {/* 
+                                ==================================
+                                Tarjetas
+                                ==================================
+                                */}
                                 <div className="workspaces-sidebar">
-                                    Completar con Trajetas
+                                    <div className="down-with-the-cards">
+                                        {/* Sirve para bajar las tarjetas así quedan a la altura de los espacios de trabajo */}
+                                    </div>
+                                    <CardComponent 
+                                        card_title={'Tu plan Pro de Slack'}
+                                        card_p={'Ve lo que incluye tu plan'}
+                                        card_link_text={'Más información'}
+                                        card_link_to={'/'}
+                                    />
+                                    <CardComponent 
+                                        card_title={'Comenzar con tu plantilla.'}
+                                        card_p={'Pon en marcha proyectos con un solo clic.'}
+                                        card_link_text={'Exploar plantilla'}
+                                        card_link_to={'/'}
+                                        card_image={'https://a.slack-edge.com/02ee189/marketing/img/homepage/signed-in-users/card-assets/Templates-small@2x.png'}
+                                        card_alt={'Imagen de plantillas'}
+                                    />
                                 </div>
                             </div>
                         </div>
