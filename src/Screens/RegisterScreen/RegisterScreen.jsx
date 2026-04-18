@@ -14,6 +14,7 @@ import { AuthContext } from '../../context/authContext'
 // React
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { passwordValidation } from '../../validations/shared/password.validation'
 
 function RegisterScreen() {
   document.title = 'Slack UTN - Registrate'
@@ -62,20 +63,9 @@ function RegisterScreen() {
     }
 
     // Validar que password tenga al menos 8 caracteres
-    if (formState.password.trim().length < 8) {
-      setErrorMessage('La contraseña debe tener al menos 8 caracteres')
-      return
-    }
-
-    // Y menos de 16
-    if (formState.password.trim().length > 16) {
-      setErrorMessage('La contraseña debe tener menos de 16 caracteres')
-      return
-    }
-
-    // Validar que password y confirmPassword sean iguales
-    if (formState.password.trim() !== formState.confirmPassword.trim()) {
-      setErrorMessage('Las contraseñas no coinciden')
+    const validatePassword = passwordValidation(formState.password, formState.confirmPassword)
+    if (validatePassword) {
+      setErrorMessage(validatePassword)
       return
     }
 

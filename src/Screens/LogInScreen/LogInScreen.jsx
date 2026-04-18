@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router'
 
 import authService from '../../services/authService'
 import { AuthContext } from '../../context/authContext'
+import { passwordValidation } from '../../validations/shared/password.validation'
 
 function LogInScreen() {
     const { form_title, form_subtitle, sections, button, footer } = LOG_IN_FORM_CONSTANTS
@@ -48,15 +49,9 @@ function LogInScreen() {
             return
         }
 
-        // Validar que la contraseña tenga al menos 8 caracteres
-        if (formState.password.trim().length < 8) {
-            setErrorMessage('La contraseña debe tener al menos 8 caracteres')
-            return
-        }
-
-        // Y menos de 16
-        if (formState.password.trim().length > 16) {
-            setErrorMessage('La contraseña debe tener menos de 16 caracteres')
+        const validatePassword = passwordValidation(formState.password)
+        if (validatePassword) {
+            setErrorMessage(validatePassword)
             return
         }
 
