@@ -1,3 +1,4 @@
+import { MEMBER_ROLES } from "./role.constants"
 
 
 export const INVITE_USER_FORM_CONSTANTS = {
@@ -24,8 +25,8 @@ export const INVITE_USER_FORM_CONSTANTS = {
                     type: "select",
                     flex: "flex-100",
                     options: [
-                        { value: "user", label: "Usuario" },
-                        { value: "admin", label: "Administrador" }
+                        { value: MEMBER_ROLES.user, label: "Usuario" },
+                        { value: MEMBER_ROLES.admin, label: "Administrador" }
                     ]
                 }
             ]
@@ -39,7 +40,7 @@ export const INVITE_USER_FORM_CONSTANTS = {
 
 export const initialFormState = {
     [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[0].name]: "",
-    [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[1].name]: "user"
+    [INVITE_USER_FORM_CONSTANTS.sections[0].inputs[1].name]: MEMBER_ROLES.user
 }
 
 export const SUCCES_INVITE_USER_INFO = {

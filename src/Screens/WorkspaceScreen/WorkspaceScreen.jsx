@@ -22,6 +22,7 @@ import useRequest from '../../hooks/useRequest'
 import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
+import { MEMBER_ROLES } from '../../constants/role.constants'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -306,7 +307,7 @@ function WorkspaceScreen() {
                                 </h1>
                                 {/* Agregar boton para eliminar de fondo rojo, sólo visible para owner */}
                                 {
-                                    member_logged?.role === 'owner' &&
+                                    member_logged?.role === MEMBER_ROLES.owner &&
                                     <button 
                                         className="workspace-sidebar-header-delete tooltip"
                                         onClick={() => setShowDeleteWorkspaceModal(true)}
@@ -315,7 +316,7 @@ function WorkspaceScreen() {
                                     </button>
                                 }
                                 {
-                                    member_logged?.role === 'owner' &&
+                                    member_logged?.role === MEMBER_ROLES.owner &&
                                     <button 
                                         className="workspace-sidebar-header-edit tooltip"
                                         onClick={() => setShowEditWorkspaceModal(true)}
@@ -345,7 +346,7 @@ function WorkspaceScreen() {
                                     {renderChannels()}
                                 </ul>
                                 {
-                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
+                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
                                     <button 
                                         className="workspace-add-item workspace-add-channel"
                                         onClick={() => setShowAddChannelModal(true)}
@@ -372,7 +373,7 @@ function WorkspaceScreen() {
                                     {renderMembers()}
                                 </ul>
                                 {
-                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
+                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
                                     <button 
                                         className="workspace-add-item workspace-add-member"
                                         onClick={() => setShowInviteUserModal(true)}
@@ -405,7 +406,7 @@ function WorkspaceScreen() {
                                     </div>
                                 </div>
                                 {
-                                    (member_logged?.role === 'admin' || member_logged?.role === 'owner') &&
+                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
                                     <button 
                                         className="invite-members"
                                         onClick={() => setShowInviteUserModal(true)}

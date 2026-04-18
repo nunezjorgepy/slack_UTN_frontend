@@ -120,7 +120,6 @@ function HomePageScreen() {
                                         card_link_to={'/'}
                                         card_image={'https://a.slack-edge.com/02ee189/marketing/img/homepage/signed-in-users/card-assets/Templates-small@2x.png'}
                                         card_alt={'Imagen de plantillas'}
-                                        card_type={'card-row'}
                                     />
                                 </div>
                             </div>
