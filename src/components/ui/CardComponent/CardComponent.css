@@ -2,7 +2,6 @@
     --card-image-width-small: 80px;
     --card-image-width-big: 120px;
 }
-
 .card-component-container{
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -11,6 +10,7 @@
     position: relative;
     padding: 20px;
     min-height: 170px;
+    width: min(370px, 100%);
     background-color: var(--secondary-color);
     border: 1px solid #1818180a;
     border-radius: 1rem;
@@ -68,7 +68,7 @@ Extensiones para filas
 .card-component-container.card-row{
     grid-template-rows: 50px 1fr;
     row-gap: 1rem;
-    min-width: 370px;
+    width: min(370px, 100%);
 }
 .card-component-header.card-row {
     grid-column: 1 / 3;
@@ -88,4 +88,24 @@ Extensiones para filas
 }
 .card-no-image.card-row {
     display: none;
+}
+
+/* 
+====================
+Media queries
+====================
+*/
+@media screen and (max-width: 400px) {
+    .card-component-container {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+    .card-component-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-component-image, .card-no-image{
+        display: none;
+    }
 }

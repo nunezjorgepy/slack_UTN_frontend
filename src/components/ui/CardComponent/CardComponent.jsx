@@ -14,8 +14,8 @@ function CardComponent(props) {
     } = props
 
     return (
-        <div className={`card-component-container ${card_type}`}> {/*  */}
-            <div className={`card-component-header ${card_type}`}>{/*  */}
+        <div className={`card-component-container ${card_type ? card_type : ''}`}>
+            <div className={`card-component-header ${card_type ? card_type : ''}`}>
                 {/* Header */}
                 <h3 className="card-component-title">
                     {card_title}
@@ -26,7 +26,7 @@ function CardComponent(props) {
             </div>
 
             {/* Link */}
-            <div className={`card-component-link ${card_type}`}>{/*  */}
+            <div className={`card-component-link ${card_type ? card_type : ''}`}>
                 <Link to={card_link_to}>
                     <ButtonComponent 
                         text={card_link_text} 
@@ -37,10 +37,10 @@ function CardComponent(props) {
 
             {/* Image */}
             {card_image 
-                ? <div className={`card-component-image ${card_type}`}>{/*  */}
+                ? <div className={`card-component-image ${card_type ? card_type : ''}`}>
                     <img src={card_image} alt={card_alt} />
                 </div>
-                : <div className={`card-no-image ${card_type}`}></div> /*  */
+                : <div className={`card-no-image ${card_type ? card_type : ''}`}></div>
             }
         </div>
     )
