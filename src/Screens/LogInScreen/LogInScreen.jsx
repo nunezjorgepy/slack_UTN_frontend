@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router'
 import authService from '../../services/authService'
 import { AuthContext } from '../../context/authContext'
 import { passwordValidation } from '../../validations/shared/password.validation'
+import { emailValidation } from '../../validations/shared/email.validation'
 
 function LogInScreen() {
     const { form_title, form_subtitle, sections, button, footer } = LOG_IN_FORM_CONSTANTS
@@ -24,28 +25,12 @@ function LogInScreen() {
     const navigate = useNavigate()
 
     const onLogIn = (formState) => {
-        // TODO: Debería crear un sistema de manejo de erorres, pero por ahora lo dejo acá.
-        // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
-
         // Validar que formState tenga todos los campos requeridos
         setErrorMessage('')
 
-        const requiredFields = [
-            'email',
-            'password'
-        ]
-
-        const missingFields = requiredFields.filter(field => !formState[field].trim())
-
-        if (missingFields.length > 0) {
-            setErrorMessage('Faltan campos obligatorios')
-            return
-        }
-
         // Validar que email sea un email válido
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(formState.email.trim())) {
-            setErrorMessage('El email no es válido')
+        if (emailValidation(formState.email)) {
+            setErrorMessage(emailValidation(formState.email))
             return
         }
 
@@ -66,9 +51,6 @@ function LogInScreen() {
         }
     }
 
-    // Si el usuario ya esta logueado, no lo dejo entrar al login
-    // Probablemente esto sería mejor con un middleware
-    // TODO: si conviene el middleware, implementarlo
     useEffect(
         () => {
             if (isLogged) {

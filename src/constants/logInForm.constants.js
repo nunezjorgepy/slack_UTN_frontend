@@ -12,7 +12,7 @@ export const LOG_IN_FORM_CONSTANTS = {
                     label: "Email",
                     placeholder: "Ingresa tu email",
                     required: true,
-                    type: "text",
+                    type: "email",
                     flex: "flex-100",
                 },
                 {
