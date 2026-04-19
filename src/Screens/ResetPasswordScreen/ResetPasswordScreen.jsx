@@ -4,10 +4,11 @@ import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuc
 import { RESET_PASSWORD_CONSTANTS, SUCCES_INFO, initialFormState } from '../../constants/resetPassword.constants'
 import useRequest from '../../hooks/useRequest'
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import authService from '../../services/authService'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
+import { changePasswordValidations } from '../../validations/changePasswordValidations'
 
 function ResetPasswordScreen() {
     const { reset_password_token } = useParams()
@@ -15,12 +16,14 @@ function ResetPasswordScreen() {
     const { sendRequest, response, error, loading } = useRequest()
     const { manageResetPassword } = useContext(AuthContext)
     const [errorMessage, setErrorMessage] = useState('')
+    const { isLogged } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     if (!reset_password_token) {
         return (
             <>
                 <HeaderComponent />
-                <main>
+                <main className='form-screens-main'>
                     <p>Token no proporcionado</p>
                 </main>
             </>
@@ -30,32 +33,10 @@ function ResetPasswordScreen() {
     const onResetPassword = (formState) => {
         // Seteo el mensaje de error en null
         setErrorMessage('')
-        // Verificar que no falten campos
-        const requiredFields = [
-            'password',
-            'confirmPassword'
-        ]
-        const missingFields = requiredFields.filter(field => !formState[field].trim())
-        if (missingFields.length > 0) {
-            setErrorMessage('Faltan campos obligatorios')
-            return
-        }
-
-        // Verificar que las contraseñas sean iguales
-        if (formState.password.trim() !== formState.confirmPassword.trim()) {
-            setErrorMessage('Las contraseñas no coinciden')
-            return
-        }
-
-        // Verificar que la contraseña tenga al menos 8 caracteres
-        if (formState.password.trim().length < 8) {
-            setErrorMessage('La contraseña debe tener al menos 8 caracteres')
-            return
-        }
-
-        // Y menos de 16
-        if (formState.password.trim().length > 16) {
-            setErrorMessage('La contraseña debe tener menos de 16 caracteres')
+        
+        let password_validation = changePasswordValidations(formState.password, formState.confirmPassword)
+        if (password_validation) {
+            setErrorMessage(password_validation)
             return
         }
 
@@ -75,6 +56,12 @@ function ResetPasswordScreen() {
     }
 
     useEffect(() => {
+        if (isLogged) {
+            navigate('/')
+        }
+    }, [isLogged])
+
+    useEffect(() => {
         if (response) {
             setTimeout(() => {
                 manageResetPassword()
@@ -84,7 +71,7 @@ function ResetPasswordScreen() {
 
     return (
         <>
-            <main>
+            <main className='form-screens-main'>
                 <section className='reset-password-section'>
                     <InformationFormComponent
                         form_title={form_title}

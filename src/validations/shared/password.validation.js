@@ -21,9 +21,6 @@ export const passwordValidation = (password, confirmPassword = '') => {
     else if (trimmed_password.length < PASSWORD_REQUIRMENT.minLength) {
         error = `La contraseña debe tener al menos ${PASSWORD_REQUIRMENT.minLength} caracteres.`
     } 
-    else if (trimmed_password.length > PASSWORD_REQUIRMENT.maxLength) {
-        error = `La contraseña debe tener menos de ${PASSWORD_REQUIRMENT.maxLength} caracteres.`
-    } 
     /* Verifico que las contraseñas sean iguales, si es que se necesita. */
     else if (confirmPassword && password !== confirmPassword) {
         error = 'Las contraseñas no coinciden'
@@ -42,6 +39,9 @@ export const passwordValidation = (password, confirmPassword = '') => {
     else if (/\s/.test(trimmed_password)) {
         error = `La contraseña no puede contener espacios.`
     }
+    else if (trimmed_password.length > PASSWORD_REQUIRMENT.maxLength) {
+        error = `La contraseña debe tener menos de ${PASSWORD_REQUIRMENT.maxLength} caracteres.`
+    } 
     /* TODO: agregar caracteres espaciales, conssiderando al _ como tal */
 
     // Si no hay errores
