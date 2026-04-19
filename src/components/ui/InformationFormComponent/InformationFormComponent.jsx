@@ -54,6 +54,7 @@ function InformationFormComponent(props) {
                                     name={input.name} 
                                     onChange={handleChangeInput}
                                     value={formState[input.name]}
+                                    required={input.required}
                                 >
                                     <option value="" disabled>{input.placeholder}</option>
                                     {input.options.map((option, index) => (
@@ -70,6 +71,7 @@ function InformationFormComponent(props) {
                                     placeholder={input.placeholder}
                                     onChange={handleChangeInput}
                                     value={formState[input.name]}
+                                    required={input.required}
                                 />
                             )}
                         </div>

@@ -24,6 +24,7 @@ import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STA
 import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
 import { MEMBER_ROLES } from '../../constants/role.constants'
 import { inviteUserValidations } from '../../validations/inviteUserValidations'
+import { createChannelValidations } from '../../validations/createChannelValidations'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -135,33 +136,14 @@ function WorkspaceScreen() {
     }
 
     const onAddChannel = (form_data, { resetForm }) => {
-        // Faltan las valdicaiones
-        if (!form_data.name.trim()) {
-            setErrorMessage('El nombre del canal es requerido')
-            return
-        }
+        setErrorMessage('')
 
-        // Validar que el nombre del canal tenga al menos 3 caracteres
-        if (form_data.name.trim().length < 3) {
-            setErrorMessage('El nombre del canal debe tener al menos 3 caracteres')
-            return
-        }
-
-        // Validar que el nombre del canal tenga menos de 50 caracteres
-        if (form_data.name.trim().length > 50) {
-            setErrorMessage('El nombre del canal debe tener menos de 50 caracteres')
-            return
-        }
-
-        // Si la descripción existe y es menor a 10 caracteres, mostrar error
-        if (form_data.description && form_data.description.trim().length < 10) {
-            setErrorMessage('La descripción debe tener al menos 10 caracteres')
-            return
-        }
-
-        // Si la descripción existe y es mayor a 100 caracteres, mostrar error
-        if (form_data.description && form_data.description.trim().length > 100) {
-            setErrorMessage('La descripción debe tener menos de 100 caracteres')
+        const channel_error = createChannelValidations({
+            name: form_data.name, 
+            description: form_data.description
+        })
+        if (channel_error) {
+            setErrorMessage(channel_error)
             return
         }
 
