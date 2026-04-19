@@ -23,6 +23,7 @@ import MessageComponent from '../../components/ui/MessageComponent/MessageCompon
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
 import { MEMBER_ROLES } from '../../constants/role.constants'
+// Validations
 import { inviteUserValidations } from '../../validations/inviteUserValidations'
 import { createChannelValidations } from '../../validations/createChannelValidations'
 import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
@@ -137,8 +138,6 @@ function WorkspaceScreen() {
     }
 
     const onAddChannel = (form_data, { resetForm }) => {
-        setErrorMessage('')
-
         const channel_error = createChannelValidations({
             name: form_data.name, 
             description: form_data.description
@@ -147,6 +146,8 @@ function WorkspaceScreen() {
             setErrorMessage(channel_error)
             return
         }
+        
+        setErrorMessage('')
 
         try {
             sendRequest({
@@ -183,12 +184,13 @@ function WorkspaceScreen() {
     }
 
     const onInviteUser = (form_data, { resetForm }) => {
-        setErrorMessage('')
         const invite_error = inviteUserValidations(form_data, members)
         if (invite_error) {
             setErrorMessage(invite_error)
             return
         }
+        
+        setErrorMessage('')
 
         try {
             inviteUserRequest({
@@ -246,6 +248,11 @@ function WorkspaceScreen() {
         } catch (error) {
             console.error('Error al eliminar el espacio de trabajo:', error)
         }
+    }
+
+    const onCLoseModal = (setter) => {
+        setter(false)
+        setErrorMessage('')
     }
 
     // Cambia el título de la página
@@ -485,7 +492,7 @@ function WorkspaceScreen() {
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => setShowAddChannelModal(false)}
+                        onClick={() => onCLoseModal(setShowAddChannelModal)}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -515,7 +522,7 @@ function WorkspaceScreen() {
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => setShowInviteUserModal(false)}
+                        onClick={() => onCLoseModal(setShowInviteUserModal)}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -549,13 +556,18 @@ function WorkspaceScreen() {
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => setShowEditWorkspaceModal(false)}
+                        onClick={() => onCLoseModal(setShowEditWorkspaceModal)}
                     >
                         <i className="bi bi-x"></i>
                     </button>
                 </div>
             </div>}
 
+            {/* 
+            ===========================================================
+            Delete Workspace Modal
+            ===========================================================
+            */}
             {showDeleteWorkspaceModal && 
             <div className={`workspace-modal`}>
                 <div className="workspace-modal-relative delete-workspace-modal-container">
