@@ -1,6 +1,11 @@
 
 
 export const emailValidation = (email) => {
+    /**
+     * Descripción: Valida que el email exista y que sea un email valido
+     * @param {string} email - El email a validar
+     * @returns {string|null} - null si el email es valido, de lo contrario devuelve un mensaje de error
+     */
     let error = '';
     const trimmed_lower_email = email.trim().toLowerCase();
 

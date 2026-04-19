@@ -12,6 +12,7 @@ import authService from '../../services/authService'
 import { AuthContext } from '../../context/authContext'
 import { passwordValidation } from '../../validations/shared/password.validation'
 import { emailValidation } from '../../validations/shared/email.validation'
+import { loginValidation } from '../../validations/loginValidations'
 
 function LogInScreen() {
     const { form_title, form_subtitle, sections, button, footer } = LOG_IN_FORM_CONSTANTS
@@ -28,15 +29,10 @@ function LogInScreen() {
         // Validar que formState tenga todos los campos requeridos
         setErrorMessage('')
 
-        // Validar que email sea un email válido
-        if (emailValidation(formState.email)) {
-            setErrorMessage(emailValidation(formState.email))
-            return
-        }
-
-        const validatePassword = passwordValidation(formState.password)
-        if (validatePassword) {
-            setErrorMessage(validatePassword)
+        // Valido que el email y la contraseña sean validos
+        let login_validation = loginValidation(formState.email, formState.password)
+        if (login_validation) {
+            setErrorMessage(login_validation)
             return
         }
 
