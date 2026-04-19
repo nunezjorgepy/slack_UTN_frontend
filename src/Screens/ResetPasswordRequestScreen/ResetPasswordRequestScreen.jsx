@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router'
 
 import authService from '../../services/authService'
 import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
+import { changePasswordRequestValidations } from '../../validations/changePasswordRequestValidations'
 
 function ResetPasswordRequestScreen() {
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_FORM_CONSTANTS
@@ -22,20 +23,11 @@ function ResetPasswordRequestScreen() {
     const onResetPasswordRequest = (formState) => {
         // Seteo el mensaje de error en null
         setErrorMessage('')
-        // Verificar que no falten campos
-        const requiredFields = [
-            'email'
-        ]
-        const missingFields = requiredFields.filter(field => !formState[field])
-        if (missingFields.length > 0) {
-            setErrorMessage('Faltan campos obligatorios')
-            return
-        }
 
-        // Verificar que el mail sea válido
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-        if (!emailRegex.test(formState.email)) {
-            setErrorMessage('El email no es válido')
+        // Validaciones para el formulario
+        let email_validation = changePasswordRequestValidations(formState.email)
+        if (email_validation) {
+            setErrorMessage(email_validation)
             return
         }
 
