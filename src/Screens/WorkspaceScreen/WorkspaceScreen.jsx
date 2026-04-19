@@ -25,6 +25,7 @@ import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../..
 import { MEMBER_ROLES } from '../../constants/role.constants'
 import { inviteUserValidations } from '../../validations/inviteUserValidations'
 import { createChannelValidations } from '../../validations/createChannelValidations'
+import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -206,7 +207,15 @@ function WorkspaceScreen() {
             console.error('Error al invitar usuario:', error)
         }
     }
-    const onEditWorkspace = (form_data, { resetForm }) => {
+    const onEditWorkspace = (form_data) => {
+        let edit_validation_error = createWorkspaceValidations(form_data)
+        if (edit_validation_error) {
+            setErrorMessage(edit_validation_error)
+            return
+        }
+
+        setErrorMessage('')
+
         try {
             editWorkspaceRequest({
                 requestCb: async () => {
