@@ -38,18 +38,12 @@ export const passwordValidation = (password, confirmPassword = '') => {
     else if (!/[0-9]/.test(trimmed_password)) {
         error = `La contraseña debe contener al menos un número.`
     }
+    // No puede contener espacios
+    else if (/\s/.test(trimmed_password)) {
+        error = `La contraseña no puede contener espacios.`
+    }
     /* TODO: agregar caracteres espaciales, conssiderando al _ como tal */
 
     // Si no hay errores
-    if (!error) {
-        return null
-    }
-    // Si hay un error y la confirmacion de la contraseña no esta vacia
-    else if (error && confirmPassword) {
-        return error
-    }
-    // Si hay error y la confirmacion de la contraseña esta vacia
-    else {
-        return 'Usuario o contraseña incorrectos.'
-    }
+    return error || null
 }

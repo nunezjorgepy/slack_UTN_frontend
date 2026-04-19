@@ -76,6 +76,16 @@ Tooltip
 }
 
 /* Clases de utilidad */
+.form-screens-main{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form-screen-container{
+    width: min(90%, 440px);
+}
 .required:after{
     /* Agrega un * a los campos que sean requeridos */
     content: "*";

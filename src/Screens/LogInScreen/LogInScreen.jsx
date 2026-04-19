@@ -70,8 +70,8 @@ function LogInScreen() {
 
     return (
         <>
-            <main>
-                <section className='login-section'>
+            <main className='form-screens-main'>
+                <section className='login-section form-screen-container'>
                     <InformationFormComponent
                         form_title={form_title}
                         form_subtitle={form_subtitle}

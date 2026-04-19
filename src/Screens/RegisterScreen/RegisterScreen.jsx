@@ -15,6 +15,7 @@ import { AuthContext } from '../../context/authContext'
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { passwordValidation } from '../../validations/shared/password.validation'
+import { registerValidation } from '../../validations/registerValidations'
 
 function RegisterScreen() {
   document.title = 'Slack UTN - Registrate'
@@ -35,37 +36,11 @@ function RegisterScreen() {
   const { sendRequest, response, error, loading } = useRequest()
 
   const onRegister = (formState) => {
-    // TODO: Debería crear un sistema de manejo de erorres, pero por ahora lo dejo acá.
-    // Las validaciones conviene hacerlas acá para evitar que el usuario tenga que esperar la respuesta del servidor.
-
-    // Validar que formState tenga todos los campos requeridos
     setErrorMessage('')
 
-    const requiredFields = [
-      'name',
-      'email',
-      'password',
-      'confirmPassword'
-    ]
-
-    const missingFields = requiredFields.filter(field => !formState[field].trim())
-
-    if (missingFields.length > 0) {
-      setErrorMessage('Faltan campos obligatorios')
-      return
-    }
-
-    // Validar que email sea un email válido
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(formState.email.trim())) {
-      setErrorMessage('El email no es válido')
-      return
-    }
-
-    // Validar que password tenga al menos 8 caracteres
-    const validatePassword = passwordValidation(formState.password, formState.confirmPassword)
-    if (validatePassword) {
-      setErrorMessage(validatePassword)
+    let register_validation = registerValidation(formState.name, formState.email, formState.password, formState.confirmPassword)
+    if (register_validation) {
+      setErrorMessage(register_validation)
       return
     }
 
@@ -81,8 +56,6 @@ function RegisterScreen() {
   }
 
   // Si el usuario ya esta logueado, no lo dejo entrar al login
-  // Probablemente esto sería mejor con un middleware
-  // TODO: si conviene el middleware, implementarlo
   useEffect(
       () => {
           if (isLogged) {
@@ -106,7 +79,7 @@ function RegisterScreen() {
 
   return (
     <>
-      <main>
+      <main className='form-screens-main'>
         <section className='register-section'>
           <InformationFormComponent 
             form_title={form_title}
