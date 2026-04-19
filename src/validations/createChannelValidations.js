@@ -1,4 +1,9 @@
-
+const ADD_CHANNEL_CONSTANTS = {
+    name_min_length: 3,
+    name_max_length: 50,
+    description_min_length: 3,
+    description_max_length: 100
+}
 
 export const createChannelValidations = (form_data) => {
     const { name, description } = form_data
@@ -11,19 +16,19 @@ export const createChannelValidations = (form_data) => {
     if (!trimmed_name) {
         name_error = 'El nombre del canal es requerido'
     }
-    else if (trimmed_name.length < 3) {
-        name_error = 'El nombre del canal debe tener al menos 3 caracteres'
+    else if (trimmed_name.length < ADD_CHANNEL_CONSTANTS.name_min_length) {
+        name_error = `El nombre del canal debe tener al menos ${ADD_CHANNEL_CONSTANTS.name_min_length} caracteres`
     }
-    else if (trimmed_name.length > 50) {
-        name_error = 'El nombre del canal debe tener menos de 50 caracteres'
+    else if (trimmed_name.length > ADD_CHANNEL_CONSTANTS.name_max_length) {
+        name_error = `El nombre del canal debe tener menos de ${ADD_CHANNEL_CONSTANTS.name_max_length} caracteres`
     }
 
     // Validaciones para la descripcion
-    if (trimmed_description && trimmed_description.length < 10) {
-        description_error = 'La descripcion debe tener al menos 10 caracteres'
+    if (trimmed_description && trimmed_description.length < ADD_CHANNEL_CONSTANTS.description_min_length) {
+        description_error = `La descripcion del canal debe tener al menos ${ADD_CHANNEL_CONSTANTS.description_min_length} caracteres`
     }
-    else if (trimmed_description && trimmed_description.length > 100) {
-        description_error = 'La descripcion debe tener menos de 100 caracteres'
+    else if (trimmed_description && trimmed_description.length > ADD_CHANNEL_CONSTANTS.description_max_length) {
+        description_error = `La descripcion del canal debe tener menos de ${ADD_CHANNEL_CONSTANTS.description_max_length} caracteres`
     }
 
     return name_error || description_error || null
