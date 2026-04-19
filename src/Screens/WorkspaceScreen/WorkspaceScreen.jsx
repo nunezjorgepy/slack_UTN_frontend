@@ -23,6 +23,7 @@ import MessageComponent from '../../components/ui/MessageComponent/MessageCompon
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
 import { MEMBER_ROLES } from '../../constants/role.constants'
+import { inviteUserValidations } from '../../validations/inviteUserValidations'
 
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
@@ -199,7 +200,13 @@ function WorkspaceScreen() {
     }
 
     const onInviteUser = (form_data, { resetForm }) => {
-        console.log(form_data)
+        setErrorMessage('')
+        const invite_error = inviteUserValidations(form_data, members)
+        if (invite_error) {
+            setErrorMessage(invite_error)
+            return
+        }
+
         try {
             inviteUserRequest({
                 requestCb: async () => {
@@ -213,6 +220,7 @@ function WorkspaceScreen() {
                 }
             })
         } catch (error) {
+            setErrorMessage('Error al invitar usuario')
             console.error('Error al invitar usuario:', error)
         }
     }
