@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 import './ResetPasswordRequestScreen.css'
 
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
@@ -13,12 +13,14 @@ import { useNavigate } from 'react-router'
 import authService from '../../services/authService'
 import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 import { changePasswordRequestValidations } from '../../validations/changePasswordRequestValidations'
+import { AuthContext } from '../../context/authContext'
 
 function ResetPasswordRequestScreen() {
     const { form_title, form_subtitle, sections, button, footer } = RESET_PASSWORD_FORM_CONSTANTS
     const { sendRequest, response, error, loading } = useRequest()
     const [errorMessage, setErrorMessage] = useState('')
     const navigate = useNavigate()
+    const { isLogged } = useContext(AuthContext)
 
     const onResetPasswordRequest = (formState) => {
         // Seteo el mensaje de error en null
@@ -43,6 +45,13 @@ function ResetPasswordRequestScreen() {
     }
 
     useEffect(() => {
+        // Si esta logueado, no debe poder cambiar la contrasñea (no con este método), ya que se supone que la recuerda.
+        if (isLogged) {
+            navigate('/')
+        }
+    }, [isLogged])
+
+    useEffect(() => {
         if (response) {
             setTimeout(() => {
                 navigate('/')
@@ -52,7 +61,7 @@ function ResetPasswordRequestScreen() {
 
     return (
         <>
-            <main>
+            <main className='form-screens-main'>
                 <section className='reset-password-request-section'>
                     <InformationFormComponent
                         form_title={form_title}
