@@ -13,6 +13,7 @@ import useRequest from '../../hooks/useRequest'
 import { AuthContext } from '../../context/authContext'
 import workspaceService from '../../services/workspaceService'
 import { useNavigate } from 'react-router'
+import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
 
 function CreateWorkspaceScreen() {
     // Cambia el título de la página
@@ -24,32 +25,17 @@ function CreateWorkspaceScreen() {
     const navigate = useNavigate()
 
     const onCreateWorkspace = (formState) => {
-        
         // Validaciones
         setErrorMessage('')
 
-        const trimmed_title = formState.title.trim()
-        const trimmed_description = formState.description.trim()
-
-        if (!trimmed_title) {
-            setErrorMessage('El título del espacio de trabajo es requerido')
-            return
-        }
-        if (trimmed_title.length < 10) {
-            setErrorMessage('El título del espacio de trabajo debe tener al menos 10 caracteres')
-            return
-        }
-        if (trimmed_title.length > 50) {
-            setErrorMessage('El título del espacio de trabajo debe tener menos de 50 caracteres')
-            return
-        }
-
-        if (trimmed_description && trimmed_description.length < 10) {
-            setErrorMessage('La descripción del espacio de trabajo debe tener al menos 10 caracteres')
-            return
-        }
-        if (trimmed_description && trimmed_description.length > 100) {
-            setErrorMessage('La descripción del espacio de trabajo debe tener menos de 100 caracteres')
+        let create_workspace_validation = createWorkspaceValidations({
+            title: formState.title.trim(),
+            description: formState.description.trim(),
+            url_image: formState.url_image.trim()
+        })
+        if (create_workspace_validation) {
+            console.log(create_workspace_validation)
+            setErrorMessage(create_workspace_validation)
             return
         }
         
