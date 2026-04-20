@@ -201,6 +201,11 @@ function WorkspaceScreen() {
                         form_data.role
                     )
                     resetForm()
+                    setErrorMessage('Usuario invitado')
+                    setTimeout(() => {
+                        setErrorMessage('')
+                        setShowInviteUserModal(false)
+                    }, 1500)
                     return response
                 }
             })
