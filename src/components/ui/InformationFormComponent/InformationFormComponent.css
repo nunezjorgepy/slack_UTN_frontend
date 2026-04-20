@@ -98,9 +98,24 @@
 }
 
 .form-section-group label {
+    position: relative;
     font-size: 1rem;
     margin-bottom: 8px;
     padding-left: 0.3rem;
+}
+.form-section-group span {
+    position: absolute;
+    right: 10px;
+}
+.form-section-group span i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: lightblue;
+    cursor: pointer;
 }
 .form-section-group input,
 .form-section-group select {

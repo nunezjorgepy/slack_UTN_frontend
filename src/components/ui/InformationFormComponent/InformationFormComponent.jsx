@@ -47,6 +47,9 @@ function InformationFormComponent(props) {
                         <div key={index} className={`form-section-group ${input.flex}`}>
                             <label htmlFor={input.id} className={input.required ? 'required' : ''}>
                                 {input.label}
+                                <span>
+                                    <i class="bi bi-question-circle"></i>
+                                </span>
                             </label>
                             {input.type === 'select' ? (
                                 <select 
