@@ -47,8 +47,17 @@ function InformationFormComponent(props) {
                         <div key={index} className={`form-section-group ${input.flex}`}>
                             <label htmlFor={input.id} className={input.required ? 'required' : ''}>
                                 {input.label}
-                                <span>
-                                    <i class="bi bi-question-circle"></i>
+                                <span className='form-help'>
+                                    <i className="bi bi-question form-help-icon"></i>
+                                    <div className='form-help-requirement-container'>
+                                        <div>Este campo es obligatorio</div>
+                                        <div className='form-help-requires'>Requerimientos:</div>
+                                        <ul>
+                                            <li className='form-help-list-item'>- Primer requerimiento</li>
+                                            <li className='form-help-list-item'>- Segundo requerimiento</li>
+                                            <li className='form-help-list-item'>- Tercer requerimiento</li>
+                                        </ul>
+                                    </div>
                                 </span>
                             </label>
                             {input.type === 'select' ? (
