@@ -35,7 +35,6 @@
     font-size: 1rem;
     font-weight: 600;
 }
-.message-component-header-date{
-    font-size: 0.7rem;
-    color: var(--black-500);
+.message-component-content {
+    word-break: break-word;
 }

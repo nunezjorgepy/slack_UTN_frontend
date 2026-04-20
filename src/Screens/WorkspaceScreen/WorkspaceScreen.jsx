@@ -3,6 +3,7 @@ import './WorkspaceScreen.css'
 import { useContext, useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router'
 // Hooks
+import useRequest from '../../hooks/useRequest'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import useChannels from '../../hooks/useChannels'
 // Services
@@ -14,15 +15,14 @@ import memberWorkspaceService from '../../services/memberWorkspaceService'
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent'
+import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
 // Constants
 import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState as ADD_CHANNEL_INITIAL_STATE, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
-// Context
-import { AuthContext } from '../../context/authContext'
-import useRequest from '../../hooks/useRequest'
-import MessageComponent from '../../components/ui/MessageComponent/MessageComponent'
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
 import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../../constants/createWorkspace.constants'
 import { MEMBER_ROLES } from '../../constants/role.constants'
+// Context
+import { AuthContext } from '../../context/authContext'
 // Validations
 import { inviteUserValidations } from '../../validations/inviteUserValidations'
 import { createChannelValidations } from '../../validations/createChannelValidations'
@@ -464,8 +464,11 @@ function WorkspaceScreen() {
                                         value={message}
                                         onChange={(e) => setMessage(e.target.value)}
                                     ></textarea>
-                                    <button className="workspace-send-message-form-button" type="submit">
-                                        <i className="bi bi-send"></i>
+                                    <button className="workspace-send-message-form-button" type="submit" disabled={sendMessageLoading}>
+                                        {
+                                            !sendMessageLoading &&
+                                            <i className="bi bi-send"></i>
+                                        }
                                     </button>
                                 </form>
                             </div>
