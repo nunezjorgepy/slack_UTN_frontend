@@ -121,6 +121,7 @@ Workspace Sidebar Header
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 10px;
     padding: 10px 0 15px;
     font-size: 1.2rem;
     font-weight: 600;
@@ -134,6 +135,7 @@ Workspace Sidebar Header
     font-size: 1.3rem;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: auto;
 }
 .workspace-description{
     display: flex;
@@ -169,9 +171,6 @@ Workspace Sidebar Header
     border-radius: 5px;
     padding: 3px 4px;
     color: var(--white-900);
-}
-.workspace-sidebar-header-delete {
-    background-color: var(--warning-color);
 }
 .workspace-sidebar-header-edit::before{
     content: 'Editar título';
