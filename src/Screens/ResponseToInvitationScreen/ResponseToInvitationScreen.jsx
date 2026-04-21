@@ -18,7 +18,7 @@ function ResponseToInvitationScreen() {
 
     const message = response?.message || error?.message || "Algo salió mal. Por favor, intenté nuevamente más tarde.";
     const isError = error || (!response?.ok && response !== null);
-    const showWorkspaceButton = response?.message === "Has rechazado la invitación al espacio de trabajo."
+    // TODO: si el usuario rechaza la invitación, sería mejor mostrar un mensaje de color rojo.
 
 
     return (
@@ -35,13 +35,13 @@ function ResponseToInvitationScreen() {
                     <div className={`response-invitation-message ${isError ? 'error' : 'success'}`}>
                         <h2>{message}</h2>
                         <div className="response-invitation-buttons">
-                            {/* TODO: Idealmente, si el usuario es parte del espacio, este botpon se muestra igual. */}
-                            {(!isError && !showWorkspaceButton) && 
+                            {/* TODO: Buscar la forma de redirigir al espacio de trabajo, teniendo en cuenta que tengo que pasar un id por defecto. */}
+                            {/* {(!isError && !showWorkspaceButton) && 
                                 <ButtonComponent
                                     text="Ir al espacio"
-                                    onClick={() => navigate(`/workspace/${workspaceId}`)}
+                                    onClick={() => navigate(`/workspace/${workspaceId}/channel/${response.channel_id}`)}
                                 />
-                            }
+                            } */}
                             <ButtonComponent
                                 text="Ir al inicio"
                                 onClick={() => navigate("/")}
