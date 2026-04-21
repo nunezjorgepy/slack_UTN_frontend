@@ -7,10 +7,10 @@ import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import VerifyEmailScreen from "./Screens/VerifyEmailScreen/VerifyEmailScreen";
 import ResetPasswordRequestScreen from "./Screens/ResetPasswordRequestScreen/ResetPasswordRequestScreen";
 import ResetPasswordScreen from "./Screens/ResetPasswordScreen/ResetPasswordScreen";
+import ChannelScreen from "./Screens/ChannelScreen/ChannelScreen";
 // General constants
 import { LINKS_TO_OWN_SCREENS } from "./constants/general.constants";
 import AuthMiddleware from "./middlewares/AuthMiddleware";
-import VerifyWorkspaceMiddleware from "./middlewares/VerifyWorkspaceMiddleware";
 import CreateWorkspaceScreen from "./Screens/CreateWorkspaceScreen/CreateWorkspaceScreen";
 import ResponseToInvitationScreen from "./Screens/ResponseToInvitationScreen/ResponseToInvitationScreen";
 
@@ -22,6 +22,7 @@ function App() {
         <Route element={<AuthMiddleware />}>
           <Route path="/" element={<HomePageScreen />} />
           <Route path="/workspace/:workspaceId" element={<WorkspaceScreen />} />
+          <Route path="/workspace/:workspaceId/channel/:channelId" element={<ChannelScreen />} />
           <Route path="/:workspaceId/response-to-invitation" element={<ResponseToInvitationScreen />} />
           <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
