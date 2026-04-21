@@ -19,6 +19,21 @@ const messagesService = {
 
         const response = await response_http.json()
         return response
+    },
+    getMessages: async (workspaceId, channelId) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/' + workspaceId + '/channel/' + channelId + '/message',
+            {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-Type': 'application/json'
+                }
+            }
+        )
+
+        const response = await response_http.json()
+        return response
     }
 }
 

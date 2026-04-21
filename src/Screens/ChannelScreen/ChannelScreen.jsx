@@ -4,7 +4,7 @@ import { useContext, useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router'
 // Hooks
 import useRequest from '../../hooks/useRequest'
-import useChannels from '../../hooks/useChannels'
+import useMessages from '../../hooks/useMessages'
 // Services
 import workspaceService from '../../services/workspaceService'
 import channelService from '../../services/channelService'
@@ -47,28 +47,29 @@ function ChannelScreen() {
     const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
     const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError } = useRequest()
     const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError } = useRequest()
-
+    // Busco la información del workspace
     const { 
         workspace, 
         members,
         channels,
-        member_logged,
+        member_logged,  // Verifico el role del miembro para ver qué puedo mostrar
         response, 
         loading, 
         error,
         refetch 
     } = getWorkspace(workspaceId)
-
+    // Busco la información del canal actual
+    const channel = channels?.find((channel) => channel.channel_id === channelId)
+    // Busco los mensajes del canal
     const { 
-        channel, 
         messages,
-        response: channelResponse, 
-        loading: channelLoading, 
-        error: channelError,
+        response: messagesResponse, 
+        loading: messagesLoading, 
+        error: messagesError,
         refetch: refetchMessages
-    } = useChannels(
+    } = useMessages(
         {
-            callbackFunction: () => channelService.getById(workspaceId, channelId),
+            callbackFunction: () => messagesService.getMessages(workspaceId, channelId),
             dependencies: [channelId, workspaceId]
         }
     )
@@ -112,10 +113,10 @@ function ChannelScreen() {
     }
 
     const renderMessages = () => {
-        if (channelLoading && !messages) {
+        if (messagesLoading && !messages) {
             return <div className='siderbar-item-component-error messages-error'>Cargando mensajes...</div>
         }
-        if (channelError) {
+        if (messagesError) {
             return <div className='siderbar-item-component-error messages-error'>Error al cargar los mensajes</div>
         }
         if (messages?.length === 0) {
@@ -167,7 +168,7 @@ function ChannelScreen() {
                 requestCb: async () => {
                     const response = await messagesService.sendMessage(workspaceId, channelId, message)
                     setMessage('')
-                    refetchMessages({ requestCb: () => channelService.getById(workspaceId, channelId) })
+                    refetchMessages({ requestCb: () => messagesService.getMessages(workspaceId, channelId) })
                     return response
                 }
             })
