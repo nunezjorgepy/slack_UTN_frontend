@@ -28,6 +28,8 @@ import { inviteUserValidations } from '../../validations/inviteUserValidations'
 import { createChannelValidations } from '../../validations/createChannelValidations'
 import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
 
+// TODO DELETE: verificar si realmente se usa esta Screen.
+
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
     const { manageLogout } = useContext(AuthContext)

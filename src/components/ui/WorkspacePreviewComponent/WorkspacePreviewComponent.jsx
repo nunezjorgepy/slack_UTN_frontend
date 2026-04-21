@@ -8,7 +8,7 @@ function WorkspacePreviewComponent(props) {
     const url_image = workspace.workspace_url_image || "https://a.slack-edge.com/80588/img/avatars-teams/ava_0026-88.png"
 
     return (
-        <Link to={`${LINKS_TO_OWN_SCREENS.workspace}/${workspace.workspace_id}`} className='workspace-list-item'>
+        <Link to={`${LINKS_TO_OWN_SCREENS.workspace}/${workspace.workspace_id}/channel/${workspace.channel_id}`} className='workspace-list-item'>
             <div className="workspace-list-content">
                 <img className='workspace-icon' src={url_image} alt="Imagen del espacio de trabajo" />
                 <div className="workspace-details">
