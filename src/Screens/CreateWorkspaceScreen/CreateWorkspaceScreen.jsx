@@ -1,23 +1,20 @@
 // Components
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
 import ShowSuccesComponent from '../../components/ui/ShowSuccesComponent/ShowSuccesComponent'
-
 // Constants
 import { CREATE_WORKSPACE_FORM_CONSTANTS, SUCCES_CREATE_WORKSPACE_INFO, initialFormState } from '../../constants/createWorkspace.constants'
-
 // Hooks
-import { useContext, useEffect, useState } from 'react'
-import useRequest from '../../hooks/useRequest'
-
-// Context
-import { AuthContext } from '../../context/authContext'
-import workspaceService from '../../services/workspaceService'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import useRequest from '../../hooks/useRequest'
+// Services
+import workspaceService from '../../services/workspaceService'
+// Validations
 import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
 
 function CreateWorkspaceScreen() {
     // Cambia el título de la página
-    document.title = 'Slack UTN - Crear Espacio de Trabajo'
+    document.title = 'Crear espacio de trabajo'
 
     const { form_title, form_subtitle, sections, button, footer } = CREATE_WORKSPACE_FORM_CONSTANTS
     const { sendRequest, response, error, loading } = useRequest()
@@ -54,7 +51,7 @@ function CreateWorkspaceScreen() {
         () => {
             if (response && response.status === 201) {
                 setTimeout(() => {
-                    navigate('/workspace/' + response?.data?.workspace?._id)
+                    navigate('/workspace/' + response?.data?.workspace?._id + '/channel/' + response?.data?.channel_id)
                 }, 3000)
             }
         },
@@ -85,7 +82,7 @@ function CreateWorkspaceScreen() {
                             ...SUCCES_CREATE_WORKSPACE_INFO,
                             footer: {
                                 ...SUCCES_CREATE_WORKSPACE_INFO.footer,
-                                link: `/workspace/${response?.data?.workspace?._id}`
+                                link: `/workspace/${response?.data?.workspace?._id}/channel/${response?.data?.channel_id}`
                             }
                         }} />
                     </section>
