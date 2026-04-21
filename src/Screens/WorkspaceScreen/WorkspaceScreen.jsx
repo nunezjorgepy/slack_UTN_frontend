@@ -4,7 +4,6 @@ import { useContext, useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router'
 // Hooks
 import useRequest from '../../hooks/useRequest'
-import useWorkspaces from '../../hooks/useWorkspaces'
 import useChannels from '../../hooks/useChannels'
 // Services
 import workspaceService from '../../services/workspaceService'
@@ -23,6 +22,7 @@ import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../..
 import { MEMBER_ROLES } from '../../constants/role.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
+import { WorkspaceContext } from '../../context/workspaceContext'
 // Validations
 import { inviteUserValidations } from '../../validations/inviteUserValidations'
 import { createChannelValidations } from '../../validations/createChannelValidations'
@@ -31,6 +31,7 @@ import { createWorkspaceValidations } from '../../validations/createWorkspaceVal
 function WorkspaceScreen() {
     const { workspaceId } = useParams()
     const { manageLogout } = useContext(AuthContext)
+    const { getWorkspace } = useContext(WorkspaceContext)
     const navigate = useNavigate()
     const [message, setMessage] = useState('')
     const [channelId, setChannelId] = useState(null)
@@ -57,11 +58,7 @@ function WorkspaceScreen() {
         loading, 
         error,
         refetch 
-    } = useWorkspaces(
-        {
-            callbackFunction: () => workspaceService.getWorkspace(workspaceId),
-        }
-    )
+    } = getWorkspace(workspaceId)
 
     const { 
         channel, 
@@ -214,6 +211,7 @@ function WorkspaceScreen() {
             console.error('Error al invitar usuario:', error)
         }
     }
+
     const onEditWorkspace = (form_data) => {
         let edit_validation_error = createWorkspaceValidations(form_data)
         if (edit_validation_error) {
@@ -271,7 +269,7 @@ function WorkspaceScreen() {
     }, [channels])
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+        messagesEndRef.current?.scrollIntoView()
     }
 
     useEffect(() => {
