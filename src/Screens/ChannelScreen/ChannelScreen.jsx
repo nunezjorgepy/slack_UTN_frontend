@@ -106,7 +106,7 @@ function ChannelScreen() {
                 <SiderbarItemComponent 
                     input_name='channel' 
                     component_name={channel.channel_name} 
-                    // TODO: agregar link a los canales
+                    link_to={`/workspace/${workspaceId}/channel/${channel.channel_id}`}
                 />
             </div>
         ))
