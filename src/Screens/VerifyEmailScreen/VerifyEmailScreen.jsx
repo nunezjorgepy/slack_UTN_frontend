@@ -38,7 +38,7 @@ function VerifyEmailScreen() {
 
     return (
         <div>
-            <main>
+            <main className='form-screens-main'>
                 <section className='verify-email-section'>
                     {loading && <p>Verificando...</p>}
                     <h2>{response?.message}</h2>

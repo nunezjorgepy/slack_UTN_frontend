@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router'
 
 import authService from '../../services/authService'
 import { AuthContext } from '../../context/authContext'
-import { passwordValidation } from '../../validations/shared/password.validation'
-import { emailValidation } from '../../validations/shared/email.validation'
 import { loginValidation } from '../../validations/loginValidations'
 
 function LogInScreen() {

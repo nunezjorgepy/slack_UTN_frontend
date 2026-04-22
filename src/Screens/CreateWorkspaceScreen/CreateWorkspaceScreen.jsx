@@ -59,7 +59,7 @@ function CreateWorkspaceScreen() {
     )
     return (
         <>
-            <main>
+            <main className='form-screens-main'>
                 <section className='create-workspace-section'>
                     <InformationFormComponent
                         form_title={form_title}

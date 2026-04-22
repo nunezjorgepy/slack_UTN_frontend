@@ -22,7 +22,7 @@ function ResponseToInvitationScreen() {
 
 
     return (
-        <div className="response-invitation-screen">
+        <div className="response-invitation-screen form-screens-main">
             <div className="response-invitation-container">
                 {
                     loading
