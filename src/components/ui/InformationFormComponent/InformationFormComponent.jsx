@@ -21,7 +21,8 @@ function InformationFormComponent(props) {
         onSubmitFunction,
         errorMessage,
         error,
-        loading
+        loading,
+        response
     } = props
 
     const { 
@@ -121,9 +122,13 @@ function InformationFormComponent(props) {
 
             {/* Footer del formulario */}
             <div className='form-footer'>
-                <span className='error-message'>
-                    {/* Si el error es del parte del usuario, muestra errorMessage, si no, muestra error.message. De no haber error, muestra un espacio para mantener el tamaño del footer */}
-                    {errorMessage ? errorMessage 
+                <span 
+                    className='error-message'
+                    style={response ? { color: response.ok ? 'var(--success-color)' : 'var(--error-color)' } : {}}
+                >
+                    {/* Prioritizamos el mensaje de la respuesta de la API si existe */}
+                    {response ? response.message 
+                    : errorMessage ? errorMessage 
                     : error ? error.message : '\u00A0'}
                 </span>
                 {button.text && <ButtonComponent

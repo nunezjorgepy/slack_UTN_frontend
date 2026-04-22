@@ -74,6 +74,7 @@ function ResetPasswordRequestScreen() {
                         errorMessage={errorMessage}
                         error={error}
                         loading={loading}
+                        response={response}
                     />
                 </section>
 

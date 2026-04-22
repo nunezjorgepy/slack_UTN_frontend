@@ -42,11 +42,11 @@ function ChannelScreen() {
     const [showSidebar, setShowSidebar] = useState(false)
     const messagesEndRef = useRef(null)
 
-    const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
-    const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
-    const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
-    const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError } = useRequest()
-    const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError } = useRequest()
+    const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError, cleanRequest: cleanAddChannel } = useRequest()
+    const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError, cleanRequest: cleanInviteUser } = useRequest()
+    const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError, cleanRequest: cleanSendMessage } = useRequest()
+    const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError, cleanRequest: cleanEditWorkspace } = useRequest()
+    const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError, cleanRequest: cleanDeleteWorkspace } = useRequest()
     // Busco la información del workspace
     const { 
         workspace, 
@@ -150,7 +150,7 @@ function ChannelScreen() {
                     // Refrescar los canales y cerrar el modal solo si la creación fue exitosa
                     refetch({ requestCb: () => workspaceService.getWorkspace(workspaceId) })
                     resetForm()
-                    setShowAddChannelModal(false)
+                    onCLoseModal(setShowAddChannelModal, [cleanAddChannel])
                     return response
                 }
             })
@@ -197,8 +197,7 @@ function ChannelScreen() {
                     resetForm()
                     setErrorMessage('Usuario invitado')
                     setTimeout(() => {
-                        setErrorMessage('')
-                        setShowInviteUserModal(false)
+                        onCLoseModal(setShowInviteUserModal, [cleanInviteUser])
                     }, 1500)
                     return response
                 }
@@ -250,9 +249,10 @@ function ChannelScreen() {
         }
     }
 
-    const onCLoseModal = (setter) => {
+    const onCLoseModal = (setter, cleaners = []) => {
         setter(false)
         setErrorMessage('')
+        cleaners.length > 0 && cleaners.forEach(cleaner => cleaner())
     }
 
     // Cambia el título de la página
@@ -484,11 +484,12 @@ function ChannelScreen() {
                         errorMessage={errorMessage}
                         error={addChannelError}
                         loading={addChannelLoading}
+                        response={addChannelResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowAddChannelModal)}
+                        onClick={() => onCLoseModal(setShowAddChannelModal, [cleanAddChannel])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -514,11 +515,12 @@ function ChannelScreen() {
                         errorMessage={errorMessage}
                         error={inviteUserError}
                         loading={inviteUserLoading}
+                        response={inviteUserResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowInviteUserModal)}
+                        onClick={() => onCLoseModal(setShowInviteUserModal, [cleanInviteUser])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -548,11 +550,12 @@ function ChannelScreen() {
                         errorMessage={errorMessage}
                         error={editWorkspaceError}
                         loading={editWorkspaceLoading}
+                        response={editWorkspaceResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowEditWorkspaceModal)}
+                        onClick={() => onCLoseModal(setShowEditWorkspaceModal, [cleanEditWorkspace])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -595,7 +598,7 @@ function ChannelScreen() {
                         <div className="information-form-component-btns-container">
                             <ButtonComponent 
                                 text="Cancelar" 
-                                onClick={() => setShowDeleteWorkspaceModal(false)} 
+                                onClick={() => onCLoseModal(setShowDeleteWorkspaceModal, [cleanDeleteWorkspace])} 
                             />
                             <ButtonComponent 
                                 text="Eliminar" 

@@ -84,6 +84,7 @@ function ResetPasswordScreen() {
                         errorMessage={errorMessage}
                         error={error}
                         loading={loading}
+                        response={response}
                     />
                 </section>
                 {response &&

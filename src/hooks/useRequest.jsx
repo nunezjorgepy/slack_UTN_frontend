@@ -39,12 +39,19 @@ function useRequest (){
         }
     }
 
+    function cleanRequest(){
+        setResponse(null)
+        setError(null)
+        setLoading(false)
+    }
+
 
     return {
         sendRequest, //Funcion para activar una consulta al servidor
         response, //Estado que guarda el estado de respuesta del servidor
         error, //Estado que guarda el estado de error del servidor
-        loading //Estado que guarda el estado de cargando del servidor
+        loading, //Estado que guarda el estado de cargando del servidor
+        cleanRequest //Funcion para limpiar los estados
     }
 }
 

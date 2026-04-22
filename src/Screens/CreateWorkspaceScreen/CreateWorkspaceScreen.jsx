@@ -72,6 +72,7 @@ function CreateWorkspaceScreen() {
                         errorMessage={errorMessage}
                         error={error}
                         loading={loading}
+                        response={response}
                     />
                 </section>
 

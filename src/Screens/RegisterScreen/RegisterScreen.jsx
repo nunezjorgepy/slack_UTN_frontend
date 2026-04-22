@@ -92,6 +92,7 @@ function RegisterScreen() {
             errorMessage={errorMessage}
             error={error}
             loading={loading}
+            response={response}
           />
         </section>
 

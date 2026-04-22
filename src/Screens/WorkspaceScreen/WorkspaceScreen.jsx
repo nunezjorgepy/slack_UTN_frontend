@@ -45,11 +45,11 @@ function WorkspaceScreen() {
     const [showSidebar, setShowSidebar] = useState(false)
     const messagesEndRef = useRef(null)
 
-    const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError } = useRequest()
-    const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError } = useRequest()
-    const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError } = useRequest()
-    const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError } = useRequest()
-    const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError } = useRequest()
+    const { sendRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError, cleanRequest: cleanAddChannel } = useRequest()
+    const { sendRequest: inviteUserRequest, response: inviteUserResponse, loading: inviteUserLoading, error: inviteUserError, cleanRequest: cleanInviteUser } = useRequest()
+    const { sendRequest: sendMessageRequest, response: sendMessageResponse, loading: sendMessageLoading, error: sendMessageError, cleanRequest: cleanSendMessage } = useRequest()
+    const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError, cleanRequest: cleanEditWorkspace } = useRequest()
+    const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError, cleanRequest: cleanDeleteWorkspace } = useRequest()
 
     const { 
         workspace, 
@@ -255,9 +255,10 @@ function WorkspaceScreen() {
         }
     }
 
-    const onCLoseModal = (setter) => {
+    const onCLoseModal = (setter, cleaners = []) => {
         setter(false)
         setErrorMessage('')
+        cleaners.length > 0 && cleaners.forEach(cleaner => cleaner())
     }
 
     // Cambia el título de la página
@@ -496,11 +497,12 @@ function WorkspaceScreen() {
                         errorMessage={errorMessage}
                         error={addChannelError}
                         loading={addChannelLoading}
+                        response={addChannelResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowAddChannelModal)}
+                        onClick={() => onCLoseModal(setShowAddChannelModal, [cleanAddChannel])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -526,11 +528,12 @@ function WorkspaceScreen() {
                         errorMessage={errorMessage}
                         error={inviteUserError}
                         loading={inviteUserLoading}
+                        response={inviteUserResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowInviteUserModal)}
+                        onClick={() => onCLoseModal(setShowInviteUserModal, [cleanInviteUser])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -560,11 +563,12 @@ function WorkspaceScreen() {
                         errorMessage={errorMessage}
                         error={editWorkspaceError}
                         loading={editWorkspaceLoading}
+                        response={editWorkspaceResponse}
                     />
                     
                     <button 
                         className="workspace-modal-close-btn"
-                        onClick={() => onCLoseModal(setShowEditWorkspaceModal)}
+                        onClick={() => onCLoseModal(setShowEditWorkspaceModal, [cleanEditWorkspace])}
                     >
                         <i className="bi bi-x"></i>
                     </button>
@@ -607,7 +611,7 @@ function WorkspaceScreen() {
                         <div className="information-form-component-btns-container">
                             <ButtonComponent 
                                 text="Cancelar" 
-                                onClick={() => setShowDeleteWorkspaceModal(false)} 
+                                onClick={() => onCLoseModal(setShowDeleteWorkspaceModal, [cleanDeleteWorkspace])} 
                             />
                             <ButtonComponent 
                                 text="Eliminar" 
