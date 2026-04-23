@@ -1,13 +1,17 @@
 import './HomePageScreen.css'
-// Import Components
-import FooterComponent from "../../components/layout/FooterComponent/FooterComponent"
+// React Router
 import { Link } from 'react-router'
-import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
+// Constants
 import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
+// Hooks
 import useWorkspaces from '../../hooks/useWorkspaces'
+// Services
 import workspaceService from '../../services/workspaceService'
-import CardComponent from '../../components/ui/CardComponent/CardComponent'
+// Components
 import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
+import FooterComponent from "../../components/layout/FooterComponent/FooterComponent"
+import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
+import CardComponent from '../../components/ui/CardComponent/CardComponent'
 
 function HomePageScreen() {
     // Cambia el título de la página
@@ -42,6 +46,13 @@ function HomePageScreen() {
             <HeaderComponent />
 
             <main>
+                {/* Arcos separadores */}
+                <section className="ellipses">
+                    <div className="arc__upper color-primary"></div>
+                    <div className="arc__lower color-white"></div>
+                </section>
+
+                {/* Contenedor de la página */}
                 <section className='hp-hero o-hero'>
                     <div className="hp-workspaces">
                         {/* Título de bienvenida */}

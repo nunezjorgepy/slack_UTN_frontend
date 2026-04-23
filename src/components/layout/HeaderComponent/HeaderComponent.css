@@ -1,6 +1,5 @@
 .header-home-main-nav {
-    background-color: var(--primary-color);
-    /* TODO: cambiar a transparente después de hace la elipsis */
+    background-color: var(--primary-color-dark-10);
     height: 80px;
     padding: 0;
     border-bottom: none;

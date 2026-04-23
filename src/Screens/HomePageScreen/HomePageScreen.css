@@ -1,5 +1,31 @@
+@import url('../../variables.css');
 :root {
     --workspace-section-title-min-height: 20px;
+    --arc-main-bg-color: var(--primary-color-dark-10);
+}
+
+/* 
+=====================
+Ellipses
+===================== 
+*/
+.ellipses {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    height: calc(457px - var(--header-height));
+    background-color: var(--arc-main-bg-color);
+}
+.arc__upper{
+    clip-path: ellipse(65% 200% at 50% -105%);
+    background-color: var(--arc-main-bg-color);
+    margin-bottom: -8rem;
+    height: 8rem;
+}
+.arc__lower{
+    background-color: var(--bg-color);
+    height: 8rem;
 }
 
 .hp-hero{
@@ -11,7 +37,7 @@
 }
 .hp-workspaces{
     /* El margin top lo uso después de agregar la elipse superior */
-    /* margin-top: -21.75rem; */
+    margin-top: -21.75rem;
     position: relative;
     width: min(var(--max-width), 100%);
 }
@@ -50,6 +76,8 @@
     gap: 0.5rem;
     padding: 0;
     min-height: var(--workspace-section-title-min-height);
+    color: var(--white-1000);
+    font-weight: 700;
 }
 
 /* Lista de espacios de trabajo */
