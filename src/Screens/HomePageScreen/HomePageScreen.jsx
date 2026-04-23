@@ -7,6 +7,7 @@ import { LINKS_TO_OWN_SCREENS } from '../../constants/general.constants'
 import useWorkspaces from '../../hooks/useWorkspaces'
 import workspaceService from '../../services/workspaceService'
 import CardComponent from '../../components/ui/CardComponent/CardComponent'
+import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 
 function HomePageScreen() {
     // Cambia el título de la página
@@ -37,6 +38,9 @@ function HomePageScreen() {
 
     return (
         <>
+            {/* Header */}
+            <HeaderComponent />
+
             <main>
                 <section className='hp-hero o-hero'>
                     <div className="hp-workspaces">

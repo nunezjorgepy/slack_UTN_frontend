@@ -11,6 +11,7 @@ import useRequest from '../../hooks/useRequest'
 import workspaceService from '../../services/workspaceService'
 // Validations
 import { createWorkspaceValidations } from '../../validations/createWorkspaceValidations'
+import HeaderComponent from '../../components/layout/HeaderComponent/HeaderComponent'
 
 function CreateWorkspaceScreen() {
     // Cambia el título de la página
@@ -59,6 +60,7 @@ function CreateWorkspaceScreen() {
     )
     return (
         <>
+            <HeaderComponent />
             <main className='form-screens-main'>
                 <section className='create-workspace-section'>
                     <InformationFormComponent

@@ -62,6 +62,7 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --white-700: rgba(255, 255, 255, 0.7);
     --white-800: rgba(255, 255, 255, 0.8);
     --white-900: rgba(255, 255, 255, 0.9);
+    --white-1000: rgba(255, 255, 255, 1);
 
     /* Warning, error and success colors */
     --warning-color: rgb(216, 5, 5);
