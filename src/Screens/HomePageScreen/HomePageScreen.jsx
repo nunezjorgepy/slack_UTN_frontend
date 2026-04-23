@@ -57,7 +57,22 @@ function HomePageScreen() {
                     <div className="hp-workspaces">
                         {/* Título de bienvenida */}
                         <div className="hp-sign-in-hero">
-                            Hola de nuevo!
+                            <h1 className='hp-greeting-title'>
+                                <span>¡Hola de nuevo!</span>
+                                <picture>
+                                    <source 
+                                        src="https://a.slack-edge.com/6c404/marketing/img/homepage/bold-existing-users/waving-hand.gif"
+                                        srcSet='https://a.slack-edge.com/6c404/marketing/img/homepage/bold-existing-users/waving-hand.gif 1x, https://a.slack-edge.com/6c404/marketing/img/homepage/bold-existing-users/waving-hand@2x.gif 2x'
+                                        type="image/gif"
+                                    />
+                                    <img
+                                        src="https://a.slack-edge.com/70d4c04/marketing/img/homepage/signed-in-users/waving-hand.png"
+                                        srcSet='https://a.slack-edge.com/70d4c04/marketing/img/homepage/signed-in-users/waving-hand.png 1x, https://a.slack-edge.com/70d4c04/marketing/img/homepage/signed-in-users/waving-hand@2x.png 2x'
+                                        alt="Saludo al usuario"
+                                    />
+                                </picture>
+                            </h1>
+                            <p className="hp-greeting-subtitle">Elige un espacio de trabajo para comenzar.</p>
                         </div>
 
                         {/* Primera sección */}
