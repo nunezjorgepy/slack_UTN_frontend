@@ -16,6 +16,7 @@ function FooterComponent() {
     return (
         <footer className="o-footer">
             <div className='footer-container'>
+                {/* Fila superior con selector de región y redes sociales */}
                 <div className='footer-upper-row'>
                     <div className='footer-upper-row-left'>
                         <span className='footer-country-selector-icon'>
@@ -28,6 +29,44 @@ function FooterComponent() {
                             {renderSocialLinks()}
                         </ul>
                     </div>
+                </div>
+
+                {/* Fila inferior para legales */}
+                <div className="footer-lower-row">
+                    {/* Links */}
+                    <div className="footer-legal-links">
+                        <Link to={'https://slack.com/intl/es-ar/get'} className='footer-legal-link'>
+                            Descarga Slack
+                            {/* TODO: agregar imágen de descarga */}
+                        </Link>
+                        <ul className='footer-links-list'>
+                            <li className='footer-link-item'>
+                                <Link to={'https://slack.com/intl/es-ar/trust/privacy/privacy-policy'}>
+                                    Privacidad
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'https://slack.com/intl/es-ar/legal'}>
+                                    Términos
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'/'}>
+                                    Preferencias de cookies
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'https://www.salesforce.com/form/other/privacy-request/'}>
+                                    Sus opciones de privacidad
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Legales */}
+                    <small className="footer-legal-text">
+                        ©2026 Slack Technologies, LLC, una empresa de Salesforce. Todos los derechos reservados. Las distintas marcas comerciales pertenecen a sus respectivos propietarios.
+                    </small>
                 </div>
             </div>
         </footer>

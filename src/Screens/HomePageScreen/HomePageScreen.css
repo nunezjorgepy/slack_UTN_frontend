@@ -253,3 +253,12 @@ Media Queries
         font-size: 14px;
     }
 }
+
+@media screen and (max-width: 300px) {
+    .hp-sign-in-hero {
+        gap: 1rem;
+    }
+    .hp-greeting-title picture{
+        display: none;
+    }
+}
