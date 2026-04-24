@@ -1,5 +1,5 @@
 import { Link } from 'react-router'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { AuthContext } from '../../../context/authContext'
 import './HeaderComponent.css'
 import ButtonComponent from '../../ui/ButtonComponent/ButtonComponent'
@@ -7,13 +7,14 @@ import { LINKS_TO_OWN_SCREENS } from '../../../constants/general.constants'
 
 function HeaderComponent() {
     const { manageLogout } = useContext(AuthContext)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
         <header className='header-home-container'>
             <nav className="header-home-main-nav">
                 <div className="header-home-main-div">
                     {/* Logo */}
-                    <Link to="/">
+                    <Link to="/" className='header-home-logo-link'>
                         <img
                             src="https://a.slack-edge.com/38f0e7c/marketing/img/nav/slack-salesforce-logo-nav-white.png"
                             alt="Logo Slack"
@@ -21,7 +22,7 @@ function HeaderComponent() {
                         />
                     </Link>
 
-                    <nav className='header-home-nav-options-container'>
+                    <nav className={`header-home-nav-options-container ${isMenuOpen ? 'active' : ''}`}>
                         {/* Opciones */}
                         <ul className="header-home-options">
                             <li className="header-home-nav-option">
@@ -45,25 +46,39 @@ function HeaderComponent() {
                         </ul>
 
                     </nav>
-                    {/* Crear espacio de trabajo */}                    
-                    <Link to={LINKS_TO_OWN_SCREENS.create_workspace}>
+                    <div className='header-buttons-container'>    
+                        {/* Crear espacio de trabajo */}                    
+                        <Link to={LINKS_TO_OWN_SCREENS.create_workspace}>
+                            <ButtonComponent
+                                text="Crear un nuevo espacio de trabajo"
+                                type="button"
+                                className="header-home-create-workspace-btn header-home-btn secondary-btn"
+                                disabled={false}
+                            />
+                            <i className="bi bi-journal-plus small-device-icon"></i>
+                        </Link>
+                        {/* Cerrar sesión */}
                         <ButtonComponent
-                            text="Crear un nuevo espacio de trabajo"
+                            text="Cerrar sesión"
                             type="button"
-                            className="header-home-create-workspace-btn header-home-btn secondary-btn"
+                            className="header-home-logout-btn header-home-btn"
                             disabled={false}
+                            onClick={ () => manageLogout() }
                         />
-                    </Link>
-                    {/* Cerrar sesión */}
-                    <ButtonComponent
-                        text="Cerrar sesión"
-                        type="button"
-                        className="header-home-logout-btn header-home-btn"
-                        disabled={false}
-                        onClick={ () => manageLogout() }
-                    />
+                        <i className="bi bi-door-open small-device-icon" onClick={ () => manageLogout() }></i>
+                    </div>
                 </div>
 
+                {/* Ícono de menú */}
+                <button 
+                    type="button" 
+                    className='hp-sign-in-hero-menu-icon' 
+                    aria-label="Abrir el menú de workspaces"
+                    title="Menú"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                >
+                    {isMenuOpen ? <i className="bi bi-x"></i> : <i className="bi bi-list"></i>}
+                </button>
             </nav>
         </header>
     )
