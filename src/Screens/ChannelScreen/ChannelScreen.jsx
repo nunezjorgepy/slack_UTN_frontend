@@ -269,206 +269,210 @@ function ChannelScreen() {
     }, [messages, channelId])
 
     return (
-        <div className='backgroung-lienar-gradient'>
-        
-            <header className='workspace-header'>
-                <div className="workspace-header-icons">
-                    {/* Menu toggle button (mobile only) */}
-                    <div className='workspace-header-btn-menu'>
-                        <i className="bi bi-list" onClick={() => setShowSidebar(!showSidebar)}></i>
+        <>
+            <div className='backgroung-lienar-gradient'>
+            
+                <header className='workspace-header'>
+                    <div className="workspace-header-icons">
+                        {/* Menu toggle button (mobile only) */}
+                        <div className='workspace-header-btn-menu'>
+                            <i className="bi bi-list" onClick={() => setShowSidebar(!showSidebar)}></i>
+                        </div>
+                        {/* Home and Logout icons */}
+                        <div className='tooltip workspace-header-btn-home'>
+                            <i className="bi bi-house" onClick={() => navigate('/')}></i>
+                        </div>
+                        <div className='tooltip workspace-header-btn-logout'>
+                            <i className="bi bi-box-arrow-right" onClick={manageLogout}></i>
+                        </div>
                     </div>
-                    {/* Home and Logout icons */}
-                    <div className='tooltip workspace-header-btn-home'>
-                        <i className="bi bi-house" onClick={() => navigate('/')}></i>
+                    <div className="workspace-header-search-holder">
+                        {/* TODO: al hacer click acá, se abre un modal para buscar canales o miembros */}
+                        Buscar canales y miembros
                     </div>
-                    <div className='tooltip workspace-header-btn-logout'>
-                        <i className="bi bi-box-arrow-right" onClick={manageLogout}></i>
-                    </div>
-                </div>
-                <div className="workspace-header-search-holder">
-                    {/* TODO: al hacer click acá, se abre un modal para buscar canales o miembros */}
-                    Buscar canales y miembros
-                </div>
-            </header>
-            <main className='workspace-main'>
-                <section className='workspace-section'>
-                    {/* 
-                    ===========================================================
-                    Workspace layout
-                    ===========================================================
-                    */}
-                    <div className="workspace-layout">
-                        {/* Barra lateral donde se muestran los canales y miembros */}
-                        <aside className={`workspace-sidebar ${showSidebar ? 'active' : ''}`}>
-                            <div className="workspace-sidebar-header">
-                                <h1 className="workspace-sidebar-header-title">
-                                    {workspace?.title || 'Cargando...'}
-                                </h1>
-                                {
-                                    member_logged?.role === MEMBER_ROLES.owner &&
-                                    <button 
-                                        className="workspace-sidebar-header-delete tooltip"
-                                        onClick={() => setShowDeleteWorkspaceModal(true)}
-                                    >
-                                        <i className="bi bi-trash"></i>
-                                    </button>
-                                }
-                                {
-                                    member_logged?.role === MEMBER_ROLES.owner &&
-                                    <button 
-                                        className="workspace-sidebar-header-edit tooltip"
-                                        onClick={() => setShowEditWorkspaceModal(true)}
-                                    >
-                                        <i className="bi bi-pencil"></i>
-                                    </button>
-                                }
-                            </div>
-                            <div className="workspace-description">
-                                <span>Descripción</span>
-                                {workspace?.description || 'Cargando...'}
-                            </div>
-                            {/* 
-                            ===========================================================
-                            Canales
-                            ===========================================================
-                            */}
-                            <div className="workspace-sidebar-section workspace-sidebar-channels">
-                                <input type="checkbox" name="channels-checkbox" id="channels-checkbox" />
-                                <label htmlFor="channels-checkbox">
-                                    <div className="workspace-sidebar-channels-header">
-                                        Canales
-                                        <i className="bi bi-chevron-down"></i>
-                                    </div>
-                                </label>
-                                <ul className="workspace-sidebar-list">
-                                    {renderChannels()}
-                                </ul>
-                                {
-                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
-                                    <button 
-                                        className="workspace-add-item workspace-add-channel"
-                                        onClick={() => setShowAddChannelModal(true)}
-                                    >
-                                        <i className="bi bi-plus"></i>
-                                        <span>Agregar canal</span>
-                                    </button>
-                                }
-                            </div>
-                            {/* 
-                            ===========================================================
-                            Miembros
-                            ===========================================================
-                            */}
-                            <div className="workspace-sidebar-section workspace-sidebar-members">
-                                <input type="checkbox" name="members-checkbox" id="members-checkbox" />
-                                <label htmlFor="members-checkbox">
-                                    <div className="workspace-sidebar-members-header">
-                                        Miembros
-                                        <i className="bi bi-chevron-down"></i>
-                                    </div>
-                                </label>
-                                <ul className="workspace-sidebar-list">
-                                    {renderMembers()}
-                                </ul>
-                                {
-                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
-                                    <button 
-                                        className="workspace-add-item workspace-add-member"
-                                        onClick={() => setShowInviteUserModal(true)}
-                                    >
-                                        <i className="bi bi-plus"></i>
-                                        <span>Invitar miembros</span>
-                                    </button>
-                                }
-                            </div>
-                        </aside>
+                </header>
+                <main className='workspace-main'>
+                    <section className='workspace-section'>
                         {/* 
                         ===========================================================
-                                    Contenedor principal del chat
+                        Workspace layout
                         ===========================================================
                         */}
-                        <section className="workspace-content">
-
+                        <div className="workspace-layout">
+                            {/* Barra lateral donde se muestran los canales y miembros */}
+                            <aside className={`workspace-sidebar ${showSidebar ? 'active' : ''}`}>
+                                <div className="workspace-sidebar-header">
+                                    <h1 className="workspace-sidebar-header-title">
+                                        {workspace?.title || 'Cargando...'}
+                                    </h1>
+                                    {
+                                        member_logged?.role === MEMBER_ROLES.owner &&
+                                        <button 
+                                            className="workspace-sidebar-header-delete tooltip"
+                                            onClick={() => setShowDeleteWorkspaceModal(true)}
+                                        >
+                                            <i className="bi bi-trash"></i>
+                                        </button>
+                                    }
+                                    {
+                                        member_logged?.role === MEMBER_ROLES.owner &&
+                                        <button 
+                                            className="workspace-sidebar-header-edit tooltip"
+                                            onClick={() => setShowEditWorkspaceModal(true)}
+                                        >
+                                            <i className="bi bi-pencil"></i>
+                                        </button>
+                                    }
+                                </div>
+                                <div className="workspace-description">
+                                    <span>Descripción</span>
+                                    {workspace?.description || 'Cargando...'}
+                                </div>
+                                {/* 
+                                ===========================================================
+                                Canales
+                                ===========================================================
+                                */}
+                                <div className="workspace-sidebar-section workspace-sidebar-channels">
+                                    <input type="checkbox" name="channels-checkbox" id="channels-checkbox" />
+                                    <label htmlFor="channels-checkbox">
+                                        <div className="workspace-sidebar-channels-header">
+                                            Canales
+                                            <i className="bi bi-chevron-down"></i>
+                                        </div>
+                                    </label>
+                                    <ul className="workspace-sidebar-list">
+                                        {renderChannels()}
+                                    </ul>
+                                    {
+                                        (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
+                                        <button 
+                                            className="workspace-add-item workspace-add-channel"
+                                            onClick={() => setShowAddChannelModal(true)}
+                                        >
+                                            <i className="bi bi-plus"></i>
+                                            <span>Agregar canal</span>
+                                        </button>
+                                    }
+                                </div>
+                                {/* 
+                                ===========================================================
+                                Miembros
+                                ===========================================================
+                                */}
+                                <div className="workspace-sidebar-section workspace-sidebar-members">
+                                    <input type="checkbox" name="members-checkbox" id="members-checkbox" />
+                                    <label htmlFor="members-checkbox">
+                                        <div className="workspace-sidebar-members-header">
+                                            Miembros
+                                            <i className="bi bi-chevron-down"></i>
+                                        </div>
+                                    </label>
+                                    <ul className="workspace-sidebar-list">
+                                        {renderMembers()}
+                                    </ul>
+                                    {
+                                        (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
+                                        <button 
+                                            className="workspace-add-item workspace-add-member"
+                                            onClick={() => setShowInviteUserModal(true)}
+                                        >
+                                            <i className="bi bi-plus"></i>
+                                            <span>Invitar miembros</span>
+                                        </button>
+                                    }
+                                </div>
+                            </aside>
                             {/* 
                             ===========================================================
-                            Chat Header
+                                        Contenedor principal del chat
                             ===========================================================
                             */}
-                            <div className="workspace-chat-header">
-                                <div className="workspace-channel-info">
-                                    <button className="workspace-star-channel">
-                                        <i className="bi bi-star"></i>
-                                    </button>
-                                    <div className="workspace-chat-header-title">
-                                        # {channel?.channel_name || 'Cargando...'}
+                            <section className="workspace-content">
+
+                                {/* 
+                                ===========================================================
+                                Chat Header
+                                ===========================================================
+                                */}
+                                <div className="workspace-chat-header">
+                                    <div className="workspace-channel-info">
+                                        <button className="workspace-star-channel">
+                                            <i className="bi bi-star"></i>
+                                        </button>
+                                        <div className="workspace-chat-header-title">
+                                            # {channel?.channel_name || 'Cargando...'}
+                                        </div>
+                                    </div>
+                                    {
+                                        (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
+                                        <button 
+                                            className="invite-members"
+                                            onClick={() => setShowInviteUserModal(true)}
+                                        >
+                                            <i className="bi bi-person-plus"></i>
+                                            <span>Invitar miembros</span>
+                                    </button>}
+                                </div>
+
+                                {/* 
+                                ===========================================================
+                                Chat Tabs
+                                ===========================================================
+                                */}
+                                <div className="workspace-chat-tabs">
+                                    <div className="workspace-tab-container">
+                                        <div className="workspace-tab">
+                                            <i className="bi bi-chat-dots-fill"></i>
+                                            <span className="workspace-tab-title">Mensajes</span>
+                                        </div>
                                     </div>
                                 </div>
-                                {
-                                    (member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner) &&
-                                    <button 
-                                        className="invite-members"
-                                        onClick={() => setShowInviteUserModal(true)}
-                                    >
-                                        <i className="bi bi-person-plus"></i>
-                                        <span>Invitar miembros</span>
-                                </button>}
-                            </div>
 
-                            {/* 
-                            ===========================================================
-                            Chat Tabs
-                            ===========================================================
-                            */}
-                            <div className="workspace-chat-tabs">
-                                <div className="workspace-tab-container">
-                                    <div className="workspace-tab">
-                                        <i className="bi bi-chat-dots-fill"></i>
-                                        <span className="workspace-tab-title">Mensajes</span>
-                                    </div>
+                                {/* 
+                                ===========================================================
+                                Chat Messages
+                                ===========================================================
+                                */}
+                                <div className="workspace-chat-messages">
+                                    {renderMessages()}
+                                    <div ref={messagesEndRef} />
                                 </div>
-                            </div>
 
-                            {/* 
-                            ===========================================================
-                            Chat Messages
-                            ===========================================================
-                            */}
-                            <div className="workspace-chat-messages">
-                                {renderMessages()}
-                                <div ref={messagesEndRef} />
-                            </div>
-
-                            {/* 
-                            ===========================================================
-                            Chat Send Message
-                            ===========================================================
-                            */}
-                            <div className="workspace-chat-send-message">
-                                <form className="workspace-send-message-form-container" onSubmit={onSendMessage}>
-                                    <textarea 
-                                        className="workspace-send-message-form-textarea" 
-                                        placeholder="Escribe un mensaje..."
-                                        value={message}
-                                        onChange={(e) => setMessage(e.target.value)}
-                                    ></textarea>
-                                    <button className="workspace-send-message-form-button" type="submit" disabled={sendMessageLoading}>
-                                        {
-                                            !sendMessageLoading &&
-                                            <i className="bi bi-send"></i>
-                                        }
-                                    </button>
-                                </form>
-                            </div>
-                        </section>
-                    </div>
-                </section>
-            </main>
+                                {/* 
+                                ===========================================================
+                                Chat Send Message
+                                ===========================================================
+                                */}
+                                <div className="workspace-chat-send-message">
+                                    <form className="workspace-send-message-form-container" onSubmit={onSendMessage}>
+                                        <textarea 
+                                            className="workspace-send-message-form-textarea" 
+                                            placeholder="Escribe un mensaje..."
+                                            value={message}
+                                            onChange={(e) => setMessage(e.target.value)}
+                                        ></textarea>
+                                        <button className="workspace-send-message-form-button" type="submit" disabled={sendMessageLoading}>
+                                            {
+                                                !sendMessageLoading &&
+                                                <i className="bi bi-send"></i>
+                                            }
+                                        </button>
+                                    </form>
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                </main>
+            </div>
 
             {/* 
             ===========================================================
-            Add Channel Modal
+            Modales (fuera del contenedor principal)
             ===========================================================
             */}
+
+            {/* Add Channel Modal */}
             {showAddChannelModal && 
             <div className={`workspace-modal`}>
                 <div className="workspace-modal-relative">
@@ -495,11 +499,7 @@ function ChannelScreen() {
                 </div>
             </div>}
 
-            {/* 
-            ===========================================================
-            Invite User Modal
-            ===========================================================
-            */}
+            {/* Invite User Modal */}
             {showInviteUserModal && 
             <div className={`workspace-modal`}>
                 <div className="workspace-modal-relative">
@@ -526,11 +526,7 @@ function ChannelScreen() {
                 </div>
             </div>}
 
-            {/* 
-            ===========================================================
-            Edit Workspace Modal
-            ===========================================================
-            */}
+            {/* Edit Workspace Modal */}
             {showEditWorkspaceModal && 
             <div className={`workspace-modal`}>
                 <div className="workspace-modal-relative">
@@ -561,11 +557,7 @@ function ChannelScreen() {
                 </div>
             </div>}
 
-            {/* 
-            ===========================================================
-            Delete Workspace Modal
-            ===========================================================
-            */}
+            {/* Delete Workspace Modal */}
             {showDeleteWorkspaceModal && 
             <div className={`workspace-modal`}>
                 <div className="workspace-modal-relative delete-workspace-modal-container">
@@ -609,7 +601,7 @@ function ChannelScreen() {
                     </div>
                 </div>
             </div>}
-        </div>
+        </>
     )
 }
 
