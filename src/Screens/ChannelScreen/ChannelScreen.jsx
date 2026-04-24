@@ -304,7 +304,6 @@ function ChannelScreen() {
                                 <h1 className="workspace-sidebar-header-title">
                                     {workspace?.title || 'Cargando...'}
                                 </h1>
-                                {/* Agregar boton para eliminar de fondo rojo, sólo visible para owner */}
                                 {
                                     member_logged?.role === MEMBER_ROLES.owner &&
                                     <button 

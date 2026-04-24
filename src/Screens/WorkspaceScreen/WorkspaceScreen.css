@@ -425,6 +425,8 @@ Add Channel Modal
     position: fixed;
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
@@ -481,7 +483,7 @@ Delete Workspace Modal
 .delete-workspace-modal-container .information-form-component-title {
     color: var(--primary-color);
     margin-bottom: 25px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     text-align: center;
 }
@@ -489,7 +491,7 @@ Delete Workspace Modal
 .delete-workspace-modal-container .information-form-component-subtitle {
     color: var(--black-900);
     margin-bottom: 35px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: center;
     display: block;
 }
