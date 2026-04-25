@@ -48,6 +48,18 @@ background-color: transparent;
     content: 'Cerrar sesión';
 }
 
+.edit-channel-tooltip::before {
+    content: 'Editar canal';
+}
+
+.delete-channel-tooltip::before {
+    content: 'Eliminar canal';
+}
+
+.delete-channel-tooltip:hover::before {
+    background-color: var(--error-color);
+}
+
 .workspace-header-btn-menu {
     display: none;
     align-items: center;
@@ -218,6 +230,21 @@ Chat Header
 .invite-members:hover{
     background-color: var(--black-05);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.channel-action-btn {
+    cursor: pointer;
+    border: 1px solid var(--black-900);
+    border-radius: 5px;
+    padding: 3px 4px;
+    font-size: 1rem;
+    color: var(--black-900);
+    background-color: transparent;
+    transition: background-color .2s ease-in-out;
+}
+
+.channel-action-btn:hover {
+    background-color: var(--black-05);
 }
 
 /* 

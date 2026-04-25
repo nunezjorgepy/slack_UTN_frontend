@@ -108,12 +108,54 @@ const useChannelActions = ({
         })
     }
 
+    const onEditChannel = (form_data, editChannelRequest) => {
+        const channel_error = createChannelValidations({
+            name: form_data.name,
+            description: form_data.description
+        })
+        if (channel_error) {
+            setErrorMessage(channel_error)
+            return
+        }
+        setErrorMessage('')
+
+        editChannelRequest({
+            requestCb: async () => {
+                const response = await channelService.updateById(workspaceId, channelId, form_data)
+                setTimeout(() => {
+                    window.location.reload()
+                }, 3000)
+                return response
+            }
+        })
+    }
+
+    const onDeleteChannel = (channels, deleteChannelRequest) => {
+        if (channels.length <= 1) {
+            setErrorMessage('No se puede eliminar el último canal del espacio de trabajo.')
+            return
+        }
+        setErrorMessage('')
+
+        deleteChannelRequest({
+            requestCb: async () => {
+                const response = await channelService.softDelete(workspaceId, channelId)
+                setTimeout(() => {
+                    navigate('/')
+                }, 3000)
+                return response
+            }
+        })
+    }
+
     return {
         onAddChannel,
         onSendMessage,
         onInviteUser,
         onEditWorkspace,
-        onDeleteWorkspace
+        onDeleteWorkspace,
+        onEditChannel,
+        onDeleteChannel
     }
 }
 

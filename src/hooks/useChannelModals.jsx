@@ -5,7 +5,9 @@ const useChannelModals = (cleaners = {}) => {
         addChannel: false,
         inviteUser: false,
         editWorkspace: false,
-        deleteWorkspace: false
+        deleteWorkspace: false,
+        editChannel: false,
+        deleteChannel: false
     })
     const [errorMessage, setErrorMessage] = useState('')
 

@@ -33,6 +33,36 @@ const channelService = {
 
         const response = await response_http.json()
         return response
+    },
+    updateById: async (workspaceId, channelId, channel) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/' + workspaceId + '/channel/' + channelId,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY),
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(channel)
+            }
+        )
+
+        const response = await response_http.json()
+        return response
+    },
+    softDelete: async (workspaceId, channelId) => {
+        const response_http = await fetch(
+            API_URL + '/api/workspace/' + workspaceId + '/channel/soft-delete/' + channelId,
+            {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem(LOCALSTORAGE_AUTH_TOKEN_KEY)
+                }
+            }
+        )
+
+        const response = await response_http.json()
+        return response
     }
 }
 

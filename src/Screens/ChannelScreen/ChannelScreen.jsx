@@ -41,6 +41,8 @@ function ChannelScreen() {
     const { sendRequest: sendMessageRequest, loading: sendMessageLoading, error: sendMessageError, cleanRequest: cleanSendMessage } = useRequest()
     const { sendRequest: editWorkspaceRequest, response: editWorkspaceResponse, loading: editWorkspaceLoading, error: editWorkspaceError, cleanRequest: cleanEditWorkspace } = useRequest()
     const { sendRequest: deleteWorkspaceRequest, response: deleteWorkspaceResponse, loading: deleteWorkspaceLoading, error: deleteWorkspaceError, cleanRequest: cleanDeleteWorkspace } = useRequest()
+    const { sendRequest: editChannelRequest, response: editChannelResponse, loading: editChannelLoading, error: editChannelError, cleanRequest: cleanEditChannel } = useRequest()
+    const { sendRequest: deleteChannelRequest, response: deleteChannelResponse, loading: deleteChannelLoading, error: deleteChannelError, cleanRequest: cleanDeleteChannel } = useRequest()
 
     const { 
         workspace, 
@@ -66,13 +68,16 @@ function ChannelScreen() {
         addChannel: cleanAddChannel,
         inviteUser: cleanInviteUser,
         editWorkspace: cleanEditWorkspace,
-        deleteWorkspace: cleanDeleteWorkspace
+        deleteWorkspace: cleanDeleteWorkspace,
+        editChannel: cleanEditChannel,
+        deleteChannel: cleanDeleteChannel
     })
 
-    const { onAddChannel, onSendMessage, onInviteUser, onEditWorkspace, onDeleteWorkspace } = useChannelActions({
+    const { onAddChannel, onSendMessage, onInviteUser, onEditWorkspace, onDeleteWorkspace, onEditChannel, onDeleteChannel } = useChannelActions({
         workspaceId,
         channelId,
         members,
+        channels,
         refetchWorkspace: () => refetch({ requestCb: () => workspaceService.getWorkspace(workspaceId) }),
         refetchMessages: () => refetchMessages({ requestCb: () => messagesService.getMessages(workspaceId, channelId) }),
         setErrorMessage,
@@ -181,6 +186,9 @@ function ChannelScreen() {
                                     channelName={channel?.channel_name}
                                     showInviteButton={isAdminOrOwner}
                                     onInviteClick={() => openModal('inviteUser')}
+                                    onEditClick={() => openModal('editChannel')}
+                                    onDeleteClick={() => openModal('deleteChannel')}
+                                    showActions={isAdminOrOwner}
                                 />
 
                                 <div className="workspace-chat-tabs">
@@ -275,6 +283,46 @@ function ChannelScreen() {
                         <div className="information-form-component-btns-container">
                             <ButtonComponent text="Cancelar" onClick={() => closeModal('deleteWorkspace')} />
                             <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteWorkspace(deleteWorkspaceRequest)} disabled={deleteWorkspaceLoading} />
+                        </div>
+                    </div>
+                </ModalComponent>
+            )}
+
+            {modals.editChannel && (
+                <ModalComponent onClose={() => closeModal('editChannel')}>
+                    <InformationFormComponent 
+                        {...ADD_CHANNEL_FORM_CONSTANTS}
+                        form_title="Editar canal"
+                        form_subtitle="Modifica los datos del canal"
+                        button={{ text: "Guardar cambios", type: "submit" }}
+                        initialFormState={{
+                            name: channel?.channel_name || '',
+                            description: channel?.description || ''
+                        }}
+                        onSubmitFunction={(data) => onEditChannel(data, editChannelRequest)}
+                        errorMessage={errorMessage}
+                        error={editChannelError}
+                        loading={editChannelLoading}
+                        response={editChannelResponse}
+                    />
+                </ModalComponent>
+            )}
+
+            {modals.deleteChannel && (
+                <ModalComponent onClose={() => closeModal('deleteChannel')} className="delete-workspace-modal-container">
+                    <div className="information-form-component-container">
+                        <h2 className="information-form-component-title">Eliminar canal</h2>
+                        <span className="information-form-component-subtitle">
+                            ¿Estas seguro de que deseas eliminar el canal?
+                        </span>
+                        <div className="information-form-component-section-preview">
+                            <p>Esta acción es irreversible. Se borrará el canal y todos sus mensajes.</p>
+                        </div>
+                        {deleteChannelResponse && <div className="information-form-component-success">Canal eliminado con éxito. Redirigiendo...</div>}
+                        {deleteChannelError || errorMessage && <div className="information-form-component-error">{deleteChannelError?.message || errorMessage || 'Error al eliminar.'}</div>}
+                        <div className="information-form-component-btns-container">
+                            <ButtonComponent text="Cancelar" onClick={() => closeModal('deleteChannel')} />
+                            <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteChannel(channels, deleteChannelRequest)} disabled={deleteChannelLoading} />
                         </div>
                     </div>
                 </ModalComponent>
