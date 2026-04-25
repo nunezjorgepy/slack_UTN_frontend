@@ -1,0 +1,59 @@
+.workspace-sidebar-section{
+    margin-bottom: 10px;
+    user-select: none;
+}
+.workspace-sidebar-section input[type="checkbox"]{
+    display: none;
+}
+.workspace-sidebar-section input[type="checkbox"]:checked ~ .workspace-sidebar-list{
+    height: 0;
+    overflow: hidden;
+}
+
+.workspace-sidebar-section-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.workspace-sidebar-section-header i{
+    font-size: .8rem;
+}
+
+.workspace-add-item{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    color: var(--white-900);
+    font-size: 1rem;
+    text-wrap: nowrap;
+    gap: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.workspace-add-item:hover{
+    background-color: var(--primary-color-10);
+}
+.workspace-add-item i {
+    background-color: var(--primary-color-10);
+    border-radius: 5px;
+}
+
+.workspace-sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.siderbar-item-component-error {
+    color: var(--white-900);
+    padding: 10px;
+    font-size: 0.9rem;
+}

@@ -1,0 +1,104 @@
+.workspace-modal{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow-y: auto;
+    padding: 40px 20px;
+}
+.workspace-modal-relative{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 5px;
+    width: min(95%, 500px);
+    height: min-content;
+    margin: auto;
+}
+.workspace-modal-close-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2rem;
+    color: var(--white-900);
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color-20);
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+.workspace-modal-close-btn:hover{
+    background-color: var(--primary-color-10);
+}
+
+/* Specific styling for delete workspace modal that was in ChannelScreen.css */
+.delete-workspace-modal-container {
+    background-color: var(--secondary-color);
+    padding: 40px;
+    width: min(95%, 500px);
+}
+
+.delete-workspace-modal-container .information-form-component-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.delete-workspace-modal-container .information-form-component-title {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.delete-workspace-modal-container .information-form-component-subtitle {
+    color: var(--black-900);
+    margin-bottom: 35px;
+    font-size: 1rem;
+    text-align: center;
+    display: block;
+}
+
+.delete-workspace-modal-container .information-form-component-section-preview p {
+    color: var(--black-900) !important;
+    font-size: .95rem;
+    line-height: 1.5;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.delete-workspace-modal-container .information-form-component-success {
+    color: var(--success-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.delete-workspace-modal-container .information-form-component-error {
+    color: var(--warning-color);
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.delete-workspace-modal-container .information-form-component-btns-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
