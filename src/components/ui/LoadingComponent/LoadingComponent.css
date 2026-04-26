@@ -1,0 +1,91 @@
+.loading-component-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--white-1000);
+}
+
+.loading-component-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 20px;
+    width: 420px;
+    height: 420px;
+}
+.loading-component-square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+.loading-flex-column {
+    flex-direction: column;
+}
+.top-left > div > div {
+    background-color: #36C5F0;
+}
+.top-right > div > div {
+    background-color: #2EB67D;
+}
+.bottom-left > div > div {
+    background-color: #E01E5A;
+}
+.bottom-right > div > div {
+    background-color: #ECB22E;
+}
+
+/* 
+Contenedores de los dibujos
+*/
+.loading-draw-container {
+    display: flex;
+    flex: 100%;
+    width: 100%;
+    height: 100%;
+}
+.justify-end {
+    justify-content: end;
+}
+.align-end {
+    align-items: end;
+}
+
+/* 
+Dimensiones de los dibujos
+*/
+.loading-draw {
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    border-radius: 120px;
+}
+.loading-width-small {
+    width: 45%;
+}
+.loading-height-small {
+    height: 45%;
+}
+
+
+/* 
+Quito el borde de las esquinas para formar la figura
+*/
+.loading-component-tl-short {
+    border-bottom-right-radius: 0;
+}
+.loading-component-tr-short {
+    border-bottom-left-radius: 0;
+}
+.loading-component-bl-short {
+    border-top-right-radius: 0;
+}
+.loading-component-br-short {
+    border-top-left-radius: 0;
+}

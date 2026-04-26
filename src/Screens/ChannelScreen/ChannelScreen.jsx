@@ -27,6 +27,7 @@ import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../..
 import { MEMBER_ROLES } from '../../constants/role.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
+import LoadingComponent from '../../components/ui/LoadingComponent/LoadingComponent'
 
 function ChannelScreen() {
     const { workspaceId, channelId } = useParams()
@@ -86,7 +87,6 @@ function ChannelScreen() {
     })
 
     const channel = channels?.find((channel) => channel.channel_id === channelId)
-    console.log(channel)
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
     useEffect(() => {
@@ -100,6 +100,8 @@ function ChannelScreen() {
 
     return (
         <>
+            {/* TODO: una vez terminado el proceso de carga, sacar el true y dejar loading */}
+            {true && <LoadingComponent />}
             <div className='backgroung-lienar-gradient'>
                 <header className='workspace-header'>
                     <div className="workspace-header-icons">
@@ -328,6 +330,7 @@ function ChannelScreen() {
                     </div>
                 </ModalComponent>
             )}
+
         </>
     )
 }
