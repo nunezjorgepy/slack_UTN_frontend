@@ -1,3 +1,12 @@
+:root {
+    --animation-duration-time: 3s;
+
+    --container-dimension: 250px;
+    --gap-dimension: 20px;
+    --square-dimension: calc((var(--container-dimension) - var(--gap-dimension)) / 2);
+    --square-dimension-short: calc(var(--square-dimension) * 0.45);
+}
+
 .loading-component-container {
     position: fixed;
     top: 0;
@@ -15,15 +24,19 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    gap: 20px;
-    width: 420px;
-    height: 420px;
+    gap: var(--gap-dimension);
+    width: var(--container-dimension);
+    height: var(--container-dimension);
+    /* animation: spin var(--animation-duration-time) linear infinite; */
 }
 .loading-component-square {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
+    gap: var(--gap-dimension);
+    width: var(--square-dimension);
+    height: var(--square-dimension);
+    position: relative;
 }
 .loading-flex-column {
     flex-direction: column;
@@ -46,7 +59,6 @@ Contenedores de los dibujos
 */
 .loading-draw-container {
     display: flex;
-    flex: 100%;
     width: 100%;
     height: 100%;
 }
@@ -67,10 +79,10 @@ Dimensiones de los dibujos
     border-radius: 120px;
 }
 .loading-width-small {
-    width: 45%;
+    width: var(--square-dimension-short);
 }
 .loading-height-small {
-    height: 45%;
+    height: var(--square-dimension-short);
 }
 
 
@@ -88,4 +100,64 @@ Quito el borde de las esquinas para formar la figura
 }
 .loading-component-br-short {
     border-top-left-radius: 0;
+}
+
+.loading-component-tl-short,
+.loading-component-tr-short,
+.loading-component-bl-short,
+.loading-component-br-short {
+    animation: opacity-draw var(--animation-duration-time) ease-in-out infinite;
+}
+
+/* 
+===========
+Animations
+===========
+*/
+/* 
+TODO IMPORVMENT: Intentar hacer una única animación que varíe según algún parámetro que se pase.
+*/
+/* @keyframes translate-tl {
+    0% {
+        left: -100%;
+    }
+    40% {
+        left: 0%;
+    }
+    60% {
+        left: 0%;
+    }
+    100% {
+        left: 50%;
+    }
+} */
+
+@keyframes opacity-draw {
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    40% {
+        transform: rotate(0deg);
+    }
+    60% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
