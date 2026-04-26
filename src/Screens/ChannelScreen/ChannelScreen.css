@@ -223,6 +223,7 @@ Chat Header
     border: 1px solid var(--black-200);
     border-radius: 5px;
     padding: 3px 4px;
+    margin-left: 10px;
     font-size: .8rem;
     font-weight: 600;
     transition: all .2s ease-in-out;

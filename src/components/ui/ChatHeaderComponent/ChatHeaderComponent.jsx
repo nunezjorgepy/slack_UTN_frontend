@@ -9,9 +9,9 @@ const ChatHeaderComponent = ({
     return (
         <div className="workspace-chat-header">
             <div className="workspace-channel-info">
-                <button className="workspace-star-channel">
+                {/* <button className="workspace-star-channel">
                     <i className="bi bi-star"></i>
-                </button>
+                </button> */}
                 <div className="workspace-chat-header-title">
                     # {channelName || 'Cargando...'}
                 </div>
