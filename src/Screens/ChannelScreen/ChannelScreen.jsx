@@ -20,6 +20,7 @@ import ModalComponent from '../../components/ui/ModalComponent/ModalComponent'
 import ChatHeaderComponent from '../../components/ui/ChatHeaderComponent/ChatHeaderComponent'
 import MessageListComponent from '../../components/ui/MessageListComponent/MessageListComponent'
 import MessageInputComponent from '../../components/ui/MessageInputComponent/MessageInputComponent'
+import ModalDeleteComponent from '../../components/ui/ModalDeleteComponent/ModalDeleteComponent'
 // Constants
 import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState as ADD_CHANNEL_INITIAL_STATE, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
@@ -271,7 +272,7 @@ function ChannelScreen() {
             )}
 
             {modals.deleteWorkspace && (
-                <ModalComponent onClose={() => closeModal('deleteWorkspace')} className="delete-workspace-modal-container">
+                <ModalDeleteComponent>
                     <div className="information-form-component-container">
                         <h2 className="information-form-component-title">Eliminar espacio de trabajo</h2>
                         <span className="information-form-component-subtitle">
@@ -287,7 +288,7 @@ function ChannelScreen() {
                             <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteWorkspace(deleteWorkspaceRequest)} disabled={deleteWorkspaceLoading} />
                         </div>
                     </div>
-                </ModalComponent>
+                </ModalDeleteComponent>
             )}
 
             {modals.editChannel && (
@@ -311,7 +312,7 @@ function ChannelScreen() {
             )}
 
             {modals.deleteChannel && (
-                <ModalComponent onClose={() => closeModal('deleteChannel')} className="delete-workspace-modal-container">
+                <ModalDeleteComponent>
                     <div className="information-form-component-container">
                         <h2 className="information-form-component-title">Eliminar canal</h2>
                         <span className="information-form-component-subtitle">
@@ -327,7 +328,7 @@ function ChannelScreen() {
                             <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteChannel(channels, deleteChannelRequest)} disabled={deleteChannelLoading} />
                         </div>
                     </div>
-                </ModalComponent>
+                </ModalDeleteComponent>
             )}
 
         </>
