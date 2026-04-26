@@ -4,13 +4,11 @@ import { useContext, useEffect, useState, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router'
 // Hooks
 import useRequest from '../../hooks/useRequest'
-import useMessages from '../../hooks/useMessages'
-import useWorkspaces from '../../hooks/useWorkspaces'
+import useChannels from '../../hooks/useChannels'
 import useChannelModals from '../../hooks/useChannelModals'
 import useChannelActions from '../../hooks/useChannelActions'
 // Services
-import workspaceService from '../../services/workspaceService'
-import messagesService from '../../services/messagesService'
+import channelService from '../../services/channelService'
 // Components
 import SiderbarItemComponent from '../../components/ui/SiderbarItemComponent/SiderbarItemComponent'
 import InformationFormComponent from '../../components/ui/InformationFormComponent/InformationFormComponent'
@@ -46,25 +44,23 @@ function ChannelScreen() {
     const { sendRequest: editChannelRequest, response: editChannelResponse, loading: editChannelLoading, error: editChannelError, cleanRequest: cleanEditChannel } = useRequest()
     const { sendRequest: deleteChannelRequest, response: deleteChannelResponse, loading: deleteChannelLoading, error: deleteChannelError, cleanRequest: cleanDeleteChannel } = useRequest()
 
+    // Información del workspace, miembros, canales y mensajes
     const { 
         workspace, 
         members,
         channels,
         member_logged,
+        messages,
         loading, 
         error,
-        refetch 
-    } = useWorkspaces({ callbackFunction: () => workspaceService.getWorkspace(workspaceId) })
-
-    const { 
-        messages,
-        loading: messagesLoading, 
-        error: messagesError,
-        refetch: refetchMessages
-    } = useMessages({
-        callbackFunction: () => messagesService.getMessages(workspaceId, channelId),
+        refetch
+    } = useChannels({
+        callbackFunction: () => channelService.getById(workspaceId, channelId),
         dependencies: [channelId, workspaceId]
     })
+
+    // Información del canal actual
+    const channel = channels?.find((channel) => channel.channel_id === channelId)
 
     const { modals, errorMessage, setErrorMessage, openModal, closeModal } = useChannelModals({
         addChannel: cleanAddChannel,
@@ -80,14 +76,13 @@ function ChannelScreen() {
         channelId,
         members,
         channels,
-        refetchWorkspace: () => refetch({ requestCb: () => workspaceService.getWorkspace(workspaceId) }),
-        refetchMessages: () => refetchMessages({ requestCb: () => messagesService.getMessages(workspaceId, channelId) }),
+        refetchWorkspace: () => refetch({ requestCb: () => channelService.getById(workspaceId, channelId) }),
+        refetchMessages: () => refetch({ requestCb: () => channelService.getById(workspaceId, channelId) }),
         setErrorMessage,
         closeModal,
         navigate
     })
 
-    const channel = channels?.find((channel) => channel.channel_id === channelId)
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
     useEffect(() => {
@@ -101,7 +96,12 @@ function ChannelScreen() {
 
     return (
         <>
-            {loading && <LoadingComponent />}
+            {/* Cuando cargo el canal por primera, muestra la pantalla de carga. Si ya hay información pero hace un refetch (envío de mensajes, creación de canales, etc.), no muestra la pantalla de carga */}
+            {(loading && !workspace) && <LoadingComponent />}
+
+            {/* TODO: si algo sale mal, mostrar error. */}
+
+            {/* Si sale todo bien, muestro el canal. */}
             <div className='backgroung-lienar-gradient'>
                 <header className='workspace-header'>
                     <div className="workspace-header-icons">
@@ -205,8 +205,8 @@ function ChannelScreen() {
 
                                 <MessageListComponent 
                                     messages={messages}
-                                    loading={messagesLoading}
-                                    error={messagesError}
+                                    loading={loading}
+                                    error={error}
                                     messagesEndRef={messagesEndRef}
                                 />
 

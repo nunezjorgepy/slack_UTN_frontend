@@ -20,6 +20,10 @@ const useChannels = ({ callbackFunction, dependencies = [] }) => {
         response,
         loading,
         error,
+        workspace: response?.data?.workspace,
+        members: response?.data?.members,
+        member_logged: response?.data?.member_logged,
+        channels: response?.data?.channels,
         channel: response?.data?.channel,
         messages: response?.data?.messages,
         refetch: sendRequest
