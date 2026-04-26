@@ -86,6 +86,7 @@ function ChannelScreen() {
     })
 
     const channel = channels?.find((channel) => channel.channel_id === channelId)
+    console.log(channel)
     document.title = `${workspace?.title || 'Slack UTN - Workspace'}`
 
     useEffect(() => {
@@ -297,7 +298,7 @@ function ChannelScreen() {
                         button={{ text: "Guardar cambios", type: "submit" }}
                         initialFormState={{
                             name: channel?.channel_name || '',
-                            description: channel?.description || ''
+                            description: channel?.channel_description || ''
                         }}
                         onSubmitFunction={(data) => onEditChannel(data, editChannelRequest)}
                         errorMessage={errorMessage}
