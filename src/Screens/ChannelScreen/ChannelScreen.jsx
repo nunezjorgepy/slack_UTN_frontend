@@ -100,8 +100,7 @@ function ChannelScreen() {
 
     return (
         <>
-            {/* TODO: una vez terminado el proceso de carga, sacar el true y dejar loading */}
-            {true && <LoadingComponent />}
+            {loading && <LoadingComponent />}
             <div className='backgroung-lienar-gradient'>
                 <header className='workspace-header'>
                     <div className="workspace-header-icons">
