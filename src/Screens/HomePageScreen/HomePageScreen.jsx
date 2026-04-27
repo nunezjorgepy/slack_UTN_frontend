@@ -12,6 +12,7 @@ import HeaderComponent from '../../components/layout/HeaderComponent/HeaderCompo
 import FooterComponent from "../../components/layout/FooterComponent/FooterComponent"
 import WorkspacePreviewComponent from '../../components/ui/WorkspacePreviewComponent/WorkspacePreviewComponent'
 import CardComponent from '../../components/ui/CardComponent/CardComponent'
+import NoWorkspacesHomeComponent from '../../components/ui/NoWorkspacesHomeComponent/NoWorkspacesHomeComponent'
 
 function HomePageScreen() {
     // Cambia el título de la página
@@ -105,10 +106,11 @@ function HomePageScreen() {
                                                 <span className="ready-to-launch">
                                                     Listo para iniciar
                                                 </span>
-                                                {/* Desde acá arranca el componente a crear */}
-                                                {/* TODO: Falta crear la página del link */}
-                                                {renderWorkspaces()}
-                                                {/* Acá termina el componente */}
+                                                {
+                                                    workspaces?.length !== 0 
+                                                    ? renderWorkspaces() :
+                                                    <NoWorkspacesHomeComponent />
+                                                }
                                             </div>
                                         </div>
 

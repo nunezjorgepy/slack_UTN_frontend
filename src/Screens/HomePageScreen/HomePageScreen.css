@@ -166,6 +166,7 @@ Ellipses
     align-items: stretch;
     gap: .5rem;
     width: 100%;
+    height: 100%;
 }
 .ready-to-launch{
     font-size: 15px;
