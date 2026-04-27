@@ -31,3 +31,18 @@
     color: var(--black-700);
     text-align: center;
 }
+
+@media screen and (max-width: 450px) {
+    .no-workspaces-home-component {
+        gap: 1rem;
+    }
+    .no-workspaces-home-component-text-container {
+        gap: .3rem;
+    }
+    .no-workspaces-home-component .bi-folder-plus {
+        font-size: 3rem;
+    }
+    .no-workspaces-home-component-text {
+        font-size: 1rem;
+    }
+}
