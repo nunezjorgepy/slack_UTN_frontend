@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router';
-import ButtonComponent from '../../components/ui/ButtonComponent/ButtonComponent';
-import './WorkspaceNotFoundScreen.css';
+import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import './ErrorOnWorkspaceComponent.css';
 
-const WorkspaceNotFoundScreen = () => {
+const ErrorOnWorkspaceComponent = () => {
     const navigate = useNavigate();
 
     return (
@@ -21,4 +21,4 @@ const WorkspaceNotFoundScreen = () => {
     );
 };
 
-export default WorkspaceNotFoundScreen;
+export default ErrorOnWorkspaceComponent;

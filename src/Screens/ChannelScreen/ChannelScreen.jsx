@@ -19,6 +19,8 @@ import ChatHeaderComponent from '../../components/ui/ChatHeaderComponent/ChatHea
 import MessageListComponent from '../../components/ui/MessageListComponent/MessageListComponent'
 import MessageInputComponent from '../../components/ui/MessageInputComponent/MessageInputComponent'
 import ModalDeleteComponent from '../../components/ui/ModalDeleteComponent/ModalDeleteComponent'
+import LoadingComponent from '../../components/ui/LoadingComponent/LoadingComponent'
+import ErrorOnWorkspaceComponent from '../../components/ui/ErrorOnWorkspaceComponent/ErrorOnWorkspaceComponent'
 // Constants
 import { ADD_CHANNEL_FORM_CONSTANTS, initialFormState as ADD_CHANNEL_INITIAL_STATE, SUCCES_ADD_CHANNEL_INFO } from '../../constants/addChannelForm.constants'
 import { INVITE_USER_FORM_CONSTANTS, initialFormState as INVITE_USER_INITIAL_STATE, SUCCES_INVITE_USER_INFO } from '../../constants/inviteUserForm.constants'
@@ -26,7 +28,6 @@ import { EDIT_WORKSPACE_FORM_CONSTANTS, SUCCES_EDIT_WORKSPACE_INFO } from '../..
 import { MEMBER_ROLES } from '../../constants/role.constants'
 // Context
 import { AuthContext } from '../../context/authContext'
-import LoadingComponent from '../../components/ui/LoadingComponent/LoadingComponent'
 
 function ChannelScreen() {
     const { workspaceId, channelId } = useParams()
@@ -53,6 +54,7 @@ function ChannelScreen() {
         messages,
         loading, 
         error,
+        response,
         refetch
     } = useChannels({
         callbackFunction: () => channelService.getById(workspaceId, channelId),
@@ -100,6 +102,8 @@ function ChannelScreen() {
             {(loading && !workspace) && <LoadingComponent />}
 
             {/* TODO: si algo sale mal, mostrar error. */}
+            {response && !response?.ok && <ErrorOnWorkspaceComponent />}
+            {workspace && !workspace?.isActive && <ErrorOnWorkspaceComponent />}
 
             {/* Si sale todo bien, muestro el canal. */}
             <div className='backgroung-lienar-gradient'>
