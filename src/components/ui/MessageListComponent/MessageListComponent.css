@@ -1,0 +1,10 @@
+.chat-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--black-900);
+    padding: 10px;
+    font-size: 1.2rem;
+    height: 100%;
+    user-select: none;
+}
