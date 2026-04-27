@@ -37,7 +37,6 @@ function FooterComponent() {
                     <div className="footer-legal-links">
                         <Link to={'https://slack.com/intl/es-ar/get'} className='footer-legal-link'>
                             Descarga Slack
-                            {/* TODO: agregar imágen de descarga */}
                         </Link>
                         <ul className='footer-links-list'>
                             <li className='footer-link-item'>

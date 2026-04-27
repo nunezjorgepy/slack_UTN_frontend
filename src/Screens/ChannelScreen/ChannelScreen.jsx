@@ -112,7 +112,6 @@ function ChannelScreen() {
             {/* Cuando cargo el canal por primera vez o cambio de canal, muestra la pantalla de carga. */}
             {isTransitioning && <LoadingComponent />}
 
-            {/* TODO: si algo sale mal, mostrar error. */}
             {response && !response?.ok && <ErrorOnWorkspaceComponent />}
             {workspace && !workspace?.isActive && <ErrorOnWorkspaceComponent />}
 

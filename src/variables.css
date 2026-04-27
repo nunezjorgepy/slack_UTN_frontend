@@ -71,7 +71,7 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
 
     /* Measures */
     --max-width: 1230px;
-    --header-height: 60px;
+    --header-height: 80px;
     --footer-height: 60px;
 
     /* Box-shadows */

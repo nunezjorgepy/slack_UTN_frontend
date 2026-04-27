@@ -20,8 +20,8 @@ function App() {
       <Routes>
         <Route element={<AuthMiddleware />}>
           <Route path="/" element={<HomePageScreen />} />
-          <Route path={LINKS_TO_OWN_SCREENS.channel} element={<ChannelScreen />} />
-          <Route path={LINKS_TO_OWN_SCREENS.response_to_invitation} element={<ResponseToInvitationScreen />} />
+          <Route path="/workspace/:workspaceId/channel/:channelId" element={<ChannelScreen />} />
+          <Route path="/:workspaceId/response-to-invitation" element={<ResponseToInvitationScreen />} />
           <Route path={LINKS_TO_OWN_SCREENS.create_workspace} element={<CreateWorkspaceScreen />} />
         </Route>
         
@@ -30,7 +30,6 @@ function App() {
         <Route path={LINKS_TO_OWN_SCREENS.verify_email} element={<VerifyEmailScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password_request} element={<ResetPasswordRequestScreen />} />
         <Route path={LINKS_TO_OWN_SCREENS.reset_password} element={<ResetPasswordScreen />} />
-        <Route path='*' element={<LogInScreen />} />
       </Routes>
     </>
   )

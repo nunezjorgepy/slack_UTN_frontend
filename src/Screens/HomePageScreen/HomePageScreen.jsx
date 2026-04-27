@@ -112,7 +112,6 @@ function HomePageScreen() {
 
                                         {/* Footer de los espacios de trabajo */}
                                         <div className="workspaces-footer">
-                                            {/* TODO: crear la página para crear espacios de trabajo */}
                                             <Link to={LINKS_TO_OWN_SCREENS.create_workspace}>
                                                 Crear un espacio de trabajo
                                             </Link>

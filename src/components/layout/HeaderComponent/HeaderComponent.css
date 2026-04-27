@@ -1,6 +1,6 @@
 .header-home-main-nav {
     background-color: var(--primary-color-dark-10);
-    height: 80px;
+    height: var(--header-heigh);
     padding: 0 2rem;
     border-bottom: none;
     display: flex;

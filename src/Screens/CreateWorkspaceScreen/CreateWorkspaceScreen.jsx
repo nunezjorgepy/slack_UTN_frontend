@@ -91,6 +91,7 @@ function CreateWorkspaceScreen() {
                     </section>
                 }
             </main>
+            {/* TODO: agregar el footer, pero verificar por qué la pantalla aparece abajo al agregarlo. */}
         </>
     )
 }

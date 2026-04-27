@@ -8,5 +8,5 @@ export const LINKS_TO_OWN_SCREENS = {
     workspace: "/workspace",
     channel: "/workspace/:workspaceId/channel/:channelId",
     create_workspace: "/create-workspace",
-    response_to_invitation: "/:workspaceId/response-to-invitation"
+    response_to_invitation: "/response-to-invitation"
 }
