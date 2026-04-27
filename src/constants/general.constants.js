@@ -6,5 +6,7 @@ export const LINKS_TO_OWN_SCREENS = {
     reset_password_request: "/reset-password-request",
     reset_password: "/reset-password/:reset_password_token",
     workspace: "/workspace",
-    create_workspace: "/create-workspace"
+    channel: "/workspace/:workspaceId/channel/:channelId",
+    create_workspace: "/create-workspace",
+    response_to_invitation: "/:workspaceId/response-to-invitation"
 }

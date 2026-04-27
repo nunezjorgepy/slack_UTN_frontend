@@ -332,7 +332,7 @@ function ChannelScreen() {
                     <div className="information-form-component-container">
                         <h2 className="information-form-component-title">Eliminar canal</h2>
                         <span className="information-form-component-subtitle">
-                            ¿Estas seguro de que deseas eliminar el canal?
+                            ¿Estas seguro de que deseas eliminar el canal <strong>{channel?.channel_name}</strong>?
                         </span>
                         <div className="information-form-component-section-preview">
                             <p>Esta acción es irreversible. Se borrará el canal y todos sus mensajes.</p>

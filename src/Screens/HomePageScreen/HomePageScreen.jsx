@@ -31,10 +31,10 @@ function HomePageScreen() {
         if (error) {
             return <div>Error al cargar los espacios de trabajo</div>
         }
-        if (!workspaces) {
-            return <div>No se encontraron espacios de trabajo. Hace click en "Crear un espacio de trabajo" para crear uno.</div>
+        if (workspaces?.length === 0) {
+            return <NoWorkspacesHomeComponent />
         }
-        return workspaces.map((workspace) => (
+        return workspaces?.map((workspace) => (
             <div key={workspace.member_workspace_id}>
                 <WorkspacePreviewComponent workspace={workspace} />
             </div>
@@ -106,11 +106,7 @@ function HomePageScreen() {
                                                 <span className="ready-to-launch">
                                                     Listo para iniciar
                                                 </span>
-                                                {
-                                                    workspaces?.length !== 0 
-                                                    ? renderWorkspaces() :
-                                                    <NoWorkspacesHomeComponent />
-                                                }
+                                                {renderWorkspaces()}
                                             </div>
                                         </div>
 

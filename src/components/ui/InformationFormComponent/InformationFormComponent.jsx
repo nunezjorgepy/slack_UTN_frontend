@@ -37,17 +37,19 @@ function InformationFormComponent(props) {
     const renderSections = () => {
         return sections.map((section, index) => (
             <div key={index} className="form-section">
+                {/* Section header */}
                 {section.section_number && section.section_title &&
                     <div className="form-section-header">
                         <span>{section.section_number}</span>
                         <h2>{section.section_title}</h2>
                     </div>
                 }
+                {/* Section inputs */}
                 <div className="form-section-flex-container">
                     {section.inputs.map((input, index) => (
                         <div key={index} className={`form-section-group ${input.flex}`}>
                             <label htmlFor={input.id} className={input.required ? 'required' : ''}>
-                                {input.label}
+                                {input.label} {!input.required && ' (opcional)'}
                                 <span className='form-help'>
                                     <i className="bi bi-question form-help-icon"></i>
                                     <div className='form-help-requirement-container'>
