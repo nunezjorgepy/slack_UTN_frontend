@@ -15,7 +15,7 @@
     padding: 0 10px;
 }
 
-.siderbar-item-component:hover {
+.siderbar-item-component:not(.checked):hover {
     background-color: var(--primary-color-10);
 }
 

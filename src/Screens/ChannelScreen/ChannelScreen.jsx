@@ -35,6 +35,7 @@ function ChannelScreen() {
     const navigate = useNavigate()
     const [message, setMessage] = useState('')
     const [showSidebar, setShowSidebar] = useState(false)
+    const [isTransitioning, setIsTransitioning] = useState(true)
     const messagesEndRef = useRef(null)
 
     const { sendRequest: addChannelRequest, response: addChannelResponse, loading: addChannelLoading, error: addChannelError, cleanRequest: cleanAddChannel } = useRequest()
@@ -93,13 +94,23 @@ function ChannelScreen() {
         }
     }, [messages, channelId])
 
+    useEffect(() => {
+        setIsTransitioning(true)
+    }, [channelId, workspaceId])
+
+    useEffect(() => {
+        if (!loading && response) {
+            setIsTransitioning(false)
+        }
+    }, [loading, response])
+
     const isAdminOrOwner = member_logged?.role === MEMBER_ROLES.admin || member_logged?.role === MEMBER_ROLES.owner
     const isOwner = member_logged?.role === MEMBER_ROLES.owner
 
     return (
         <>
-            {/* Cuando cargo el canal por primera, muestra la pantalla de carga. Si ya hay información pero hace un refetch (envío de mensajes, creación de canales, etc.), no muestra la pantalla de carga */}
-            {(loading && !workspace) && <LoadingComponent />}
+            {/* Cuando cargo el canal por primera vez o cambio de canal, muestra la pantalla de carga. */}
+            {isTransitioning && <LoadingComponent />}
 
             {/* TODO: si algo sale mal, mostrar error. */}
             {response && !response?.ok && <ErrorOnWorkspaceComponent />}
@@ -164,6 +175,7 @@ function ChannelScreen() {
                                              input_name='channel' 
                                              component_name={ch.channel_name} 
                                              link_to={`/workspace/${workspaceId}/channel/${ch.channel_id}`}
+                                             isChecked={ch.channel_id === channelId}
                                          />
                                      ))}
                                 </SidebarSectionComponent>
