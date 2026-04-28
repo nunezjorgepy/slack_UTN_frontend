@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 import './SiderbarItemComponent.css'
 
 function SiderbarItemComponent(props) {
-    const { input_name, component_name, onClick, link_to, isChecked } = props
+    const { input_name, component_name, onClick, link_to, isChecked, icon } = props
     return (
         <li>
             <Link to={link_to && link_to}>
@@ -16,7 +16,7 @@ function SiderbarItemComponent(props) {
                     />
                     <div className="siderbar-item-component-content">
                         <div className="siderbar-item-component-icon">
-                            <i className="bi bi-hash"></i>
+                            <i className={icon}></i>
                         </div>
                         <div className="siderbar-item-component-text">
                             {component_name}

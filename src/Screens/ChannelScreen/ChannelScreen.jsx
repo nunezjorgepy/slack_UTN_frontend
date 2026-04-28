@@ -175,6 +175,7 @@ function ChannelScreen() {
                                              component_name={ch.channel_name} 
                                              link_to={`/workspace/${workspaceId}/channel/${ch.channel_id}`}
                                              isChecked={ch.channel_id === channelId}
+                                             icon="bi bi-hash"
                                          />
                                      ))}
                                 </SidebarSectionComponent>
@@ -194,6 +195,7 @@ function ChannelScreen() {
                                              key={member.member_id}
                                              input_name='member' 
                                              component_name={member.user_name} 
+                                             icon="bi bi-person"
                                          />
                                      ))}
                                 </SidebarSectionComponent>
