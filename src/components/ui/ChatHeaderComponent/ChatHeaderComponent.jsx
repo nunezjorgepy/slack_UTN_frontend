@@ -17,10 +17,10 @@ const ChatHeaderComponent = ({
                 </div>
                 {showActions && (
                     <div style={{ display: 'flex', gap: '10px' }}>
-                        <button className="channel-action-btn tooltip edit-channel-tooltip" onClick={onEditClick}>
+                        <button className="channel-action-btn tooltip-container tooltip edit-channel-tooltip" onClick={onEditClick}>
                             <i className="bi bi-pencil"></i>
                         </button>
-                        <button className="channel-action-btn tooltip delete-channel-tooltip" onClick={onDeleteClick}>
+                        <button className="channel-action-btn tooltip-container tooltip delete-channel-tooltip" onClick={onDeleteClick}>
                             <i className="bi bi-trash"></i>
                         </button>
                     </div>

@@ -144,10 +144,10 @@ function ChannelScreen() {
                                     </h1>
                                     {isOwner && (
                                         <>
-                                            <button className="workspace-sidebar-header-delete tooltip" onClick={() => openModal('deleteWorkspace')}>
+                                            <button className="workspace-sidebar-header-delete delete-workspace-tooltip tooltip-container tooltip" onClick={() => openModal('deleteWorkspace')}>
                                                 <i className="bi bi-trash"></i>
                                             </button>
-                                            <button className="workspace-sidebar-header-edit tooltip" onClick={() => openModal('editWorkspace')}>
+                                            <button className="workspace-sidebar-header-edit edit-workspace-tooltip tooltip-container tooltip" onClick={() => openModal('editWorkspace')}>
                                                 <i className="bi bi-pencil"></i>
                                             </button>
                                         </>

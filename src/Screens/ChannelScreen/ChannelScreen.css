@@ -40,7 +40,15 @@ background-color: transparent;
     font-size: 1.2rem;
     cursor: pointer;
 }
-/* Tooltip para el logout y home */
+/* Tooltips content */
+.tooltip-container {
+    border: 1px solid var(--white-900);
+    border-radius: 5px;
+    padding: 3px 4px;
+    font-size: .9rem;
+    color: var(--white-900);
+    cursor: pointer;
+}
 .workspace-header-btn-home::before{
     content: 'Inicio';
 }
@@ -56,7 +64,16 @@ background-color: transparent;
     content: 'Eliminar canal';
 }
 
-.delete-channel-tooltip:hover::before {
+.delete-workspace-tooltip::before {
+    content: 'Eliminar espacio';
+}
+
+.edit-workspace-tooltip::before {
+    content: 'Editar espacio';
+}
+
+.delete-channel-tooltip:hover::before,
+.delete-workspace-tooltip:hover::before{
     background-color: var(--error-color);
 }
 
@@ -234,18 +251,9 @@ Chat Header
 }
 
 .channel-action-btn {
-    cursor: pointer;
-    border: 1px solid var(--black-900);
-    border-radius: 5px;
-    padding: 3px 4px;
+    border-color: var(--black-900);
     font-size: 1rem;
     color: var(--black-900);
-    background-color: transparent;
-    transition: background-color .2s ease-in-out;
-}
-
-.channel-action-btn:hover {
-    background-color: var(--black-05);
 }
 
 /* 
@@ -278,7 +286,6 @@ Chat Tabs
     padding: 10px 15px 7px;
     border-bottom: 2px solid var(--primary-color);
     cursor: pointer;
-    /* Seguramente esto sea algo como button de tipo radio y checked, pero como no hago la página completa, lo dejo así. */
     transform: translateY(1px);
 }
 
@@ -431,6 +438,10 @@ Media Queries
 
     .workspace-send-message-form-container {
         height: 100%;
+    }
+
+    .workspace-sidebar-header {
+        padding-right: 30px;
     }
 
     .workspace-sidebar-header-title {
