@@ -9,6 +9,12 @@
     height: 0;
     overflow: hidden;
 }
+.workspace-sidebar-section input[type="checkbox"]:checked ~ .workspace-add-item{
+    display: none;
+}
+.workspace-sidebar-section input[type="checkbox"]:checked ~ label .workspace-sidebar-section-header .bi{
+    transform: rotate(-90deg);
+}
 
 .workspace-sidebar-section-header{
     display: flex;
@@ -23,6 +29,7 @@
 
 .workspace-sidebar-section-header i{
     font-size: .8rem;
+    transition: transform 0.3s ease;
 }
 
 .workspace-add-item{
