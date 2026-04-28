@@ -30,9 +30,15 @@ const useChannelActions = ({
         sendRequest({
             requestCb: async () => {
                 const response = await channelService.create(workspaceId, form_data)
-                refetchWorkspace()
-                resetForm()
-                closeModal('addChannel')
+                
+                if (response?.ok && response?.data?.channel?.channel_id) {
+                    setTimeout(() => {
+                        resetForm()
+                        closeModal('addChannel')
+                        navigate(`/workspace/${workspaceId}/channel/${response.data.channel.channel_id}`)
+                    }, 1500)
+                }
+                
                 return response
             }
         })
