@@ -155,7 +155,7 @@ function ChannelScreen() {
                                 </div>
                                 <div className="workspace-description">
                                     <span>Descripción</span>
-                                    {workspace?.description || 'Cargando...'}
+                                    {workspace?.description || 'Espacio sin descripción'}
                                 </div>
 
                                 <SidebarSectionComponent 
