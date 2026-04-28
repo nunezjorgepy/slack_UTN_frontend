@@ -13,7 +13,10 @@ export const RESET_PASSWORD_FORM_CONSTANTS = {
                     placeholder: "Ingresa tu email",
                     required: true,
                     type: "email",
-                    flex: "flex-100"
+                    flex: "flex-100",
+                    requirements: [
+                        `El email debe tener un formato válido de email: micorreo@dominio.com`
+                    ]
                 }
             ]
         }

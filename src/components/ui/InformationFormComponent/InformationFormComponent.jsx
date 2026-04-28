@@ -53,12 +53,12 @@ function InformationFormComponent(props) {
                                 <span className='form-help'>
                                     <i className="bi bi-question form-help-icon"></i>
                                     <div className='form-help-requirement-container'>
-                                        <div>Este campo es obligatorio</div>
-                                        <div className='form-help-requires'>Requerimientos:</div>
+                                        <div>Este campo es {input.required ? 'obligatorio' : 'opcional. Si lo usas:'}</div>
+                                        <div className='form-help-requires'>Requisitos:</div>
                                         <ul>
-                                            <li className='form-help-list-item'>- Primer requerimiento</li>
-                                            <li className='form-help-list-item'>- Segundo requerimiento</li>
-                                            <li className='form-help-list-item'>- Tercer requerimiento</li>
+                                            {input.requirements.map((requirement, index) => (
+                                                <li key={index} className='form-help-list-item'>&bull; {requirement}</li>
+                                            ))}
                                         </ul>
                                     </div>
                                 </span>

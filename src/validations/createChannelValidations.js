@@ -1,4 +1,4 @@
-const ADD_CHANNEL_CONSTANTS = {
+export const ADD_CHANNEL_CONSTANTS = {
     name_min_length: 3,
     name_max_length: 25,
     description_min_length: 3,

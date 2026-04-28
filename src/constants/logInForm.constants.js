@@ -1,3 +1,4 @@
+import { PASSWORD_VALIDATION_CONSTANTS } from "../validations/shared/password.validation";
 import { LINKS_TO_OWN_SCREENS } from "./general.constants";
 
 export const LOG_IN_FORM_CONSTANTS = {
@@ -14,6 +15,9 @@ export const LOG_IN_FORM_CONSTANTS = {
                     required: true,
                     type: "email",
                     flex: "flex-100",
+                    requirements: [
+                        `El email debe tener un formato válido de email: micorreo@dominio.com`
+                    ]
                 },
                 {
                     id: "password",
@@ -23,6 +27,13 @@ export const LOG_IN_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
+                    requirements: [
+                        `Debe tener entre ${PASSWORD_VALIDATION_CONSTANTS.password_min_length} y ${PASSWORD_VALIDATION_CONSTANTS.password_max_length} caracteres`,
+                        `Debe contener al menos una letra mayúscula`,
+                        `Debe contener al menos una letra minúscula`,
+                        `Debe contener al menos un número`,
+                        `No debe contener espacios`
+                    ]
                 }
             ]
         }

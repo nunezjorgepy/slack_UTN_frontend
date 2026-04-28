@@ -1,6 +1,5 @@
 import { MEMBER_ROLES } from "./role.constants"
 
-
 export const INVITE_USER_FORM_CONSTANTS = {
     form_title: "Invitar usuario",
     form_subtitle: "Ingresa los datos para invitar un usuario",
@@ -15,6 +14,9 @@ export const INVITE_USER_FORM_CONSTANTS = {
                     required: true,
                     type: "email",
                     flex: "flex-100",
+                    requirements: [
+                        `El email debe tener un formato válido de email: micorreo@dominio.com`
+                    ]
                 },
                 {
                     id: "role",
@@ -27,6 +29,9 @@ export const INVITE_USER_FORM_CONSTANTS = {
                     options: [
                         { value: MEMBER_ROLES.user, label: "Usuario" },
                         { value: MEMBER_ROLES.admin, label: "Administrador" }
+                    ],
+                    requirements: [
+                        `El rol debe ser Usuario o Administrador`
                     ]
                 }
             ]

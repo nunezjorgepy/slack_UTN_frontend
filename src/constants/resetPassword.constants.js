@@ -1,5 +1,4 @@
-// Hubiera sido mejor llamarla resetPasswordForm y a dicho archivo resetPasswordRequestForm, pero bue...
-
+import { PASSWORD_VALIDATION_CONSTANTS } from "../validations/shared/password.validation";
 import { LINKS_TO_OWN_SCREENS } from "./general.constants"
 
 export const RESET_PASSWORD_CONSTANTS = {
@@ -16,6 +15,13 @@ export const RESET_PASSWORD_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
+                    requirements: [
+                        `Debe tener entre ${PASSWORD_VALIDATION_CONSTANTS.password_min_length} y ${PASSWORD_VALIDATION_CONSTANTS.password_max_length} caracteres`,
+                        `Debe contener al menos una letra mayúscula`,
+                        `Debe contener al menos una letra minúscula`,
+                        `Debe contener al menos un número`,
+                        `No debe contener espacios`
+                    ]
                 },
                 {
                     id: "confirmPassword",
@@ -25,6 +31,9 @@ export const RESET_PASSWORD_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-100",
+                    requirements: [
+                        `La confirmación debe coincidir con la contraseña`
+                    ]
                 }
             ]
         }

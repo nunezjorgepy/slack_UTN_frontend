@@ -1,4 +1,6 @@
-
+export const EMAIL_VALIDATION_CONSTANTS = {
+    valid_email_regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+}
 
 export const emailValidation = (email) => {
     /**
@@ -13,7 +15,7 @@ export const emailValidation = (email) => {
         error =  'El email es requerido'
     }
     // Verificar que sea un email válido
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed_lower_email)) {
+    else if (!EMAIL_VALIDATION_CONSTANTS.valid_email_regex.test(trimmed_lower_email)) {
         error = 'El email no es valido'
     }
 

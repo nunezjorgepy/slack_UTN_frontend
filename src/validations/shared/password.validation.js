@@ -1,6 +1,6 @@
-const PASSWORD_REQUIRMENT = {
-    minLength: 8,
-    maxLength: 20,
+export const PASSWORD_VALIDATION_CONSTANTS = {
+    password_min_length: 8,
+    password_max_length: 20,
 }
 
 export const passwordValidation = (password, confirmPassword = '') => {

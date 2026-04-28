@@ -1,4 +1,4 @@
-
+import { CREATE_WORKSPACE_CONSTANTS } from "../validations/createWorkspaceValidations"
 
 export const CREATE_WORKSPACE_FORM_CONSTANTS = {
     form_title: "Crear un espacio de trabajo",
@@ -13,7 +13,10 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                     placeholder: "Ingresa el nombre de tu espacio de trabajo",
                     required: true,
                     type: "text",
-                    flex: "flex-100"
+                    flex: "flex-100",
+                    requirements: [
+                        `El nombre debe tener entre ${CREATE_WORKSPACE_CONSTANTS.title_min_length} y ${CREATE_WORKSPACE_CONSTANTS.title_max_length} caracteres`
+                    ]
                 },
                 {
                     id: "workspace_description",
@@ -21,7 +24,10 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                     label: "Descripción",
                     placeholder: "Ingresa la descripción de tu espacio de trabajo",
                     type: "text",
-                    flex: "flex-100"
+                    flex: "flex-100",
+                    requirements: [
+                        `La descripción debe tener entre ${CREATE_WORKSPACE_CONSTANTS.description_min_length} y ${CREATE_WORKSPACE_CONSTANTS.description_max_length} caracteres`
+                    ]
                 },
                 {
                     id: "workspace_url_image",
@@ -29,7 +35,10 @@ export const CREATE_WORKSPACE_FORM_CONSTANTS = {
                     label: "URL de la imagen",
                     placeholder: "Ingresa la URL de la imagen de tu espacio de trabajo",
                     type: "text",
-                    flex: "flex-100"
+                    flex: "flex-100",
+                    requirements: [
+                        `La url de la imagen debe tener los formatos ${CREATE_WORKSPACE_CONSTANTS.url_image_extensions.join(', ')}`
+                    ]
                 }
             ]
         },

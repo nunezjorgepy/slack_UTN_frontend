@@ -1,3 +1,5 @@
+import { NAME_VALIDATION_CONSTANTS } from "../validations/registerValidations";
+import { PASSWORD_VALIDATION_CONSTANTS } from "../validations/shared/password.validation";
 import { LINKS_TO_OWN_SCREENS } from "./general.constants";
 
 export const REGISTER_FORM_CONSTANTS = {
@@ -16,6 +18,12 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-50",
+                    requirements: [
+                        `Debe tener entre ${NAME_VALIDATION_CONSTANTS.name_min_length} y ${NAME_VALIDATION_CONSTANTS.name_max_length} caracteres`,
+                        `Debe contener al menos una letra mayúscula`,
+                        `Debe contener al menos una letra minúscula`,
+                        `No debe contener espacios`
+                    ]
                 },
                 {
                     id: "email",
@@ -25,6 +33,9 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "email",
                     flex: "flex-50",
+                    requirements: [
+                        `El email debe tener un formato válido de email: micorreo@dominio.com`
+                    ]
                 },
                 {
                     id: "password",
@@ -34,6 +45,13 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-50",
+                    requirements: [
+                        `Debe tener entre ${PASSWORD_VALIDATION_CONSTANTS.password_min_length} y ${PASSWORD_VALIDATION_CONSTANTS.password_max_length} caracteres`,
+                        `Debe contener al menos una letra mayúscula`,
+                        `Debe contener al menos una letra minúscula`,
+                        `Debe contener al menos un número`,
+                        `No debe contener espacios`
+                    ]
                 },
                 {
                     id: "confirmPassword",
@@ -43,6 +61,9 @@ export const REGISTER_FORM_CONSTANTS = {
                     required: true,
                     type: "password",
                     flex: "flex-50",
+                    requirements: [
+                        `La confirmación debe coincidir con la contraseña`
+                    ]
                 }
             ]
         },

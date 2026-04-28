@@ -1,4 +1,4 @@
-
+import { ADD_CHANNEL_CONSTANTS } from "../validations/createChannelValidations"
 
 export const ADD_CHANNEL_FORM_CONSTANTS = {
     form_title: "Añadir canal",
@@ -14,6 +14,10 @@ export const ADD_CHANNEL_FORM_CONSTANTS = {
                     required: true,
                     type: "text",
                     flex: "flex-100",
+                    requirements: [
+                        `El nombre debe tener entre ${ADD_CHANNEL_CONSTANTS.name_min_length} y ${ADD_CHANNEL_CONSTANTS.name_max_length} caracteres`,
+                        "El nombre debe contener solo letras"
+                    ]
                 },
                 {
                     id: "description",
@@ -23,6 +27,9 @@ export const ADD_CHANNEL_FORM_CONSTANTS = {
                     required: false,
                     type: "text",
                     flex: "flex-100",
+                    requirements: [
+                        `La descripción debe tener entre ${ADD_CHANNEL_CONSTANTS.description_min_length} y ${ADD_CHANNEL_CONSTANTS.description_max_length} caracteres`
+                    ]
                 }
             ]
         }
