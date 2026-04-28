@@ -10,6 +10,7 @@ const useChannelActions = ({
     workspaceId,
     channelId,
     members,
+    inviteUserResponse,
     refetchWorkspace,
     refetchMessages,
     setErrorMessage,
@@ -73,11 +74,14 @@ const useChannelActions = ({
                     form_data.email,
                     form_data.role
                 )
-                resetForm()
-                setErrorMessage('Usuario invitado')
-                setTimeout(() => {
-                    closeModal('inviteUser')
-                }, 1500)
+
+                if (response.status === 200) {
+                    resetForm()
+                    setErrorMessage('Usuario invitado')     /* TODO: acá no debería ir un setErrorMessage, si no algo como setSuccesMessage. */
+                    setTimeout(() => {
+                        closeModal('inviteUser')
+                    }, 1500)
+                }
                 return response
             }
         })
