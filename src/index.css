@@ -78,10 +78,11 @@ Tooltip
 /* Clases de utilidad */
 .form-screens-main{
     width: 100%;
-    height: calc(100dvh - var(--header-height));
+    min-height: calc(100dvh - var(--header-height));
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 2rem 0;
 }
 .form-screen-container{
     width: min(90%, 440px);
@@ -128,4 +129,10 @@ Tooltip
 }
 .left-0{
     left: 0;
+}
+
+@media (max-width: 680px) {
+    .create-workspace-section {
+        margin: 1rem;
+    }
 }
