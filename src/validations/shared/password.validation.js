@@ -18,8 +18,8 @@ export const passwordValidation = (password, confirmPassword = '') => {
         error =  'La contraseña es requerida'
     }
     /* Verifico que la contraseña este entre el rango de 8 y 20 caracteres */
-    else if (trimmed_password.length < PASSWORD_REQUIRMENT.minLength) {
-        error = `La contraseña debe tener al menos ${PASSWORD_REQUIRMENT.minLength} caracteres.`
+    else if (trimmed_password.length < PASSWORD_VALIDATION_CONSTANTS.minLength) {
+        error = `La contraseña debe tener al menos ${PASSWORD_VALIDATION_CONSTANTS.minLength} caracteres.`
     } 
     /* Verifico que la contraseña tenga al menos una letra mayúscula, una letra minúscula, un número y un caracter especial */
     else if (!/[A-Z]/.test(trimmed_password)) {
@@ -35,8 +35,8 @@ export const passwordValidation = (password, confirmPassword = '') => {
     else if (/\s/.test(trimmed_password)) {
         error = `La contraseña no puede contener espacios.`
     }
-    else if (trimmed_password.length > PASSWORD_REQUIRMENT.maxLength) {
-        error = `La contraseña debe tener menos de ${PASSWORD_REQUIRMENT.maxLength} caracteres.`
+    else if (trimmed_password.length > PASSWORD_VALIDATION_CONSTANTS.maxLength) {
+        error = `La contraseña debe tener menos de ${PASSWORD_VALIDATION_CONSTANTS.maxLength} caracteres.`
     } 
     /* Verifico que las contraseñas sean iguales, si es que se necesita. */
     else if (confirmPassword && password !== confirmPassword) {

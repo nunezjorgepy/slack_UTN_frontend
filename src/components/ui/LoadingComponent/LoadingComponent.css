@@ -44,16 +44,16 @@
     flex-direction: column;
 }
 .top-left > div > div {
-    background-color: #36C5F0;
+    background-color: var(--slack-logo-color-blue);
 }
 .top-right > div > div {
-    background-color: #2EB67D;
+    background-color: var(--slack-logo-color-green);
 }
 .bottom-left > div > div {
-    background-color: #E01E5A;
+    background-color: var(--slack-logo-color-red);
 }
 .bottom-right > div > div {
-    background-color: #ECB22E;
+    background-color: var(--slack-logo-color-yellow);
 }
 
 /* 

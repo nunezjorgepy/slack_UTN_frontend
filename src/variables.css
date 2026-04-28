@@ -14,6 +14,12 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --text-color: #2d3748;
     --bg-color: #faf5f5;
 
+    /* Colores del logo de slack */
+    --slack-logo-color-blue: #36C5F0;
+    --slack-logo-color-green: #2EB67D;
+    --slack-logo-color-red: #E01E5A;
+    --slack-logo-color-yellow: #ECB22E;
+
     /* Luminosidad del color primario usando oklch */
     --primary-color-05: oklch(from var(--primary-color) calc(l + 0.05) c h);
     --primary-color-10: oklch(from var(--primary-color) calc(l + 0.1) c h);
@@ -65,9 +71,10 @@ Además, intentar usar OKLCH para facilitar los cambios de colores
     --white-1000: rgba(255, 255, 255, 1);
 
     /* Warning, error and success colors */
-    --warning-color: rgb(216, 5, 5);
-    --error-color: rgb(216, 5, 5);
-    --success-color: rgb(13, 196, 13);
+    --warning-color: var(--slack-logo-color-red);
+    --error-color: var(--slack-logo-color-red);
+    --success-color: var(--slack-logo-color-green);
+    --info-color: var(--slack-logo-color-blue);
 
     /* Measures */
     --max-width: 1230px;
