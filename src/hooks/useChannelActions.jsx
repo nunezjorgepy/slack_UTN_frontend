@@ -10,8 +10,6 @@ const useChannelActions = ({
     workspaceId,
     channelId,
     members,
-    inviteUserResponse,
-    refetchWorkspace,
     refetchMessages,
     setErrorMessage,
     closeModal,
