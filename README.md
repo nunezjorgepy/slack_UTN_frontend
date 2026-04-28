@@ -63,7 +63,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 3. **Configurar variables de entorno:**
    Crea un archivo `.env` en la raíz con la URL de tu API:
    ```env
-   VITE_API_URL=http://localhost:3000/api
+   VITE_API_URL=http://localhost:8080
    ```
 
 4. **Iniciar el servidor de desarrollo:**
