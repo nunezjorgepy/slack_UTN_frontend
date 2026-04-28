@@ -406,6 +406,8 @@ Media Queries
         left: -100%;
         width: 100%;
         max-width: 100%;
+        min-height: 100%;
+        height: min-content;
         z-index: 100;
         border-radius: 0;
     }
