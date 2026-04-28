@@ -135,9 +135,9 @@ function InformationFormComponent(props) {
                 </span>
                 {button.text && <ButtonComponent
                     text={button.text}
-                    disabled={loading}
+                    disabled={loading || (response && response.ok)}
                     type={button.type}
-                    className={loading ? 'disabled' : ''}
+                    className={loading || (response && response.ok) ? 'disabled' : ''}
                 />}
                 {
                     footer &&

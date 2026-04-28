@@ -302,7 +302,7 @@ function ChannelScreen() {
                         {deleteWorkspaceError && <div className="information-form-component-error">{deleteWorkspaceError.message || 'Error al eliminar.'}</div>}
                         <div className="information-form-component-btns-container">
                             <ButtonComponent text="Cancelar" onClick={() => closeModal('deleteWorkspace')} />
-                            <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteWorkspace(deleteWorkspaceRequest)} disabled={deleteWorkspaceLoading} />
+                            <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteWorkspace(deleteWorkspaceRequest)} disabled={deleteWorkspaceLoading || !!deleteWorkspaceResponse} />
                         </div>
                     </div>
                 </ModalDeleteComponent>
@@ -342,7 +342,7 @@ function ChannelScreen() {
                         {deleteChannelError || errorMessage && <div className="information-form-component-error">{deleteChannelError?.message || errorMessage || 'Error al eliminar.'}</div>}
                         <div className="information-form-component-btns-container">
                             <ButtonComponent text="Cancelar" onClick={() => closeModal('deleteChannel')} />
-                            <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteChannel(channels, deleteChannelRequest)} disabled={deleteChannelLoading} />
+                            <ButtonComponent text="Eliminar" className="warning-btn" onClick={() => onDeleteChannel(channels, deleteChannelRequest)} disabled={deleteChannelLoading || !!deleteChannelResponse} />
                         </div>
                     </div>
                 </ModalDeleteComponent>
