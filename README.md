@@ -52,7 +52,7 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone <url-del-repositorio>
+   git clone https://github.com/nunezjorgepy/slack_UTN_frontend.git
    ```
 
 2. **Instalar dependencias:**
