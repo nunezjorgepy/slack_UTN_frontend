@@ -35,7 +35,7 @@ function HomePageScreen() {
             return <NoWorkspacesHomeComponent />
         }
         return workspaces?.map((workspace) => (
-            <div key={workspace.member_workspace_id}>
+            <div key={workspace._id || workspace.workspace_id}>
                 <WorkspacePreviewComponent workspace={workspace} />
             </div>
         ))
