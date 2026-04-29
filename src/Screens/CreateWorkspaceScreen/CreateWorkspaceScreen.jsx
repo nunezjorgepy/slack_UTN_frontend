@@ -32,20 +32,15 @@ function CreateWorkspaceScreen() {
             url_image: formState.url_image.trim()
         })
         if (create_workspace_validation) {
-            console.log(create_workspace_validation)
             setErrorMessage(create_workspace_validation)
             return
         }
         
-        try {
-            sendRequest({
-                requestCb: () => {
-                    return workspaceService.createWorkspace(formState)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        sendRequest({
+            requestCb: () => {
+                return workspaceService.createWorkspace(formState)
+            }
+        })
     }
 
     useEffect(

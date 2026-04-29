@@ -33,15 +33,11 @@ function ResetPasswordRequestScreen() {
             return
         }
 
-        try {
-            sendRequest({
-                requestCb: () => {
-                    return authService.resetPasswordRequest(formState)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        sendRequest({
+            requestCb: () => {
+                return authService.resetPasswordRequest(formState)
+            }
+        })
     }
 
     useEffect(() => {

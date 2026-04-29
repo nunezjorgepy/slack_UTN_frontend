@@ -40,19 +40,15 @@ function ResetPasswordScreen() {
             return
         }
 
-        try {
-            sendRequest({
-                requestCb: () => {
-                    return authService.resetPassword({
-                        reset_password_token,
-                        password: formState.password,
-                        confirmPassword: formState.confirmPassword
-                    })
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        sendRequest({
+            requestCb: () => {
+                return authService.resetPassword({
+                    reset_password_token,
+                    password: formState.password,
+                    confirmPassword: formState.confirmPassword
+                })
+            }
+        })
     }
 
     useEffect(() => {

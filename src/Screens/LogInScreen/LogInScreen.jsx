@@ -34,15 +34,11 @@ function LogInScreen() {
             return
         }
 
-        try {
-            sendRequest({
-                requestCb: () => {
-                    return authService.login(formState)
-                }
-            })
-        } catch (error) {
-            console.log(error)
-        }
+        sendRequest({
+            requestCb: () => {
+                return authService.login(formState)
+            }
+        })
     }
 
     useEffect(

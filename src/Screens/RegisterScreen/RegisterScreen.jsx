@@ -44,15 +44,11 @@ function RegisterScreen() {
       return
     }
 
-    try {
-      sendRequest({
-        requestCb: () => {
-          return authService.register(formState)
-        }
-      })
-    } catch (error) {
-      console.log(error)
-    }
+    sendRequest({
+      requestCb: () => {
+        return authService.register(formState)
+      }
+    })
   }
 
   // Si el usuario ya esta logueado, no lo dejo entrar al login

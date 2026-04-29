@@ -31,7 +31,6 @@ function useRequest (){
             setResponse(response) //Se guarda la respuesta
         }
         catch(error){
-            console.log(error)
             setError(error) //Se guarda el error
         }
         finally{
